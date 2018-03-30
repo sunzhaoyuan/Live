@@ -14,7 +14,8 @@ blank
 ## Development Team
 * Player Group</br>
 * Enemies Group</br>
-* UI Group</br>
+* UI & UX Group</br>
+* Level & Map Design Group</br>
 
 ---
 ## Milestones
