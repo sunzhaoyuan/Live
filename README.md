@@ -14,11 +14,17 @@ blank
 ## Development Team
 * Player Group</br>
 * Enemies Group</br>
-* Map Group</br>
+* UI Group</br>
 
 ---
 ## Milestones
-blank
+#### Milestone 1
+1. Github
+1. Rules
+1. Models
+1. UI
+1. Guns & Bullets
+
 
 ---
 ## Design Documents
