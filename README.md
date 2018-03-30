@@ -12,10 +12,9 @@ blank
 
 ---
 ## Development Team
-* Character Group</br>
-* Boss Group</br>
+* Player Group</br>
+* Enemies Group</br>
 * Map Group</br>
-* Environment Group</br>
 
 ---
 ## Milestones
