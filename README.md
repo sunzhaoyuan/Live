@@ -12,19 +12,40 @@ blank
 
 ---
 ## Development Team
-* Player Group</br>
-* Enemies Group</br>
-* UI & UX Group</br>
-* Level & Map Design Group</br>
+* UI & UX Group
+    - Zezhi Xia
+    - Qiuyun Li
+    - Yifei Chen
+
+* Player Group
+    - Curtis Wang
+    - Song Luo
+
+* Enemies Group
+    - Zhaoyuan Sun
+    - Weimu Song
+    - Yuqi Zhou
+
+* Support Group
+    - Zhaoyuan Sun
+
+* Level & Map Design Group
 
 ---
 ## Milestones
-#### Milestone 1
-1. Github
-1. Rules
-1. Models
-1. UI
-1. Guns & Bullets
+#### Milestone 1 (Due April 20th)
+- [x] Github
+- [ ] Title Screen (UI)
+- [ ] Boss (Boss)
+    - [ ] Basic Attacks
+    - [ ] Basic Moves
+- [ ] Player (Player)
+    - [ ] Config Controller
+    - [ ] Basic Moves
+- [ ] Supports (Supports)
+    - [x] Load Scene with Progress Bar
+    - [ ] Rotating Logo
+    - [ ] Collisions
 
 
 ---
