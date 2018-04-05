@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4287215957572964}
   - component: {fileID: 114048864604080616}
+  - component: {fileID: 114722069091168204}
   m_Layer: 0
   m_Name: SceneLoaderController
   m_TagString: Untagged
@@ -319,6 +320,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114722069091168204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295213728341332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e98c0d89d9741fbad01a9fce733114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTexture: {fileID: 2800000, guid: 0f3a3f6e53bd147d69e2b4ee8ddcd700, type: 3}
+  fadeSpeed: 0.8
 --- !u!114 &114779283112468562
 MonoBehaviour:
   m_ObjectHideFlags: 1
