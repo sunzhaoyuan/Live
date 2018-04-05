@@ -22,6 +22,14 @@ public class LevelLoader : MonoBehaviour
 	public void LoadLevel (string sceneToLoad)
 	{
 		StartCoroutine (LoadAsynchronously (sceneToLoad));
+		StartCoroutine (FadeScene ());
+	}
+
+	private IEnumerator FadeScene ()
+	{
+		// Fading from dark
+		float fadeTime = gameObject.GetComponent<Fading> ().BeginFade (1);
+		yield return new WaitForSeconds (fadeTime);
 	}
 
 
@@ -40,10 +48,12 @@ public class LevelLoader : MonoBehaviour
 		while (!operation.isDone) {
 			// Clamp progress from .9 to 1.
 			float progress = Mathf.Clamp01 (operation.progress / .9f);
+			Debug.Log (progress);
 			// update progress with slider
 			slider.value = progress;
 
 			yield return null;
 		}
+
 	}
 }
