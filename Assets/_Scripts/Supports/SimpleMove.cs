@@ -9,7 +9,6 @@ public class SimpleMove : MonoBehaviour
 
 	void Start ()
 	{
-		moveSpeed = 1f;
 	}
 
 	void Update ()
