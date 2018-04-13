@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &654468610
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1312006980
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +420,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8d5dc9d01191f4ff49f956a3ac34096f, type: 2}
+  - {fileID: 2100000, guid: 2cec20d701eed45999396e0fb3130686, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -438,6 +480,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2064200394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81656c05ab6747c8baf062e6999f8fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 147a769fcae6c48a3bf9b16b7addcd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

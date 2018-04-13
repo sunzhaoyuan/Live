@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Earthquake : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
+﻿
+public class Earthquake : ASkill
+{
+	public Earthquake ()
+	{
+		Name = "Earthquake";
+		Damage = 50.0f;
+		Duration = 1.0f;
+		IsActivated = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	public override void ActivateCollider (AEnemy enemy)
+	{
 		
 	}
 }

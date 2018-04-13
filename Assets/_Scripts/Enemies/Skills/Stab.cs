@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
-public class Stab : MonoBehaviour {
+public class Stab : ASkill
+{
 
-	// Use this for initialization
-	void Start () {
-		
+	public Stab ()
+	{
+		Name = "Stab";
+		Damage = 10.0f;
+		Duration = 1.0f;
+		IsActivated = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	public override void ActivateCollider (AEnemy enemy)
+	{
 		
 	}
 }

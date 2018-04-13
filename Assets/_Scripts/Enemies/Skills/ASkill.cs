@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+public abstract class ASkill
+{
 
-public class ASkill : MonoBehaviour {
+	public string Name { get; set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public float Damage { get; set; }
+
+	public float Duration { get; set; }
+
+	public bool IsActivated{ get; set; }
+
+	public abstract void ActivateCollider (AEnemy enemy);
+
 }

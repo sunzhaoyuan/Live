@@ -8,6 +8,16 @@ using UnityEngine;
 public class Aniki : AEnemy
 {
 
+	public GameObject player;
+	//	public string Name = "Aniki";
+	//	public float CurrentHP = 1000f;
+
+	public Aniki ()
+	{
+		Name = "Aniki";
+		CurrentHP = 1000f;
+	}
+
 	void Start ()
 	{
 		

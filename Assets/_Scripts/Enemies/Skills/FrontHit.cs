@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+public class FrontHit : ASkill
+{
 
-public class FrontHit : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
+	public FrontHit ()
+	{
+		Name = "FrontHit";
+		Damage = 30.0f;
+		Duration = 1.0f;
+		IsActivated = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	public override void ActivateCollider (AEnemy enemy)
+	{
 		
 	}
 }
