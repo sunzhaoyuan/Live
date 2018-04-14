@@ -10,25 +10,46 @@ public class YoungKid : AEnemy
 	public YoungKid ()
 	{
 		Name = "YoungKid";
+//		CurrentHP = 100f;
 		MaxHP = 100f;
 		Speed = 5f;
 		CurrentState = State.IDLE;
+		Skills = new Dictionary<string, List<ASkill>> {
+			{ "close", new List<ASkill>{ new Stab ()  } } 
+		};
+
 	}
+
 
 	void Start ()
 	{
-		
+		CurrentHP = 100f;
 	}
-	
-	// Update is called once per frame
+
+
 	void Update ()
 	{
-//		transform.LookAt (player.transform);
-//		Vector3 relativePos = player.transform.position - Position;
-//		relativePos.y = 0;
-//		Quaternion rotation = Quaternion.LookRotation (relativePos);
-//		transform.rotation = rotation;
-		EnemyLookAt (90f);
-		EnemyMove (2f);
+		DecideState ();
+		switch (CurrentState) {
+
+		case State.IDLE:
+			break;
+
+		case State.MOVE:
+			EnemyLookAt (90f);
+			EnemyMove (2f);
+			break;
+
+		case State.ATTACK:
+			Attack ();
+			break;
+
+		case State.DIED:
+			Die ();
+			break;
+
+		default:
+			break;
+		}
 	}
 }

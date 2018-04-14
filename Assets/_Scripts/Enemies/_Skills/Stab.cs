@@ -7,7 +7,7 @@ public class Stab : ASkill
 	{
 		Name = "Stab";
 		Damage = 10.0f;
-		Duration = 1.0f;
+		Duration = 3.0f;
 		IsActivated = false;
 	}
 
