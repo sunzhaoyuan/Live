@@ -7,22 +7,45 @@ using UnityEngine;
 /// </summary>
 public class Aniki : AEnemy
 {
+	private bool IsStab1;
+
 	//	public string Name = "Aniki";
 	//	public float CurrentHP = 1000f;
 
 	public Aniki ()
 	{
 		Name = "Aniki";
+		MaxHP = 1000f;
 		CurrentHP = 1000f;
+		Speed = 5f;
+		CurrentState = State.IDLE;
+		closeRange = 3f;
+		deadAnimDuration = 1f;
+		IsStab1 = true;
+		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
+				}
+			}
+		};
 	}
 
-	void Start ()
+	protected override void Attack ()
 	{
-		
+		if (CurrentSkill.Name.Equals ("Stab")) {
+			if (IsStab1)
+				anim.Play ("Stab1");
+			else
+				anim.Play ("Stab2");
+			IsStab1 = !IsStab1;
+		} else {
+			anim.Play ("Earthquake");
+		}
 	}
 
-	void Update ()
+	protected override void Die ()
 	{
-		
+		base.Die ();
+		if (Time.time == deadAnimDuration) {
+			transform.Rotate (new Vector3 (0f, 0f, 90f));
+		}
 	}
 }

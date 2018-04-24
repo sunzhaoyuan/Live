@@ -1,8 +1,8 @@
 ﻿
-public class FrontHit : ASkill
+public class Stab : ASkill
 {
 
-	public FrontHit ()
+	public Stab ()
 	{
 		Name = "FrontHit";
 		Damage = 30.0f;

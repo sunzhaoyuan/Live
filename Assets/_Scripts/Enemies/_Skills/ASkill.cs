@@ -12,4 +12,10 @@ public abstract class ASkill
 
 	public abstract void ActivateCollider (AEnemy enemy);
 
+	public float Cooldown ()
+	{
+		return 0f;
+	}
+
+	public string AnimName { get; }
 }

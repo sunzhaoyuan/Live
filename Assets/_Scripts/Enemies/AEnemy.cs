@@ -17,19 +17,25 @@ public class AEnemy : MonoBehaviour
 {
 
 	
-	public string Name;
-	public float CurrentHP;
-	public float MaxHP;
+	public string Name = "unknown";
+	public float CurrentHP = 0;
+	public float MaxHP = 0;
 	public float NextAttackTime = 0f;
 	public float AttackEndTime = 0f;
 	public Dictionary<string, List<ASkill>> Skills;
 	public ASkill CurrentSkill;
-	public float Speed;
+	public float Speed = 0;
+	public float closeRange = -1;
+	public float midRange = -1;
+	public float farRange = -1;
 	public float WeakDuration;
 	public float WeakStartTime;
 	public State CurrentState;
 	public bool IsWeak = false;
+	public bool IsDead = false;
+	public float deadAnimDuration;
 	public GameObject player;
+	protected Animation anim;
 
 	public Vector3 Position {
 		get { return transform.position; }
@@ -84,7 +90,7 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	protected void DecideState ()
 	{
-		if (CurrentHP == 0f) {
+		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;
 			return;
 		}
@@ -93,13 +99,13 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (0f <= distance && distance <= 2f && Skills.ContainsKey ("close")) {
+			if (0f <= distance && distance <= closeRange) {
 				canAttack = true;
 				attackRange = "close";
-			} else if (2f <= distance && distance <= 8f && Skills.ContainsKey ("mid")) {
+			} else if (closeRange <= distance && distance <= midRange) {
 				canAttack = true;
 				attackRange = "mid";
-			} else if (8f <= distance && distance <= 16 && Skills.ContainsKey ("far")) {
+			} else if (midRange <= distance && distance <= farRange) {
 				canAttack = true;
 				attackRange = "far";
 			}
@@ -113,7 +119,7 @@ public class AEnemy : MonoBehaviour
 
 				CurrentState = State.ATTACK;
 				AttackEndTime = CurrentSkill.Duration + Time.time;
-				NextAttackTime = AttackEndTime + (float)(2 + ran.NextDouble ()); //随便设的
+				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown (); //随便设的
 			} else { //Cannot attack
 				CurrentState = State.MOVE;
 			}
@@ -127,18 +133,53 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// only play animation
 	/// </summary>
-	protected void Attack ()
+	protected virtual void Attack ()
 	{
-		
+		anim.Play (CurrentSkill.AnimName);
 	}
 
+	void Start ()
+	{
+		anim = GetComponent<Animation> ();
+	}
+
+	void Update ()
+	{
+		DecideState ();
+		switch (CurrentState) {
+
+		case State.IDLE:
+//			anim.Play ("Idle");
+			break;
+
+		case State.MOVE:
+			EnemyLookAt (0f);
+			EnemyMove (2f);
+			anim.Play ("Walk");
+			break;
+
+		case State.ATTACK:
+			Attack ();
+			break;
+
+		case State.DIED:
+			Die ();
+			break;
+
+		default:
+			break;
+		}
+	}
 
 	/// <summary>
 	/// stop any current animation and play die animation
 	/// </summary>
-	protected void Die ()
+	protected virtual void Die ()
 	{
-		Destroy (this.gameObject);
+		if (!IsDead) {
+			anim.Play ("Die");
+			IsDead = true;
+			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+		}
 	}
-
 }

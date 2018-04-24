@@ -5,7 +5,7 @@ public class Earthquake : ASkill
 	{
 		Name = "Earthquake";
 		Damage = 50.0f;
-		Duration = 1.0f;
+		Duration = 2f;
 		IsActivated = false;
 	}
 
