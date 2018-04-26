@@ -49,9 +49,10 @@ GameObject:
   - component: {fileID: 400038}
   - component: {fileID: 3300002}
   - component: {fileID: 2300002}
+  - component: {fileID: 65085922518532346}
   m_Layer: 8
   m_Name: Weapon_Blade_Secondary
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,9 +142,10 @@ GameObject:
   - component: {fileID: 400046}
   - component: {fileID: 3300004}
   - component: {fileID: 2300004}
+  - component: {fileID: 65659884590054588}
   m_Layer: 8
   m_Name: Weapon_Blade_Primary
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,9 +469,12 @@ GameObject:
   m_Component:
   - component: {fileID: 400068}
   - component: {fileID: 11100000}
+  - component: {fileID: 54846399629336914}
+  - component: {fileID: 65252184675189548}
+  - component: {fileID: 114431131559746882}
   m_Layer: 8
   m_Name: BladeMasterExample
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -575,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 100032}
   m_LocalRotation: {x: 0, y: 0.9659259, z: 0, w: 0.25881895}
   m_LocalPosition: {x: 0.7199583, y: 0.367, z: -0.0001657903}
-  m_LocalScale: {x: 0.11000004, y: 0.110000044, z: 0.110000014}
+  m_LocalScale: {x: 0.11000004, y: 0.110000044, z: 0.3}
   m_Children:
   - {fileID: 400088}
   m_Father: {fileID: 400042}
@@ -643,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 100042}
   m_LocalRotation: {x: 0, y: 0.2588187, z: 0, w: -0.96592593}
   m_LocalPosition: {x: -0.697, y: -0.369901, z: 0}
-  m_LocalScale: {x: 0.11000002, y: 0.11, z: 0.11}
+  m_LocalScale: {x: 0.11000002, y: 0.11, z: 0.3}
   m_Children:
   - {fileID: 400090}
   m_Father: {fileID: 400050}
@@ -1279,13 +1284,14 @@ Animation:
   m_Animation: {fileID: 7400004, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   m_Animations:
   - {fileID: 7400004, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
-  - {fileID: 7400006, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   - {fileID: 7400008, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
+  - {fileID: 7400016, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   - {fileID: 7400010, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   - {fileID: 7400012, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   - {fileID: 7400014, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
-  - {fileID: 7400016, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
+  - {fileID: 7400000, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   - {fileID: 7400018, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
+  - {fileID: 7400020, guid: 08640ee57673c484fad9a7c0311e690a, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1420,3 +1426,81 @@ Prefab:
 --- !u!1002 &100100001
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!54 &54846399629336914
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100086}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &65085922518532346
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.648752, y: 6.3613763, z: 51.517647}
+  m_Center: {x: 0.13821125, y: -0.0000033660685, z: 16.131231}
+--- !u!65 &65252184675189548
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65659884590054588
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.648747, y: 6.361385, z: 51.517635}
+  m_Center: {x: 0.13821375, y: -0.0000043241557, z: 16.131226}
+--- !u!114 &114431131559746882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147a769fcae6c48a3bf9b16b7addcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Aniki
+  CurrentHP: 10
+  MaxHP: 1000
+  NextAttackTime: 0
+  AttackEndTime: 0
+  Speed: 5
+  closeRange: 3
+  midRange: -1
+  farRange: -1
+  WeakDuration: 0
+  WeakStartTime: 0
+  CurrentState: 0
+  IsWeak: 0
+  IsDead: 0
+  deadAnimDuration: 1
+  player: {fileID: 0}
