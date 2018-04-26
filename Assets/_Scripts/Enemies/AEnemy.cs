@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State
-{
+public enum State {
 	IDLE,
 	MOVE,
 	ATTACK,
@@ -13,10 +12,7 @@ public enum State
 /// <summary>
 /// Abstract enemy class. All enemies classes should extend it.
 /// </summary>
-public class AEnemy : MonoBehaviour
-{
-
-	
+public class AEnemy : MonoBehaviour {
 	public string Name = "unknown";
 	public float CurrentHP = 0;
 	public float MaxHP = 0;
@@ -42,7 +38,6 @@ public class AEnemy : MonoBehaviour
 		set { transform.position = value; }
 	}
 
-
 	/// <summary>
 	/// This method deal with damage taken from the bullet
 	/// </summary>
@@ -50,17 +45,15 @@ public class AEnemy : MonoBehaviour
 	/// HP -= damage;
 	/// if (IsWeak) { HP -= 0.3*MaxHP; CurrentState = State.IDLE; }
 	/// </param>.
-	public virtual void DamageTaken ()
-	{
-		
+	public virtual void DamageTaken () {
+
 	}
 
 	/// <summary>
 	/// Enemies always looks at the player, rotating by y by yRotationOffset.
 	/// </summary>
 	/// <param name="yRotationOffset">Y rotation offset.</param>
-	protected void EnemyLookAt (float yRotationOffset)
-	{
+	protected void EnemyLookAt (float yRotationOffset) {
 		Vector3 relativePos = player.transform.position - Position;
 		relativePos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation (relativePos);
@@ -68,13 +61,11 @@ public class AEnemy : MonoBehaviour
 		transform.rotation = rotation;
 	}
 
-
 	/// <summary>
 	/// Move the Enemy
 	/// </summary>
 	/// <param name="distance">Distance.</param>
-	protected void EnemyMove (float distance)
-	{
+	protected void EnemyMove (float distance) {
 		if (Mathf.Abs (Vector3.Distance (Position, player.transform.position)) <= distance)
 			return;
 
@@ -84,12 +75,10 @@ public class AEnemy : MonoBehaviour
 		Position -= direction * Speed * Time.deltaTime;
 	}
 
-
 	/// <summary>
 	/// Decides the state.
 	/// </summary>
-	protected void DecideState ()
-	{
+	protected void DecideState () {
 		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;
 			return;
@@ -111,13 +100,13 @@ public class AEnemy : MonoBehaviour
 			}
 			if (canAttack) {
 				System.Random ran = new System.Random ();
-				List<ASkill> skills = Skills [attackRange];
+				List<ASkill> skills = Skills[attackRange];
 				int skillNum = ran.Next (skills.Count);
-				CurrentSkill = skills [skillNum];
+				CurrentSkill = skills[skillNum];
 
 				Debug.Log ("Skill Name: " + CurrentSkill.Name);
-
 				CurrentState = State.ATTACK;
+
 				AttackEndTime = CurrentSkill.Duration + Time.time;
 				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown (); //随便设的
 			} else { //Cannot attack
@@ -133,53 +122,65 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// only play animation
 	/// </summary>
-	protected virtual void Attack ()
-	{
+	protected virtual void Attack () {
 		anim.Play (CurrentSkill.AnimName);
 	}
 
-	void Start ()
-	{
+	void Start () {
 		anim = GetComponent<Animation> ();
 	}
 
-	void Update ()
-	{
+	void Update () {
 		DecideState ();
 		switch (CurrentState) {
 
-		case State.IDLE:
-//			anim.Play ("Idle");
-			break;
+			case State.IDLE:
+				//			anim.Play ("Idle");
+				break;
 
-		case State.MOVE:
-			EnemyLookAt (0f);
-			EnemyMove (2f);
-			anim.Play ("Walk");
-			break;
+			case State.MOVE:
+				EnemyLookAt (0f);
+				EnemyMove (2f);
+				anim.Play ("Walk");
+				break;
 
-		case State.ATTACK:
-			Attack ();
-			break;
+			case State.ATTACK:
+				Attack ();
+				break;
 
-		case State.DIED:
-			Die ();
-			break;
+			case State.DIED:
+				Die ();
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 
 	/// <summary>
 	/// stop any current animation and play die animation
 	/// </summary>
-	protected virtual void Die ()
-	{
+	protected virtual void Die () {
 		if (!IsDead) {
 			anim.Play ("Die");
 			IsDead = true;
 			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+		}
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="collider"></param>
+	void OnTriggerEnter (Collider collider) {
+		string tag = collider.tag;
+		switch (tag) {
+			// case "bullet":
+			// 	Debug.Log("AEnemy.OnTriggerEnter: bullet");
+			// 	BulletControl bullet = collider.gameObject.GetComponent(typeof(BulletControl));
+			// 	CurrentHP -= bullet.Damage;
+			// 	break;
+			default : break;
 		}
 	}
 }
