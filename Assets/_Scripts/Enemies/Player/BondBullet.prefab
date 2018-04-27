@@ -22,10 +22,11 @@ GameObject:
   - component: {fileID: 33250988995035026}
   - component: {fileID: 65607130984788310}
   - component: {fileID: 23401676763080040}
-  - component: {fileID: 114016619110364110}
+  - component: {fileID: 114986141318548254}
+  - component: {fileID: 54647492779552106}
   m_Layer: 9
   m_Name: BondBullet
-  m_TagString: Untagged
+  m_TagString: BondBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623166131831992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 3, y: 3, z: 13.8}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 90d5deb8c23cebb41b4afa21b95848eb, type: 2}
+  - {fileID: 2100000, guid: f86fdba969eb24a0aab73a1d54d74873, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,6 +85,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623166131831992}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54647492779552106
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623166131831992}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65607130984788310
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -96,7 +112,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114016619110364110
+--- !u!114 &114986141318548254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +120,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623166131831992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16318db24ac6e4545b35ef5402a9445b, type: 3}
+  m_Script: {fileID: 11500000, guid: 836ee27dd94a14d98bf0339c9da67b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 80
+  damage: 0

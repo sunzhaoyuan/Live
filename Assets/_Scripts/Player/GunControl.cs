@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunControl : MonoBehaviour {
-    public bool isFiring;
+public class GunControl : MonoBehaviour
+{
+	public bool isFiring;
 	public BulletControl bullet;
-    public float bulletspeed;
-    public float timeBetweenshots;
+	public float timeBetweenshots;
 	public float shotCounter;
-    public Transform firepoint;
-	public float timeNextShot = 0;
+	public Transform firepoint;
+	public float timeNextShot = 0.5f;
 
-        // Use this for initialization
-	void Start () {
+	// Use this for initialization
+	void Start ()
+	{
 	}
 	
 	// Update is called once per frame
@@ -25,7 +26,6 @@ public class GunControl : MonoBehaviour {
 				
 				timeNextShot = Time.time + timeBetweenshots;
 				BulletControl newBullet = Instantiate (bullet, firepoint.position, firepoint.rotation) as BulletControl;
-				newBullet.speed = bulletspeed;
             
 			}
 		}

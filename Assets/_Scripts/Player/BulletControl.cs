@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControl : MonoBehaviour {
-    public float speed;
-	public float damage;
-    // Use this for initialization
-   // Vector3 inputDirectionR;
-   // GameObject weapon;
+public class BulletControl : MonoBehaviour
+{
+	public float speed = 80f;
+	public float damage = 20f;
+	// Use this for initialization
+	// Vector3 inputDirectionR;
+	// GameObject weapon;
     
-
-    void Start () {
-        
-
-	}
 	
 	// Update is called once per frame
-	void Update () {
-        transform.Translate(Vector3.forward* speed * Time.deltaTime);
+	void Update ()
+	{
+//		Debug.Log (speed);
+		transform.Translate (Vector3.forward * this.speed * Time.deltaTime);
 	}
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State {
+public enum State
+{
 	IDLE,
 	MOVE,
 	ATTACK,
@@ -12,7 +13,8 @@ public enum State {
 /// <summary>
 /// Abstract enemy class. All enemies classes should extend it.
 /// </summary>
-public class AEnemy : MonoBehaviour {
+public class AEnemy : MonoBehaviour
+{
 	public string Name = "unknown";
 	public float CurrentHP = 0;
 	public float MaxHP = 0;
@@ -30,8 +32,9 @@ public class AEnemy : MonoBehaviour {
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
-	public GameObject player;
+	public playerControl player;
 	protected Animation anim;
+	public ABuff Buff;
 
 	public Vector3 Position {
 		get { return transform.position; }
@@ -45,7 +48,8 @@ public class AEnemy : MonoBehaviour {
 	/// HP -= damage;
 	/// if (IsWeak) { HP -= 0.3*MaxHP; CurrentState = State.IDLE; }
 	/// </param>.
-	public virtual void DamageTaken () {
+	public virtual void DamageTaken ()
+	{
 
 	}
 
@@ -53,7 +57,8 @@ public class AEnemy : MonoBehaviour {
 	/// Enemies always looks at the player, rotating by y by yRotationOffset.
 	/// </summary>
 	/// <param name="yRotationOffset">Y rotation offset.</param>
-	protected void EnemyLookAt (float yRotationOffset) {
+	protected void EnemyLookAt (float yRotationOffset)
+	{
 		Vector3 relativePos = player.transform.position - Position;
 		relativePos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation (relativePos);
@@ -65,7 +70,8 @@ public class AEnemy : MonoBehaviour {
 	/// Move the Enemy
 	/// </summary>
 	/// <param name="distance">Distance.</param>
-	protected void EnemyMove (float distance) {
+	protected void EnemyMove (float distance)
+	{
 		if (Mathf.Abs (Vector3.Distance (Position, player.transform.position)) <= distance)
 			return;
 
@@ -78,13 +84,15 @@ public class AEnemy : MonoBehaviour {
 	/// <summary>
 	/// Decides the state.
 	/// </summary>
-	protected void DecideState () {
+	protected void DecideState ()
+	{
 		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;
 			return;
 		}
 
 		if (Time.time >= NextAttackTime) { //begin attack
+
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
@@ -100,9 +108,9 @@ public class AEnemy : MonoBehaviour {
 			}
 			if (canAttack) {
 				System.Random ran = new System.Random ();
-				List<ASkill> skills = Skills[attackRange];
+				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
-				CurrentSkill = skills[skillNum];
+				CurrentSkill = skills [skillNum];
 
 				Debug.Log ("Skill Name: " + CurrentSkill.Name);
 				CurrentState = State.ATTACK;
@@ -122,45 +130,53 @@ public class AEnemy : MonoBehaviour {
 	/// <summary>
 	/// only play animation
 	/// </summary>
-	protected virtual void Attack () {
+	protected virtual void Attack ()
+	{
 		anim.Play (CurrentSkill.AnimName);
 	}
 
-	void Start () {
+	void Start ()
+	{
 		anim = GetComponent<Animation> ();
 	}
 
-	void Update () {
-		DecideState ();
+	void Update ()
+	{
+		if (player != null)
+			DecideState ();
+		else
+			CurrentState = State.IDLE;
 		switch (CurrentState) {
 
-			case State.IDLE:
+		case State.IDLE:
 				//			anim.Play ("Idle");
-				break;
+			break;
 
-			case State.MOVE:
-				EnemyLookAt (0f);
-				EnemyMove (2f);
-				anim.Play ("Walk");
-				break;
+		case State.MOVE:
+			EnemyLookAt (0f);
+			EnemyMove (2f);
+			CurrentSkill = null;
+			anim.Play ("Walk");
+			break;
 
-			case State.ATTACK:
-				Attack ();
-				break;
+		case State.ATTACK:
+			Attack ();
+			break;
 
-			case State.DIED:
-				Die ();
-				break;
+		case State.DIED:
+			Die ();
+			break;
 
-			default:
-				break;
+		default:
+			break;
 		}
 	}
 
 	/// <summary>
 	/// stop any current animation and play die animation
 	/// </summary>
-	protected virtual void Die () {
+	protected virtual void Die ()
+	{
 		if (!IsDead) {
 			anim.Play ("Die");
 			IsDead = true;
@@ -172,15 +188,31 @@ public class AEnemy : MonoBehaviour {
 	/// 
 	/// </summary>
 	/// <param name="collider"></param>
-	void OnTriggerEnter (Collider collider) {
-		string tag = collider.tag;
-		switch (tag) {
-			// case "bullet":
-			// 	Debug.Log("AEnemy.OnTriggerEnter: bullet");
-			// 	BulletControl bullet = collider.gameObject.GetComponent(typeof(BulletControl));
-			// 	CurrentHP -= bullet.Damage;
-			// 	break;
-			default : break;
+	void OnTriggerEnter (Collider collider)
+	{
+		
+		string tag1 = collider.tag;
+		Debug.Log (tag1);
+		Debug.Log (collider.name);
+		switch (tag1) {
+		case "Bullet":
+			BulletControl bullet = collider.gameObject.GetComponent<BulletControl> ();
+			CurrentHP -= bullet.damage;
+			Debug.Log (this.CurrentHP);
+			Destroy (collider.gameObject);
+			break;
+		case "BondBullet":
+			player.isConnecting = true;
+			player.connectingEnemy = this;
+			if (Buff != null) {
+				Buff.SetBuff (player);
+				player.Buff = Buff;
+			}
+			Destroy (collider.gameObject);
+			break;
+
+		default :
+			break;
 		}
 	}
 }

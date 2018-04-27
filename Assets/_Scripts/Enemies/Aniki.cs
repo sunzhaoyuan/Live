@@ -19,9 +19,11 @@ public class Aniki : AEnemy
 		CurrentHP = 1000f;
 		Speed = 5f;
 		CurrentState = State.IDLE;
-		closeRange = 3f;
+		closeRange = 8f;
 		deadAnimDuration = 1f;
 		IsStab1 = true;
+		Buff = new EmptyBuff ();
+//		Buff = null;
 		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
 				}
 			}

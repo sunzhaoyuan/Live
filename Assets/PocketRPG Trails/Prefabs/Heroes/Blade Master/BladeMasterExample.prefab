@@ -580,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 100032}
   m_LocalRotation: {x: 0, y: 0.9659259, z: 0, w: 0.25881895}
   m_LocalPosition: {x: 0.7199583, y: 0.367, z: -0.0001657903}
-  m_LocalScale: {x: 0.11000004, y: 0.110000044, z: 0.2}
+  m_LocalScale: {x: 0.11000004, y: 0.110000044, z: 0.14}
   m_Children:
   - {fileID: 400088}
   m_Father: {fileID: 400042}
@@ -648,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 100042}
   m_LocalRotation: {x: 0, y: 0.2588187, z: 0, w: -0.96592593}
   m_LocalPosition: {x: -0.697, y: -0.369901, z: 0}
-  m_LocalScale: {x: 0.11000002, y: 0.11, z: 0.2}
+  m_LocalScale: {x: 0.11, y: 0.11, z: 0.14}
   m_Children:
   - {fileID: 400090}
   m_Father: {fileID: 400050}
@@ -813,16 +813,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100086}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 15.4, y: -0.86, z: 14.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400036}
   - {fileID: 400074}
   - {fileID: 400002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1002 &400069
 EditorExtensionImpl:
   serializedVersion: 6
@@ -1493,8 +1493,8 @@ MonoBehaviour:
   MaxHP: 1000
   NextAttackTime: 0
   AttackEndTime: 0
-  Speed: 5
-  closeRange: 3
+  Speed: 15
+  closeRange: 5
   midRange: -1
   farRange: -1
   WeakDuration: 0

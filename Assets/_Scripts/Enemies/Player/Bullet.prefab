@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33250988995035026}
   - component: {fileID: 65607130984788310}
   - component: {fileID: 23401676763080040}
-  - component: {fileID: 114016619110364110}
+  - component: {fileID: 114628581649740078}
   m_Layer: 9
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1623166131831992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 3, z: 1}
-  m_LocalScale: {x: 0.1651, y: 0.1651, z: 0.1651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f18727f2d39f9a34b8dffd40b456940b, type: 2}
+  - {fileID: 2100000, guid: 3b4b66fdd4799474da3df49ab3f64134, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114016619110364110
+--- !u!114 &114628581649740078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623166131831992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16318db24ac6e4545b35ef5402a9445b, type: 3}
+  m_Script: {fileID: 11500000, guid: 93dfafae196364d259357732bc503020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 80
+  damage: 20

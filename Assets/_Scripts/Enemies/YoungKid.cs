@@ -14,6 +14,7 @@ public class YoungKid : AEnemy
 		Speed = 4f;
 		CurrentState = State.IDLE;
 		closeRange = 2f;
+		Buff = new DoubleDamage ();
 		Skills = new Dictionary<string, List<ASkill>> {
 			{ "close", new List<ASkill>{ new Stab ()  } } 
 		};
@@ -21,7 +22,8 @@ public class YoungKid : AEnemy
 
 	protected override void Die ()
 	{
-		base.Die ();
+//		base.Die ();
+		IsDead = true;
 		if (Time.time >= deadAnimDuration) {
 			Destroy (this.gameObject);
 		}
