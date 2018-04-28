@@ -25,7 +25,7 @@ public class GunControl : MonoBehaviour
 			if (Time.time >= timeNextShot) {
 				
 				timeNextShot = Time.time + timeBetweenshots;
-				BulletControl newBullet = Instantiate (bullet, firepoint.position, firepoint.rotation) as BulletControl;
+				BulletControl newBullet = Instantiate (bullet, transform.position, this.transform.rotation) as BulletControl;
             
 			}
 		}

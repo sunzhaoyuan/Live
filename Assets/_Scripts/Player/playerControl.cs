@@ -115,8 +115,6 @@ public class playerControl : MonoBehaviour
 
 		//shoot bond
 		if (Input.GetKeyDown ("joystick button 6")) {
-			if (isConnecting)
-				return;
 			theBond.isFiring = true;
 			isAiming = true;
 
@@ -142,6 +140,8 @@ public class playerControl : MonoBehaviour
 
 	void DrawBond ()
 	{
+		theBond.isFiring = false;
+		isAiming = false;
 		GameObject myBond = new GameObject ();
 		myBond.transform.position = thisTransform.position;
 		myBond.AddComponent<LineRenderer> ();

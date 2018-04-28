@@ -111,8 +111,6 @@ public class AEnemy : MonoBehaviour
 				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
 				CurrentSkill = skills [skillNum];
-
-				Debug.Log ("Skill Name: " + CurrentSkill.Name);
 				CurrentState = State.ATTACK;
 
 				AttackEndTime = CurrentSkill.Duration + Time.time;
@@ -192,13 +190,10 @@ public class AEnemy : MonoBehaviour
 	{
 		
 		string tag1 = collider.tag;
-		Debug.Log (tag1);
-		Debug.Log (collider.name);
 		switch (tag1) {
 		case "Bullet":
 			BulletControl bullet = collider.gameObject.GetComponent<BulletControl> ();
 			CurrentHP -= bullet.damage;
-			Debug.Log (this.CurrentHP);
 			Destroy (collider.gameObject);
 			break;
 		case "BondBullet":
