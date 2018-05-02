@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
 
-	public AGun Gun1 = new Rifle ();
-	public AGun Gun2 = new EmptyGun ();
+	public AGun Gun1;
+	public AGun Gun2;
 	public AGun CurrentGun;
 	public AGun Bond;
 
@@ -30,7 +30,10 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		CurrentHP = MaxHP;
-		CurrentGun = GetComponentInChildren<Rifle> ();
+		Gun1 = new Rifle ();
+		Gun2 = new EmptyGun ();
+		CurrentGun = Gun1;
+		Debug.Log ("Player::Start()-Gun1 " + Gun1.Name + " Gun2 " + Gun2.Name + " CurrentGun " + CurrentGun.Name);
 		Bond = new Bond ();
 	}
 
@@ -92,7 +95,7 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7")) {
+		if (Input.GetKey ("joystick button 7")) { //r2
 			IsAiming = true;
 			CurrentGun.Fire ();
 		} else {

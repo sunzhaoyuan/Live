@@ -7,11 +7,11 @@ public class Rifle : AGun
 
 	public Rifle ()
 	{
+		Bullet = GameObject.Find ("Bullet");
 		TimeBetweenshots = .1f;
-
+		Name = "Rifle";
 		TotalAmmo = 400;
-		MagazineCap = 25;
-
-		Bullet = new RifleBullet ();
+		Ammo = MagazineCap = 25;
+		//Bullet = new RifleBullet ();
 	}
 }

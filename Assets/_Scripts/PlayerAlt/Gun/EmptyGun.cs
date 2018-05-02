@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class EmptyGun : AGun
 {
+	public EmptyGun ()
+	{
+		Name = "EmptyGun";
+	}
 }

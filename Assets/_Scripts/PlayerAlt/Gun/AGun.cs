@@ -6,7 +6,7 @@ public class AGun : MonoBehaviour
 {
 
 	//	public bool IsFiring = false;
-
+	public string Name;
 	public float TimeBetweenshots;
 	public float TimeNextShot = .5f;
 
@@ -14,7 +14,7 @@ public class AGun : MonoBehaviour
 	public int MagazineCap;
 	public int Ammo;
 
-	public ABullet Bullet;
+	public GameObject Bullet;
 
 
 	//	void Update ()
@@ -24,10 +24,10 @@ public class AGun : MonoBehaviour
 	//		}
 	//	}
 
-	void Start ()
-	{
-		Ammo = MagazineCap;
-	}
+	//	public AGun ()
+	//	{
+	//		Ammo = MagazineCap;
+	//	}
 
 
 	/// <summary>
@@ -35,10 +35,12 @@ public class AGun : MonoBehaviour
 	/// </summary>
 	public void Fire ()
 	{
+		Debug.Log (Ammo);
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-			ABullet bullet = Instantiate (Bullet, transform.position, transform.rotation) as ABullet;
+			GameObject bullet = Instantiate (Bullet, transform.position, transform.rotation);
 			Ammo--;
+			Debug.Log ("AGun::Fire()");
 		}
 	}
 
