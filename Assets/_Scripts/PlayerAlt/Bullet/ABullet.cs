@@ -10,7 +10,7 @@ public class ABullet : MonoBehaviour
 
 	public float Speed;
 	public float Damage;
-
+	public ABullet Bullet;
 
 	void Update ()
 	{

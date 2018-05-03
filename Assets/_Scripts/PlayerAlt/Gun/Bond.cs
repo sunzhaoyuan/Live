@@ -9,7 +9,7 @@ public class Bond : AGun
 	{
 		TimeBetweenshots = 5f;
 		Ammo = int.MaxValue;
-		//Bullet = new  BondBullet ();
+//		Bullet = new  BondBullet ();
 	}
 
 }

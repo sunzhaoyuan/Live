@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	[Header ("Set in Inspector")]
+	public AGun[] Guns;
+	public AGun Bond;
+	public int Gun1;
+	public int Gun2;
 
+	[Header ("Set Dynamically")]
 	public bool IsRunning = false;
 	public bool IsAiming = false;
 
@@ -17,10 +23,7 @@ public class Player : MonoBehaviour
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
 
-	public AGun Gun1;
-	public AGun Gun2;
-	public AGun CurrentGun;
-	public AGun Bond;
+	public int CurrentGun;
 
 	public bool IsConnecting = false;
 	public AEnemy ConnectingEnemy;
@@ -30,11 +33,9 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		CurrentHP = MaxHP;
-		Gun1 = new Rifle ();
-		Gun2 = new EmptyGun ();
+//		Gun1 = 0;
+//		Gun2 = 1;
 		CurrentGun = Gun1;
-		Debug.Log ("Player::Start()-Gun1 " + Gun1.Name + " Gun2 " + Gun2.Name + " CurrentGun " + CurrentGun.Name);
-		Bond = new Bond ();
 	}
 
 	void Update ()
@@ -97,7 +98,7 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKey ("joystick button 7")) { //r2
 			IsAiming = true;
-			CurrentGun.Fire ();
+			Guns [CurrentGun].Fire ();
 		} else {
 			IsAiming = false;
 		}
@@ -120,7 +121,7 @@ public class Player : MonoBehaviour
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
 			TimeNextSkill += 0f;
-			CurrentGun.Reload ();
+			Guns [CurrentGun].Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1")) {
 			TimeNextSkill += 0f;
 			Dodge ();

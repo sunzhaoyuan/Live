@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rifle : AGun
+public class ShotGun : AGun
 {
 
-	public Rifle ()
+	public ShotGun ()
 	{
-//		Bullet = GameObject.Find ("Bullet");
 //		Bullet;
 		TimeBetweenshots = .1f;
-		Name = "Rifle";
-		TotalAmmo = 400;
+		Name = "ShotGun";
+		TotalAmmo = 200;
 		Ammo = MagazineCap = 25;
-		//Bullet = new RifleBullet ();
 	}
 }
