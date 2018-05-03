@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 69d58694a5f907343ab38b4bc07e59d7
-timeCreated: 1524254757
+guid: b57b2b37cbcf18f43a857414581fe662
+timeCreated: 1525367704
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -13,12 +13,7 @@ ModelImporter:
     2300000: default
     3300000: default
     4300000: default
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: 5cb274e90c10bca4395b4fac2910367a, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

@@ -123,8 +123,8 @@ public class playerControl : MonoBehaviour
 			theBond.isFiring = false;
 			isConnecting = false;
 			connectingEnemy = null;
-			Buff.RemoveBuff (this);
-			Buff = new EmptyBuff ();
+			//Buff.RemoveBuff (this);
+			//Buff = new EmptyBuff ();
 			
 		}
 		if (isConnecting && Buff.Name != "EmptyBuff") {

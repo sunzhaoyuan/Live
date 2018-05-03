@@ -10,11 +10,11 @@ public class EmptyBuff : ABuff
 		Name = "EmptyBuff";
 	}
 
-	public override void SetBuff (playerControl player)
+	public override void SetBuff (Player player)
 	{
 	}
 
-	public override void RemoveBuff (playerControl player)
+	public override void RemoveBuff (Player player)
 	{
 	}
 

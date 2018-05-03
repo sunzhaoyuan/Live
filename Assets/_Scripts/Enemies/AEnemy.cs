@@ -32,7 +32,7 @@ public class AEnemy : MonoBehaviour
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
-	public playerControl player;
+	public Player player;
 	protected Animation anim;
 	public ABuff Buff;
 
@@ -197,8 +197,8 @@ public class AEnemy : MonoBehaviour
 			Destroy (collider.gameObject);
 			break;
 		case "BondBullet":
-			player.isConnecting = true;
-			player.connectingEnemy = this;
+			player.IsConnecting = true;
+			player.ConnectingEnemy = this;
 			if (Buff != null) {
 				Buff.SetBuff (player);
 				player.Buff = Buff;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4429695, g: 0.49215144, b: 0.5718854, a: 1}
+  m_IndirectSpecularColor: {r: 0.4429562, g: 0.49213696, b: 0.5718778, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -199,30 +199,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114431131559746882, guid: dbafc569fdd724d66950ee9e537d0196,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1918012101}
     - target: {fileID: 100086, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
       propertyPath: m_Name
       value: Aniki
       objectReference: {fileID: 0}
-    - target: {fileID: 65252184675189548, guid: dbafc569fdd724d66950ee9e537d0196,
+    - target: {fileID: 114066103803959304, guid: dbafc569fdd724d66950ee9e537d0196,
         type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100086, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300004, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114431131559746882, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 657115032}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &376673488
@@ -354,37 +340,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &706675344 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100086, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
-  m_PrefabInternal: {fileID: 341856745}
---- !u!114 &706675345
+--- !u!114 &657115032 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 706675344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147a769fcae6c48a3bf9b16b7addcd01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Aniki
-  CurrentHP: 1000
-  MaxHP: 1000
-  NextAttackTime: 0
-  AttackEndTime: 0
-  Speed: 10
-  closeRange: 8
-  midRange: -1
-  farRange: -1
-  WeakDuration: 0
-  WeakStartTime: 0
-  CurrentState: 0
-  IsWeak: 0
-  IsDead: 0
-  deadAnimDuration: 1
-  player: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
+    type: 2}
+  m_PrefabInternal: {fileID: 657115031}
+  m_Script: {fileID: 11500000, guid: 9a8b419f0386b4c968b0a0a10a1f3df4, type: 3}
 --- !u!1001 &950130038
 Prefab:
   m_ObjectHideFlags: 0
@@ -735,11 +696,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e32740ed4cbd49548d21a8a1a551171, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1918012101 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1886209471978606, guid: bc19e30ed69f04ee6ba031b037c64a1a,
-    type: 2}
-  m_PrefabInternal: {fileID: 657115031}
 --- !u!1 &2067974397
 GameObject:
   m_ObjectHideFlags: 0

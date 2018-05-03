@@ -7,9 +7,9 @@ public abstract class ABuff
 
 	public string Name;
 
-	public abstract void SetBuff (playerControl player);
+	public abstract void SetBuff (Player player);
 
-	public abstract void RemoveBuff (playerControl player);
+	public abstract void RemoveBuff (Player player);
 
 	//	protected abstract void GetBuff (playerControl player);
 }

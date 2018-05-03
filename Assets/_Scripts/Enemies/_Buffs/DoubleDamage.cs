@@ -11,13 +11,13 @@ public class DoubleDamage : ABuff
 	
 	}
 
-	public override void SetBuff (playerControl player)
+	public override void SetBuff (Player player)
 	{
 		Debug.Log ("DoubleDamage::Name");
 
 	}
 
-	public override void RemoveBuff (playerControl player)
+	public override void RemoveBuff (Player player)
 	{
 		Debug.Log ("DOubleDamage::BuffOff");
 	}
