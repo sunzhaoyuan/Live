@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33351780850649196}
   - component: {fileID: 65993447106707328}
   - component: {fileID: 23232358584165622}
-  - component: {fileID: 114977142697174636}
+  - component: {fileID: 114797592469029036}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114977142697174636
+--- !u!114 &114797592469029036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,10 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb453fb3cb7754e119b8f5f76f93b013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  TimeBetweenshots: 0
-  TimeNextShot: 0.5
-  TotalAmmo: 0
-  MagazineCap: 0
-  Ammo: 0
-  Bullet: {fileID: 1623166131831992, guid: ba410b1894aa4394b8a309a878fcd6f8, type: 2}
+  Name: Rifle
+  TimeBetweenshots: 0.1
+  TimeNextShot: 0
+  TotalAmmo: 400
+  MagazineCap: 25
+  Ammo: 25
+  Bullet: {fileID: 1843383898000478, guid: bd0ba1a4bedb84ffeb5a1eced1d79e31, type: 2}

@@ -33,12 +33,14 @@ public class AGun : MonoBehaviour
 	/// <summary>
 	/// Fire this instance.
 	/// </summary>
-	public void Fire ()
+	public void Fire (Player player)
 	{
+        Debug.Log("firing");
 		Debug.Log (Ammo);
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-			GameObject bullet = Instantiate (Bullet, transform.position, transform.rotation);
+            Debug.Log("shoting");
+			GameObject bullet = Instantiate (Bullet, player.transform.position, player.transform.rotation);
 			Ammo--;
 			Debug.Log ("AGun::Fire()");
 		}

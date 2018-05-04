@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		CurrentHP = MaxHP;
-//		Gun1 = 0;
-//		Gun2 = 1;
+    	Gun1 = 1;
+		Gun2 = 0;
 		CurrentGun = Gun1;
 	}
 
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKey ("joystick button 7")) { //r2
 			IsAiming = true;
-			Guns [CurrentGun].Fire ();
+            Guns [CurrentGun].Fire (this);
 		} else {
 			IsAiming = false;
 		}
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
 
 		//shoot bond
 		if (Input.GetKey ("joystick button 6") && !IsConnecting) {
-			Bond.Fire ();
+			Bond.Fire (this);
 		} else {
 			IsConnecting = false;
 			ConnectingEnemy = null;
