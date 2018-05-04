@@ -9,7 +9,6 @@ public class SimpleMove : MonoBehaviour
 
 	void Start ()
 	{
-		moveSpeed = 1f;
 	}
 
 	void Update ()
@@ -18,5 +17,25 @@ public class SimpleMove : MonoBehaviour
 			-Input.GetAxis ("Horizontal"), 
 			0f, 
 			-Input.GetAxis ("Vertical")));
+	}
+
+	void OnTriggerEnter (Collider collider)
+	{
+		string tag = collider.tag;
+
+		switch (tag)
+		{
+			case "Enemy":
+				Debug.Log("Player.OnTriggerEnter: enemy");
+				AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy>();
+				ASkill skill = enemy.CurrentSkill;
+				Debug.Log("CurrentSkill::" + skill);
+				float damage = skill.Damage;
+				Debug.Log("Player HP -= " + damage);
+				// HP -= damage
+				break;
+			default:
+				break;
+		}
 	}
 }
