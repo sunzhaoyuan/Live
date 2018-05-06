@@ -84,7 +84,7 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// Decides the state.
 	/// </summary>
-	protected void DecideState ()
+	protected virtual void DecideState ()
 	{
 		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;

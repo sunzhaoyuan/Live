@@ -40,6 +40,15 @@ public class Aniki : AEnemy
 			IsStab1 = !IsStab1;
 		} else {
 			anim.Play ("Earthquake");
+
+		}
+	}
+
+	protected override void DecideState ()
+	{
+		base.DecideState ();
+		if (Time.time == AttackEndTime && CurrentSkill.Name.Equals ("Earthquake")) {
+			// Activate Collider
 		}
 	}
 
