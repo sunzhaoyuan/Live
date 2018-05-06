@@ -1,4 +1,7 @@
-﻿
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
 public class Earthquake : ASkill
 {
 	public Earthquake ()
@@ -6,11 +9,6 @@ public class Earthquake : ASkill
 		Name = "Earthquake";
 		Damage = 50.0f;
 		Duration = 1.5f;
-		IsActivated = false;
 	}
 
-	public override void ActivateCollider (AEnemy enemy)
-	{
-		
-	}
 }

@@ -1,5 +1,9 @@
-﻿
-public abstract class ASkill
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+
+public abstract class ASkill : MonoBehaviour
 {
 
 	public string Name { get; set; }
@@ -8,9 +12,10 @@ public abstract class ASkill
 
 	public float Duration { get; set; }
 
-	public bool IsActivated{ get; set; }
-
-	public abstract void ActivateCollider (AEnemy enemy);
+	public void ActivateCollider (bool Activated, Collider collider)
+	{
+		collider.enabled = Activated;
+	}
 
 	public float Cooldown ()
 	{

@@ -123,6 +123,7 @@ public class AEnemy : MonoBehaviour
 		} else {
 			CurrentState = State.MOVE;
 		}
+
 	}
 
 	/// <summary>
