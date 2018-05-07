@@ -9,6 +9,7 @@ public class RifleBullet : ABullet
 	{
 		Damage = 20f;
 		Speed = 80f;
+
 	}
 
 }

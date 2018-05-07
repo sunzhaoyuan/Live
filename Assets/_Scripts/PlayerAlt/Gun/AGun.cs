@@ -14,7 +14,7 @@ public class AGun : MonoBehaviour
 	public int MagazineCap;
 	public int Ammo;
 
-	public GameObject Bullet;
+	public ABullet Bullet;
 
 
 	//	void Update ()
@@ -40,7 +40,7 @@ public class AGun : MonoBehaviour
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
             Debug.Log("shoting");
-			GameObject bullet = Instantiate (Bullet, player.transform.position, player.transform.rotation);
+				ABullet bullet = Instantiate (Bullet, player.transform.position, player.transform.rotation);
 			Ammo--;
 			Debug.Log ("AGun::Fire()");
 		}
