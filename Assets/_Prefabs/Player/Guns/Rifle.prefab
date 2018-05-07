@@ -109,8 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rifle
   TimeBetweenshots: 0.1
-  TimeNextShot: 0
-  TotalAmmo: 400
+  TimeNextShot: 11.160562
+  TotalAmmo: 321
   MagazineCap: 25
   Ammo: 25
   Bullet: {fileID: 1843383898000478, guid: bd0ba1a4bedb84ffeb5a1eced1d79e31, type: 2}

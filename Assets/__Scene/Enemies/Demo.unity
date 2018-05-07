@@ -348,6 +348,12 @@ Prefab:
       propertyPath: CurrentGun
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
+        type: 2}
+      propertyPath: grenadePrefab
+      value: 
+      objectReference: {fileID: 1810138137054804, guid: 18d8a964ab018e64ca5cfbd71c0d2208,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
   m_IsPrefabParent: 0

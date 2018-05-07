@@ -30,7 +30,10 @@ public class Player : MonoBehaviour
 
 	public float TimeNextSkill = 0f;
 
-	void Start ()
+    public float throwForce = 40f;
+    public GameObject grenadePrefab;
+
+    void Start ()
 	{
 		CurrentHP = MaxHP;
     	Gun1 = 1;
@@ -52,6 +55,7 @@ public class Player : MonoBehaviour
 			IsConnecting = false;
 			ConnectingEnemy = null;
 		}
+
 	}
 
 	void SetDirections ()
@@ -130,8 +134,13 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
+        GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
+        Rigidbody rb = grenade.GetComponent<Rigidbody>();
+        Vector3 gg = MovingDirection;
+        gg.Normalize();
+        rb.AddForce(gg * throwForce, ForceMode.VelocityChange);
 
-	}
+    }
 
 	void Dodge ()
 	{

@@ -137,8 +137,9 @@ public class playerControl : MonoBehaviour
 			connectingEnemy = null;
 		}
 
-        if (Input.GetKey(KeyCode.B))
+        if (Input.GetKeyDown("joystick button 4"))
         {
+            Debug.Log("FUK");
             GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
             Rigidbody rb = grenade.GetComponent<Rigidbody>();
             Vector3 gg = inputDirectionL;
