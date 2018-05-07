@@ -24,6 +24,9 @@ public class playerControl : MonoBehaviour
 	public float MaxHP = 100;
 	public float CurrentHP = 100;
 
+    public float throwForce = 40f;
+    public GameObject grenadePrefab;
+
 	public ABuff Buff = new EmptyBuff ();
     
 	// Use this for initialization
@@ -109,7 +112,7 @@ public class playerControl : MonoBehaviour
 			theGun.isFiring = true;
 			isAiming = true;
 		}
-		if (Input.GetKeyUp ("joystick button 7")) {
+		if (Input.GetKeyUp ("joystick button 7") ) {
 			theGun.isFiring = false;
 		}
 
@@ -133,6 +136,15 @@ public class playerControl : MonoBehaviour
 			isConnecting = false;
 			connectingEnemy = null;
 		}
+
+        if (Input.GetKey(KeyCode.B))
+        {
+            GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
+            Rigidbody rb = grenade.GetComponent<Rigidbody>();
+            Vector3 gg = inputDirectionL;
+            gg.Normalize();
+            rb.AddForce(gg * throwForce, ForceMode.VelocityChange);
+        }
 
 
 
