@@ -5,10 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	[Header ("Set in Inspector")]
-	public AGun[] Guns;
-	public AGun Bond;
-	public int Gun1;
-	public int Gun2;
+	//public AGun[] Guns;
+
+	//public int Gun1;
+	//public int Gun2;
 
 	[Header ("Set Dynamically")]
 	public bool IsRunning = false;
@@ -23,23 +23,35 @@ public class Player : MonoBehaviour
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
 
-	public int CurrentGun;
+	public int GunIndex;
 
 	public bool IsConnecting = false;
 	public AEnemy ConnectingEnemy;
 
 	public float TimeNextSkill = 0f;
 
+	//test
+	public Bond BondPrefab;
+	public Rifle RiflePrefab;
+	public ShotGun ShotGunPrefab;
+	public AGun Bond;
+	public AGun PrimaryGun;
+	public AGun SecondaryGun;
+
 	void Start ()
 	{
+		Bond = (AGun)Instantiate (BondPrefab);
+		PrimaryGun = (AGun)Instantiate(RiflePrefab);
+		SecondaryGun = (AGun)Instantiate (ShotGunPrefab);
 		CurrentHP = MaxHP;
-    	Gun1 = 1;
-		Gun2 = 0;
-		CurrentGun = Gun1;
+    	//Gun1 = 1;
+		//Gun2 = 0;
+
 	}
 
 	void Update ()
 	{
+		Debug.Log (PrimaryGun.Name);
 		SetDirections ();
 		MoveAndAim ();
 		if (Time.time >= TimeNextSkill) {
@@ -72,6 +84,7 @@ public class Player : MonoBehaviour
 			IsAiming = true;	
 		} else {
 			IsAiming = false;
+			transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
 		}
 		
 		MovingDirection.Normalize ();
@@ -98,7 +111,7 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKey ("joystick button 7")) { //r2
 			IsAiming = true;
-            Guns [CurrentGun].Fire (this);
+			PrimaryGun.Fire (this);
 		} else {
 			IsAiming = false;
 		}
@@ -117,14 +130,17 @@ public class Player : MonoBehaviour
 	void UseSkill ()
 	{
 		if (Input.GetKeyDown ("joystick button 4")) {
-			TimeNextSkill += 0f;
+			TimeNextSkill += 3f;
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
-			TimeNextSkill += 0f;
-			Guns [CurrentGun].Reload ();
+			TimeNextSkill += 1f;
+			PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1")) {
-			TimeNextSkill += 0f;
+			TimeNextSkill += 3f;
 			Dodge ();
+		} else if (Input.GetKeyDown ("joystick button 2")) {
+			TimeNextSkill += 1f;
+			SwitchGun();
 		}
 	}
 
@@ -163,6 +179,11 @@ public class Player : MonoBehaviour
 		Destroy (this.gameObject);
 	}
 
+	void SwitchGun(){
+		AGun TempGun = PrimaryGun;
+		PrimaryGun = SecondaryGun;
+		SecondaryGun = TempGun;
+	}
 
 	void OnTriggerEnter (Collider collider)
 	{

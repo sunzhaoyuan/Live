@@ -101,7 +101,7 @@ MonoBehaviour:
   TotalAmmo: 200
   MagazineCap: 25
   Ammo: 25
-  Bullet: {fileID: 1623166131831992, guid: ba410b1894aa4394b8a309a878fcd6f8, type: 2}
+  Bullet: {fileID: 114427222495557298, guid: bd0ba1a4bedb84ffeb5a1eced1d79e31, type: 2}
 --- !u!135 &135938613177084870
 SphereCollider:
   m_ObjectHideFlags: 1
