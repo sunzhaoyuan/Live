@@ -30,12 +30,9 @@ public class Player : MonoBehaviour
 
 	public float TimeNextSkill = 0f;
 
-<<<<<<< HEAD
     public float throwForce = 40f;
     public GameObject grenadePrefab;
 
-    void Start ()
-=======
 	//test
 	public Bond BondPrefab;
 	public Rifle RiflePrefab;
@@ -45,7 +42,6 @@ public class Player : MonoBehaviour
 	public AGun SecondaryGun;
 
 	void Start ()
->>>>>>> b9b92155c8ef69e0797e1334e327eed3ac59a9d7
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
 		PrimaryGun = (AGun)Instantiate(RiflePrefab);
