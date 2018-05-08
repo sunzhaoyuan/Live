@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4628702336582962}
   - component: {fileID: 33042873420916270}
   - component: {fileID: 23244036755131298}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: m61_ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4580923968790846}
   - component: {fileID: 33148774985834216}
   - component: {fileID: 23771856511390612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: m61_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4697766657509942}
   - component: {fileID: 33529192720127384}
   - component: {fileID: 23983556674820392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: m61_handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4259308055691744}
   - component: {fileID: 33554925607195168}
   - component: {fileID: 23521283406999730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: m61_pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 54033803460607470}
   - component: {fileID: 136906129140182912}
   - component: {fileID: 114212603016687924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: m26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 1810138137054804}
   m_LocalRotation: {x: -0, y: -0.6927914, z: -0, w: 0.7211381}
   m_LocalPosition: {x: 10.7, y: 0, z: -27.25}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 4580923968790846}
   - {fileID: 4697766657509942}
