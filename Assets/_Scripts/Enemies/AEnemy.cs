@@ -32,13 +32,20 @@ public class AEnemy : MonoBehaviour
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
-	public Player player;
 	protected Animation anim;
 	public ABuff Buff;
+
+	[Header ("DON'T Change Player")]
+	public Player player;
 
 	public Vector3 Position {
 		get { return transform.position; }
 		set { transform.position = value; }
+	}
+
+	void Awake ()
+	{
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}
 
 	/// <summary>
@@ -151,7 +158,7 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
-				//			anim.Play ("Idle");
+//			anim.Play ("Idle");
 			break;
 
 		case State.MOVE:
