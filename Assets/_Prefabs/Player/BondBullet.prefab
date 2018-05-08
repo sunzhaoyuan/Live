@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33304613103467076}
   - component: {fileID: 65954511884298578}
   - component: {fileID: 23681626224462906}
-  - component: {fileID: 114300165632538730}
+  - component: {fileID: 114728528008099632}
   m_Layer: 0
   m_Name: BondBullet
   m_TagString: BondBullet
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114300165632538730
+--- !u!114 &114728528008099632
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,8 +104,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514944889973122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93dfafae196364d259357732bc503020, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f6dfdc9d955b40f9863e55fdf855f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
-  damage: 0
+  Speed: 80
+  Damage: 0
+  Bullet: {fileID: 114728528008099632}
