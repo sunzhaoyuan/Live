@@ -17,20 +17,22 @@ public class ShotGun : AGun
 
 	public override void Fire (Player player)
 	{
-		Debug.Log("firing");
-		Debug.Log (Ammo);
+	
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-			Debug.Log("shoting");
-			Vector3 Face = player.transform.forward;
-			ABullet bullet = Instantiate (Bullet, player.transform.position, player.transform.rotation);
-			player.transform.rotation = Quaternion.AngleAxis (10, Face);
-			ABullet bullet1 = Instantiate (Bullet, player.transform.position, player.transform.rotation);
-			player.transform.rotation=  Quaternion.AngleAxis (-10, Face);
-			ABullet bullet2 = Instantiate (Bullet, player.transform.position, player.transform.rotation);
-			Ammo--;
+			Quaternion Face = player.transform.rotation;
+			//Vector3 Face = player.transform.forward;
 
-			Debug.Log ("AGun::Fire()");
+
+
+			ABullet bullet = Instantiate (Bullet, player.transform.position, Face);
+			Face = Quaternion.Euler (0, 30, 0);
+			ABullet bullet1 = Instantiate (Bullet, player.transform.position, Face);
+			Face = Quaternion.Euler (0, -30, 0);
+			ABullet bullet2 = Instantiate (Bullet, player.transform.position,Face);
+
+
+			Ammo--;
 		}
 	}
 }

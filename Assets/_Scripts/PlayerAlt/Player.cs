@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
 	void Update ()
 	{
-		Debug.Log (PrimaryGun.Name);
+
 		SetDirections ();
 		MoveAndAim ();
 		UpdateGrenade ();
