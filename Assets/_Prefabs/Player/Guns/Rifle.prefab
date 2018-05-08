@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Rifle
-  TimeBetweenshots: 0.1
+  TimeBetweenshots: 0.3
   TimeNextShot: 0.5
   TotalAmmo: 300
   MagazineCap: 30
