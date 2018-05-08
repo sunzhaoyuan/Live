@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
 	public float TimeNextSkill = 0f;
 
-    public float throwForce = 40f;
+    public float throwForce = 300f;
     public GameObject grenadePrefab;
 
 	//test
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 			IsAiming = true;	
 		} else {
 			IsAiming = false;
-			transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
 		}
 		
 		MovingDirection.Normalize ();
@@ -98,8 +98,8 @@ public class Player : MonoBehaviour
 	{
 		if (!IsAiming && IsRunning) {//just running
 			transform.position += MovingDirection * RunSpeed;
-			Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
-			transform.rotation = Rot;
+			//Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//transform.rotation = Rot;
 		} else {
 			transform.position += MovingDirection * WalkSpeed;
 		}
@@ -150,12 +150,13 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-        GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
-        Rigidbody rb = grenade.GetComponent<Rigidbody>();
-        Vector3 gg = MovingDirection;
-        gg.Normalize();
-        rb.AddForce(gg * throwForce, ForceMode.VelocityChange);
 
+       GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
+       Rigidbody rb = grenade.GetComponent<Rigidbody>();
+       Vector3 gg = FacingDirection;
+       gg.Normalize();
+      // rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
+        
     }
 
 	void Dodge ()
