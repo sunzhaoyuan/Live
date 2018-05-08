@@ -8,6 +8,6 @@ public class BondBullet : ABullet
 	public BondBullet ()
 	{
 		Damage = 0f;
-		Speed = 80f;
+		Speed = 100f;
 	}
 }

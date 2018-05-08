@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	[Header ("Set in Inspector")]
-	//public AGun[] Guns;
-
-	//public int Gun1;
-	//public int Gun2;
-
-	[Header ("Set Dynamically")]
 	public bool IsRunning = false;
 	public bool IsAiming = false;
 
@@ -29,17 +22,20 @@ public class Player : MonoBehaviour
 	public AEnemy ConnectingEnemy;
 
 	public float TimeNextSkill = 0f;
+	public int FlashNumber=0;
+	public float TimeNextFlash=0f;
+	public float FlashCD=5f;
 
     public float throwForce = 300f;
     public GameObject grenadePrefab;
 
-	//test
 	public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
+
 
 	void Start ()
 	{
@@ -57,6 +53,7 @@ public class Player : MonoBehaviour
 		Debug.Log (PrimaryGun.Name);
 		SetDirections ();
 		MoveAndAim ();
+		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
 			Fire ();
 			UseSkill ();
@@ -68,6 +65,14 @@ public class Player : MonoBehaviour
 			ConnectingEnemy = null;
 		}
 
+	}
+	void UpdateGrenade(){
+		if (Time.time >= TimeNextFlash) {
+			if (FlashNumber < 3) {
+				FlashNumber++;
+				TimeNextFlash = Time.time + FlashCD;
+			}
+		}
 	}
 
 	void SetDirections ()
@@ -140,8 +145,10 @@ public class Player : MonoBehaviour
 			TimeNextSkill += 1f;
 			PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1")) {
-			TimeNextSkill += 3f;
+			if (FlashNumber >= 0) {
 			Dodge ();
+			FlashNumber--;
+			}
 		} else if (Input.GetKeyDown ("joystick button 2")) {
 			TimeNextSkill += 1f;
 			SwitchGun();

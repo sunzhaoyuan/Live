@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1344905884036436}
+  m_RootGameObject: {fileID: 1843383898000478}
   m_IsPrefabParent: 1
---- !u!1 &1344905884036436
+--- !u!1 &1843383898000478
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4329236644206620}
-  - component: {fileID: 33778974552408950}
-  - component: {fileID: 136911156211923446}
-  - component: {fileID: 23238286286301862}
-  - component: {fileID: 114648249908920288}
+  - component: {fileID: 4290525295550800}
+  - component: {fileID: 33720325699351518}
+  - component: {fileID: 65265334296915290}
+  - component: {fileID: 23050119381511052}
+  - component: {fileID: 114931326559167948}
   m_Layer: 0
-  m_Name: Bond
-  m_TagString: Untagged
+  m_Name: ShotGunBullet
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4329236644206620
+--- !u!4 &4290525295550800
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344905884036436}
+  m_GameObject: {fileID: 1843383898000478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 6}
+  m_LocalPosition: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23238286286301862
+--- !u!23 &23050119381511052
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344905884036436}
+  m_GameObject: {fileID: 1843383898000478}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3b4b66fdd4799474da3df49ab3f64134, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,41 +77,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33778974552408950
+--- !u!33 &33720325699351518
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344905884036436}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114648249908920288
+  m_GameObject: {fileID: 1843383898000478}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65265334296915290
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843383898000478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114931326559167948
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344905884036436}
+  m_GameObject: {fileID: 1843383898000478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b00eacfd7e25422d9c80e5d004c4275, type: 3}
+  m_Script: {fileID: 11500000, guid: 874758d0123984da9bb941bf91484afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  TimeBetweenshots: 5
-  TimeNextShot: 0.5
-  TotalAmmo: 0
-  MagazineCap: 0
-  Ammo: 2147483647
-  Bullet: {fileID: 114728528008099632, guid: a18a713037cd84b4aa91cc1548af5197, type: 2}
---- !u!136 &136911156211923446
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344905884036436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  Speed: 50
+  Damage: 50
+  Bullet: {fileID: 114931326559167948}

@@ -96,12 +96,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: ShotGun
-  TimeBetweenshots: 0.1
+  TimeBetweenshots: 0.5
   TimeNextShot: 0.5
-  TotalAmmo: 200
-  MagazineCap: 25
-  Ammo: 25
-  Bullet: {fileID: 114427222495557298, guid: bd0ba1a4bedb84ffeb5a1eced1d79e31, type: 2}
+  TotalAmmo: 100
+  MagazineCap: 10
+  Ammo: 10
+  Bullet: {fileID: 114931326559167948, guid: f282ea6c6a857aa43bbaccae495a9026, type: 2}
 --- !u!135 &135938613177084870
 SphereCollider:
   m_ObjectHideFlags: 1
