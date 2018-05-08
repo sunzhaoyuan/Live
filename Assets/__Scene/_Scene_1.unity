@@ -163,23 +163,28 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 109030271}
-    - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
+    - target: {fileID: 4530983136839830, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.84
       objectReference: {fileID: 0}
-    - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65257756925204530, guid: 6e344e8eca0898b41ae06bef676c5588,
+    - target: {fileID: 23949225673131514, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1045609789636462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045609789636462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_Name
+      value: EarthquakeAlert
+      objectReference: {fileID: 0}
+    - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: EarthquakeAlert
+      value: 
+      objectReference: {fileID: 640103470}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
   m_IsPrefabParent: 0
@@ -320,6 +325,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95233748728921756, guid: e46b786588955434f9ae7786d7f07664,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e46b786588955434f9ae7786d7f07664, type: 2}
   m_IsPrefabParent: 0
@@ -382,20 +392,8 @@ Transform:
   m_PrefabParentObject: {fileID: 4070944323375576, guid: bc19e30ed69f04ee6ba031b037c64a1a,
     type: 2}
   m_PrefabInternal: {fileID: 614055692}
---- !u!1 &1494528364 stripped
+--- !u!1 &640103470 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1689873223324094, guid: 6e344e8eca0898b41ae06bef676c5588,
+  m_PrefabParentObject: {fileID: 1045609789636462, guid: 6e344e8eca0898b41ae06bef676c5588,
     type: 2}
   m_PrefabInternal: {fileID: 199910004}
---- !u!135 &1494528365
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1494528364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}

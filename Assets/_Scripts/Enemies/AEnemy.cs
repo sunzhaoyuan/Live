@@ -111,6 +111,7 @@ public class AEnemy : MonoBehaviour
 				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
 				CurrentSkill = skills [skillNum];
+				
 				CurrentState = State.ATTACK;
 
 				AttackEndTime = CurrentSkill.Duration + Time.time;
@@ -131,12 +132,14 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	protected virtual void Attack ()
 	{
+		
 		anim.Play (CurrentSkill.AnimName);
 	}
 
 	void Start ()
 	{
 		anim = GetComponent<Animation> ();
+		CurrentSkill = new EmptySkill ();
 	}
 
 	void Update ()
@@ -154,7 +157,8 @@ public class AEnemy : MonoBehaviour
 		case State.MOVE:
 			EnemyLookAt (0f);
 			EnemyMove (2f);
-			CurrentSkill = null;
+
+			CurrentSkill = new EmptySkill ();
 			anim.Play ("Walk");
 			break;
 

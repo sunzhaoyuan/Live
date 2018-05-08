@@ -12,6 +12,8 @@ public abstract class ASkill : MonoBehaviour
 
 	public float Duration { get; set; }
 
+	public string AnimName { get; }
+
 	public void ActivateCollider (bool Activated, Collider collider)
 	{
 		collider.enabled = Activated;
@@ -22,5 +24,6 @@ public abstract class ASkill : MonoBehaviour
 		return 0f;
 	}
 
-	public string AnimName { get; }
+	
+
 }
