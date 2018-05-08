@@ -8,6 +8,7 @@ using UnityEngine;
 public class Aniki : AEnemy
 {
 	private bool IsStab1;
+	public GameObject EarthquakeAlert;
 
 	//	public string Name = "Aniki";
 	//	public float CurrentHP = 1000f;
@@ -23,6 +24,7 @@ public class Aniki : AEnemy
 		deadAnimDuration = 1f;
 		IsStab1 = true;
 		Buff = new EmptyBuff ();
+//		CurrentSkill = new Stab ();
 //		Buff = null;
 		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
 				}
@@ -30,8 +32,10 @@ public class Aniki : AEnemy
 		};
 	}
 
+
 	protected override void Attack ()
 	{
+		
 		if (CurrentSkill.Name.Equals ("Stab")) {
 			if (IsStab1)
 				anim.Play ("Stab1");
@@ -40,6 +44,28 @@ public class Aniki : AEnemy
 			IsStab1 = !IsStab1;
 		} else {
 			anim.Play ("Earthquake");
+
+		}
+	}
+
+	protected override void DecideState ()
+	{
+		base.DecideState ();
+		// Only for activate collider of Earthquake
+		if (CurrentSkill.Name.Equals ("Earthquake")) {
+			EarthquakeAlert.SetActive (true);//activate the alert
+			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
+			Collider c = gameObject.GetComponent<SphereCollider> ();
+			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
+				Debug.Log ("Aniki::Activate");
+				CurrentSkill.ActivateCollider (true, c);
+	
+			} else {
+				Debug.Log ("Aniki::DEactivate");
+				CurrentSkill.ActivateCollider (false, c);
+			}
+		} else {
+			EarthquakeAlert.SetActive (false);
 		}
 	}
 
