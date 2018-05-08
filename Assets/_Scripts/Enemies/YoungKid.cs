@@ -15,12 +15,18 @@ public class YoungKid : AEnemy
 		CurrentState = State.IDLE;
 		closeRange = 2f;
 		Buff = new DoubleDamage ();
-		Skills = new Dictionary<string, List<ASkill>> {
-			{ "close", new List<ASkill>{ new Stab ()  } } 
-		};
+		
 	}
 
-	protected override void Die ()
+    void Awake()
+    {
+        player = GameObject.Find("Player").GetComponent<Player>();
+        Skills = new Dictionary<string, List<ASkill>> {
+			{ "close", new List<ASkill>{ new Stab ()  } } 
+		};
+    }
+
+    protected override void Die ()
 	{
 //		base.Die ();
 		IsDead = true;

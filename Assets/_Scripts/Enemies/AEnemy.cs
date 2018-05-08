@@ -43,10 +43,6 @@ public class AEnemy : MonoBehaviour
 		set { transform.position = value; }
 	}
 
-	void Awake ()
-	{
-		player = GameObject.Find ("Player").GetComponent<Player> ();
-	}
 
 	/// <summary>
 	/// This method deal with damage taken from the bullet
@@ -200,13 +196,11 @@ public class AEnemy : MonoBehaviour
 	/// <param name="collider"></param>
 	void OnTriggerEnter (Collider collider)
 	{
-		Debug.Log (Name);
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
 			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
 			CurrentHP -= bullet.Damage;
-			Debug.Log ("AEnemy::CurrentHP " + CurrentHP);
 			Destroy (collider.gameObject);
 			break;
 		case "BondBullet":

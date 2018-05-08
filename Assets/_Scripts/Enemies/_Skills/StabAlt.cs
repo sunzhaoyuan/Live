@@ -1,7 +1,7 @@
-﻿public class StabAlt : ASkill
+﻿public class Stab : ASkill
 {
 
-	public StabAlt ()
+	public Stab ()
 	{
 		Name = "Stab";
 		Damage = 5.0f;

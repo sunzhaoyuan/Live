@@ -10,9 +10,6 @@ public class Aniki : AEnemy
 	private bool IsStab1;
 	public GameObject EarthquakeAlert;
 
-	//	public string Name = "Aniki";
-	//	public float CurrentHP = 1000f;
-
 	public Aniki ()
 	{
 		Name = "Aniki";
@@ -24,9 +21,7 @@ public class Aniki : AEnemy
 		deadAnimDuration = 1f;
 		IsStab1 = true;
 		Buff = new EmptyBuff ();
-//		CurrentSkill = new Stab ();
-//		Buff = null;
-		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
+		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new Stab (), new Stab (), new Stab (), new Earthquake ()
 				}
 			}
 		};
