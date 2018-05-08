@@ -4,11 +4,35 @@ timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Tile1X1
+    100004: Tile1X1FullUV
+    100006: Tile1X1UV2
+    100008: Tile1X1UV3
+    400000: //RootNode
+    400002: Tile1X1
+    400004: Tile1X1FullUV
+    400006: Tile1X1UV2
+    400008: Tile1X1UV3
+    2300000: Tile1X1
+    2300002: Tile1X1FullUV
+    2300004: Tile1X1UV2
+    2300006: Tile1X1UV3
+    3300000: Tile1X1
+    3300002: Tile1X1FullUV
+    3300004: Tile1X1UV2
+    3300006: Tile1X1UV3
     4300000: Tile1X1
     4300002: Tile1X1FullUV
     4300004: Tile1X1UV2
     4300006: Tile1X1UV3
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4272fa4ad6b2b4758b684c429d713cb5, type: 2}
   materials:
     importMaterials: 1
     materialName: 3
