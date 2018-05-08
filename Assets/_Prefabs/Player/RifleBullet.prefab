@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33720325699351518}
   - component: {fileID: 65265334296915290}
   - component: {fileID: 23050119381511052}
-  - component: {fileID: 114427222495557298}
+  - component: {fileID: 114960848795796638}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: RifleBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3b4b66fdd4799474da3df49ab3f64134, type: 2}
+  - {fileID: 2100000, guid: c972ef10e7ab653498199cb051673732, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114427222495557298
+--- !u!114 &114960848795796638
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 80
   Damage: 20
-  Bullet: {fileID: 0}
+  Bullet: {fileID: 114960848795796638}
