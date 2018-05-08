@@ -200,12 +200,13 @@ public class AEnemy : MonoBehaviour
 	/// <param name="collider"></param>
 	void OnTriggerEnter (Collider collider)
 	{
-		
+		Debug.Log (Name);
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
-			BulletControl bullet = collider.gameObject.GetComponent<BulletControl> ();
-			CurrentHP -= bullet.damage;
+			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
+			CurrentHP -= bullet.Damage;
+			Debug.Log ("AEnemy::CurrentHP " + CurrentHP);
 			Destroy (collider.gameObject);
 			break;
 		case "BondBullet":

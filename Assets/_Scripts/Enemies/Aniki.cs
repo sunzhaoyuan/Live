@@ -57,11 +57,9 @@ public class Aniki : AEnemy
 			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
 			Collider c = gameObject.GetComponent<SphereCollider> ();
 			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
-				Debug.Log ("Aniki::Activate");
 				CurrentSkill.ActivateCollider (true, c);
 	
 			} else {
-				Debug.Log ("Aniki::DEactivate");
 				CurrentSkill.ActivateCollider (false, c);
 			}
 		} else {

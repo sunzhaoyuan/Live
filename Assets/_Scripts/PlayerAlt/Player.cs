@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -22,12 +23,12 @@ public class Player : MonoBehaviour
 	public AEnemy ConnectingEnemy;
 
 	public float TimeNextSkill = 0f;
-	public int FlashNumber=0;
-	public float TimeNextFlash=0f;
-	public float FlashCD=5f;
+	public int FlashNumber = 0;
+	public float TimeNextFlash = 0f;
+	public float FlashCD = 5f;
 
-    public float throwForce = 300f;
-    public GameObject grenadePrefab;
+	public float throwForce = 300f;
+	public GameObject grenadePrefab;
 
 	public Bond BondPrefab;
 	public Rifle RiflePrefab;
@@ -36,14 +37,18 @@ public class Player : MonoBehaviour
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
 
+	// UI
+	public Image uitHPbar;
+	public Text uitBuff;
+
 
 	void Start ()
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
-		PrimaryGun = (AGun)Instantiate(RiflePrefab);
+		PrimaryGun = (AGun)Instantiate (RiflePrefab);
 		SecondaryGun = (AGun)Instantiate (ShotGunPrefab);
 		CurrentHP = MaxHP;
-    	//Gun1 = 1;
+		//Gun1 = 1;
 		//Gun2 = 0;
 
 	}
@@ -65,8 +70,14 @@ public class Player : MonoBehaviour
 			ConnectingEnemy = null;
 		}
 
+		//Update HP UI
+		uitHPbar.fillAmount = CurrentHP / 100f;
+		uitBuff.text = "Buff: " + Buff.Name;
+
 	}
-	void UpdateGrenade(){
+
+	void UpdateGrenade ()
+	{
 		if (Time.time >= TimeNextFlash) {
 			if (FlashNumber < 3) {
 				FlashNumber++;
@@ -129,6 +140,8 @@ public class Player : MonoBehaviour
 		//shoot bond
 		if (Input.GetKey ("joystick button 6") && !IsConnecting) {
 			Bond.Fire (this);
+		} else if (Input.GetKey ("joystick button 6")) {
+			DrawBond ();
 		} else {
 			IsConnecting = false;
 			ConnectingEnemy = null;
@@ -146,25 +159,25 @@ public class Player : MonoBehaviour
 			PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1")) {
 			if (FlashNumber >= 0) {
-			Dodge ();
-			FlashNumber--;
+				Dodge ();
+				FlashNumber--;
 			}
 		} else if (Input.GetKeyDown ("joystick button 2")) {
 			TimeNextSkill += 1f;
-			SwitchGun();
+			SwitchGun ();
 		}
 	}
 
 	void ThrowGrenade ()
 	{
 
-       GameObject grenade = Instantiate(grenadePrefab, transform.position, transform.rotation);
-       Rigidbody rb = grenade.GetComponent<Rigidbody>();
-       Vector3 gg = FacingDirection;
-       gg.Normalize();
-      // rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
+		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
+		Vector3 gg = FacingDirection;
+		gg.Normalize ();
+		// rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
         
-    }
+	}
 
 	void Dodge ()
 	{
@@ -181,14 +194,16 @@ public class Player : MonoBehaviour
 		myBond.transform.position = transform.position;
 		myBond.AddComponent<LineRenderer> ();
 		LineRenderer bondRenderer = myBond.GetComponent<LineRenderer> ();
-		bondRenderer.material = new Material (Shader.Find ("Standard"));
-		bondRenderer.startWidth = 0.1f;
-		bondRenderer.endWidth = 0.1f;
+		bondRenderer.material = new Material (Shader.Find ("Particles/Additive"));
+		bondRenderer.startWidth = .5f;
+		bondRenderer.endWidth = .5f;
+		bondRenderer.startColor = Color.red;
+		bondRenderer.endColor = Color.red;
 
 		bondRenderer.SetPositions (new Vector3[] {transform.position, 
 			this.ConnectingEnemy.transform.position
 		});
-		GameObject.Destroy (myBond, 0.01f);
+		GameObject.Destroy (myBond, 0.05f);
 	}
 
 	void Die ()
@@ -196,7 +211,8 @@ public class Player : MonoBehaviour
 		Destroy (this.gameObject);
 	}
 
-	void SwitchGun(){
+	void SwitchGun ()
+	{
 		AGun TempGun = PrimaryGun;
 		PrimaryGun = SecondaryGun;
 		SecondaryGun = TempGun;
@@ -206,15 +222,23 @@ public class Player : MonoBehaviour
 	{
 		string tag = collider.tag;
 
+
+
 		switch (tag) {
-	
 		case "Enemy":
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
-			if (enemySkill == null)
-				break;
 			float damage = enemySkill.Damage;
 			CurrentHP -= damage;
+			if (CurrentHP <= 0)
+				Die ();
+			break;
+
+		case "Boss":
+			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
+			ASkill bossSkill = boss.CurrentSkill;
+			float d = bossSkill.Damage;
+			CurrentHP -= d;
 			if (CurrentHP <= 0)
 				Die ();
 			break;

@@ -22,7 +22,7 @@ public class UI : MonoBehaviour
 	void Update ()
 	{
 		// Show the data in the GUITexts
-		float hp = player.GetComponent<playerControl> ().CurrentHP;
+		float hp = player.GetComponent<Player> ().CurrentHP;
 		Debug.Log ("HP: " + hp);
 		uitHp.text = "HP: " + hp;
 	}
