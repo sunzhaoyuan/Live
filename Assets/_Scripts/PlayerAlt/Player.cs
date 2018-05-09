@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
 
+    public GameObject DodgeFlash;
+    float delayTime = 0.2f;
+
 	public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
@@ -129,7 +132,7 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7")) { //r2
+		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
 			PrimaryGun.Fire (this);
 		} else {
@@ -151,13 +154,13 @@ public class Player : MonoBehaviour
 
 	void UseSkill ()
 	{
-		if (Input.GetKeyDown ("joystick button 4")) {
+		if (Input.GetKeyDown ("joystick button 4")||Input.GetKeyDown(KeyCode.B )) {
 			TimeNextSkill += 3f;
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
 			TimeNextSkill += 1f;
 			PrimaryGun.Reload ();
-		} else if (Input.GetKeyDown ("joystick button 1")) {
+		} else if (Input.GetKeyDown ("joystick button 1")|| Input.GetKeyDown(KeyCode.A)) {
 			if (FlashNumber >= 0) {
 				Dodge ();
 				FlashNumber--;
@@ -181,11 +184,24 @@ public class Player : MonoBehaviour
 
 	void Dodge ()
 	{
+        Instantiate(DodgeFlash, transform.position, transform.rotation);
+        gameObject.SetActive(false);
+        
 		Vector3 moveDir = MovingDirection;
 		moveDir.Normalize ();
 		transform.position = transform.position + DashRadius * moveDir;
-		
-	}
+       
+        Invoke("DelayDodge",delayTime);
+        
+        Destroy(DodgeFlash);
+
+    }
+
+    void DelayDodge()
+    {
+        Instantiate(DodgeFlash, transform.position, transform.rotation);
+        gameObject.SetActive(true);
+    }
 
 	void DrawBond ()
 	{
