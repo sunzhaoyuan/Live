@@ -30,7 +30,7 @@ public class Aniki : AEnemy
 
 	protected override void Attack ()
 	{
-		
+        CanDealDamage = true;
 		if (CurrentSkill.Name.Equals ("Stab")) {
 			if (IsStab1)
 				anim.Play ("Stab1");
@@ -53,9 +53,10 @@ public class Aniki : AEnemy
 			Collider c = gameObject.GetComponent<SphereCollider> ();
 			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
 				CurrentSkill.ActivateCollider (true, c);
-	
+                CanDealDamage = true;
 			} else {
 				CurrentSkill.ActivateCollider (false, c);
+                CanDealDamage = false;
 			}
 		} else {
 			EarthquakeAlert.SetActive (false);

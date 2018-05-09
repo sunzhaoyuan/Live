@@ -32,6 +32,7 @@ public class AEnemy : MonoBehaviour
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
+    public bool CanDealDamage = false;
 	protected Animation anim;
 	public ABuff Buff;
 
@@ -135,7 +136,6 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	protected virtual void Attack ()
 	{
-		
 		anim.Play (CurrentSkill.AnimName);
 	}
 
@@ -160,7 +160,7 @@ public class AEnemy : MonoBehaviour
 		case State.MOVE:
 			EnemyLookAt (0f);
 			EnemyMove (2f);
-
+            CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
 			anim.Play ("Walk");
 			break;

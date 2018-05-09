@@ -229,6 +229,8 @@ public class Player : MonoBehaviour
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
 			float damage = enemySkill.Damage;
+                if (!enemy.CanDealDamage)
+                    damage = 0f;
 			CurrentHP -= damage;
 			if (CurrentHP <= 0)
 				Die ();
