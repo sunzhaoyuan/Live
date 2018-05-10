@@ -11,9 +11,6 @@ public class Aniki : AEnemy
 	public GameObject EarthquakeAlert;
 	//earthquake red circle
 
-	//	public string Name = "Aniki";
-	//	public float CurrentHP = 1000f;
-
 	public Aniki ()
 	{
 		Name = "Aniki";
@@ -25,10 +22,14 @@ public class Aniki : AEnemy
 		deadAnimDuration = 1f;
 		IsStab1 = true;
 		Buff = new EmptyBuff ();
+<<<<<<< HEAD:Assets/_Scripts/Enemies/_Aniki/Aniki.cs
 //		CurrentSkill = new Stab ();
 //		Buff = null;
 
 		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
+=======
+		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new Stab (), new Stab (), new Stab (), new Earthquake ()
+>>>>>>> origin/iss1-enemy:Assets/_Scripts/Enemies/Aniki.cs
 				}
 			}
 		};
@@ -66,11 +67,9 @@ public class Aniki : AEnemy
 			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
 			Collider c = gameObject.GetComponent<SphereCollider> ();
 			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
-				Debug.Log ("Aniki::Activate");
 				CurrentSkill.ActivateCollider (true, c);
 	
 			} else {
-				Debug.Log ("Aniki::DEactivate");
 				CurrentSkill.ActivateCollider (false, c);
 			}
 		} else {

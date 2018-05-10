@@ -1,16 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-	[Header ("Set in Inspector")]
-	public AGun[] Guns;
-	public AGun Bond;
-	public int Gun1;
-	public int Gun2;
-
-	[Header ("Set Dynamically")]
 	public bool IsRunning = false;
 	public bool IsAiming = false;
 
@@ -23,25 +17,48 @@ public class Player : MonoBehaviour
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
 
-	public int CurrentGun;
+	public int GunIndex;
 
 	public bool IsConnecting = false;
 	public AEnemy ConnectingEnemy;
 
 	public float TimeNextSkill = 0f;
+	public int FlashNumber = 0;
+	public float TimeNextFlash = 0f;
+	public float FlashCD = 5f;
+
+	public float throwForce = 300f;
+	public GameObject grenadePrefab;
+
+	public Bond BondPrefab;
+	public Rifle RiflePrefab;
+	public ShotGun ShotGunPrefab;
+	public AGun Bond;
+	public AGun PrimaryGun;
+	public AGun SecondaryGun;
+
+	// UI
+	public Image uitHPbar;
+	public Text uitBuff;
+
 
 	void Start ()
 	{
+		Bond = (AGun)Instantiate (BondPrefab);
+		PrimaryGun = (AGun)Instantiate (RiflePrefab);
+		SecondaryGun = (AGun)Instantiate (ShotGunPrefab);
 		CurrentHP = MaxHP;
-    	Gun1 = 1;
-		Gun2 = 0;
-		CurrentGun = Gun1;
+		//Gun1 = 1;
+		//Gun2 = 0;
+
 	}
 
 	void Update ()
 	{
+
 		SetDirections ();
 		MoveAndAim ();
+		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
 			Fire ();
 			UseSkill ();
@@ -51,6 +68,21 @@ public class Player : MonoBehaviour
 		} else {
 			IsConnecting = false;
 			ConnectingEnemy = null;
+		}
+
+		//Update HP UI
+		uitHPbar.fillAmount = CurrentHP / 100f;
+		uitBuff.text = "Buff: " + Buff.Name;
+
+	}
+
+	void UpdateGrenade ()
+	{
+		if (Time.time >= TimeNextFlash) {
+			if (FlashNumber < 3) {
+				FlashNumber++;
+				TimeNextFlash = Time.time + FlashCD;
+			}
 		}
 	}
 
@@ -72,6 +104,7 @@ public class Player : MonoBehaviour
 			IsAiming = true;	
 		} else {
 			IsAiming = false;
+			//transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
 		}
 		
 		MovingDirection.Normalize ();
@@ -81,8 +114,8 @@ public class Player : MonoBehaviour
 	{
 		if (!IsAiming && IsRunning) {//just running
 			transform.position += MovingDirection * RunSpeed;
-			Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
-			transform.rotation = Rot;
+			//Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//transform.rotation = Rot;
 		} else {
 			transform.position += MovingDirection * WalkSpeed;
 		}
@@ -98,7 +131,7 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKey ("joystick button 7")) { //r2
 			IsAiming = true;
-            Guns [CurrentGun].Fire (this);
+			PrimaryGun.Fire (this);
 		} else {
 			IsAiming = false;
 		}
@@ -107,6 +140,8 @@ public class Player : MonoBehaviour
 		//shoot bond
 		if (Input.GetKey ("joystick button 6") && !IsConnecting) {
 			Bond.Fire (this);
+		} else if (Input.GetKey ("joystick button 6")) {
+			DrawBond ();
 		} else {
 			IsConnecting = false;
 			ConnectingEnemy = null;
@@ -117,20 +152,31 @@ public class Player : MonoBehaviour
 	void UseSkill ()
 	{
 		if (Input.GetKeyDown ("joystick button 4")) {
-			TimeNextSkill += 0f;
+			TimeNextSkill += 3f;
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
-			TimeNextSkill += 0f;
-			Guns [CurrentGun].Reload ();
+			TimeNextSkill += 1f;
+			PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1")) {
-			TimeNextSkill += 0f;
-			Dodge ();
+			if (FlashNumber >= 0) {
+				Dodge ();
+				FlashNumber--;
+			}
+		} else if (Input.GetKeyDown ("joystick button 2")) {
+			TimeNextSkill += 1f;
+			SwitchGun ();
 		}
 	}
 
 	void ThrowGrenade ()
 	{
 
+		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
+		Vector3 gg = FacingDirection;
+		gg.Normalize ();
+		// rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
+        
 	}
 
 	void Dodge ()
@@ -148,14 +194,16 @@ public class Player : MonoBehaviour
 		myBond.transform.position = transform.position;
 		myBond.AddComponent<LineRenderer> ();
 		LineRenderer bondRenderer = myBond.GetComponent<LineRenderer> ();
-		bondRenderer.material = new Material (Shader.Find ("Standard"));
-		bondRenderer.startWidth = 0.1f;
-		bondRenderer.endWidth = 0.1f;
+		bondRenderer.material = new Material (Shader.Find ("Particles/Additive"));
+		bondRenderer.startWidth = .5f;
+		bondRenderer.endWidth = .5f;
+		bondRenderer.startColor = Color.red;
+		bondRenderer.endColor = Color.red;
 
 		bondRenderer.SetPositions (new Vector3[] {transform.position, 
 			this.ConnectingEnemy.transform.position
 		});
-		GameObject.Destroy (myBond, 0.01f);
+		GameObject.Destroy (myBond, 0.05f);
 	}
 
 	void Die ()
@@ -163,20 +211,34 @@ public class Player : MonoBehaviour
 		Destroy (this.gameObject);
 	}
 
+	void SwitchGun ()
+	{
+		AGun TempGun = PrimaryGun;
+		PrimaryGun = SecondaryGun;
+		SecondaryGun = TempGun;
+	}
 
 	void OnTriggerEnter (Collider collider)
 	{
 		string tag = collider.tag;
 
+
+
 		switch (tag) {
-	
 		case "Enemy":
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
-			if (enemySkill == null)
-				break;
 			float damage = enemySkill.Damage;
 			CurrentHP -= damage;
+			if (CurrentHP <= 0)
+				Die ();
+			break;
+
+		case "Boss":
+			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
+			ASkill bossSkill = boss.CurrentSkill;
+			float d = bossSkill.Damage;
+			CurrentHP -= d;
 			if (CurrentHP <= 0)
 				Die ();
 			break;

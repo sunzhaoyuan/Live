@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotGunBullet : MonoBehaviour {
+public class ShotGunBullet : ABullet {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public ShotGunBullet(){
+		Damage = 50f;
+		Speed = 50f;
 	}
 }

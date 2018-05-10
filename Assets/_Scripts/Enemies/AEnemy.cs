@@ -49,6 +49,7 @@ public class AEnemy : MonoBehaviour
 		set { transform.position = value; }
 	}
 
+<<<<<<< HEAD
 	/// <summary>
 	/// player is initialized by GameObject.Find method
 	/// because of the issue of prefab (details in RefreshBoss.cs)
@@ -57,6 +58,8 @@ public class AEnemy : MonoBehaviour
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}
+=======
+>>>>>>> origin/iss1-enemy
 
 	/// <summary>
 	/// This method deal with damage taken from the bullet
@@ -227,12 +230,11 @@ public class AEnemy : MonoBehaviour
 	/// <param name="collider"></param>
 	void OnTriggerEnter (Collider collider)
 	{
-		
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
-			BulletControl bullet = collider.gameObject.GetComponent<BulletControl> ();
-			CurrentHP -= bullet.damage;
+			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
+			CurrentHP -= bullet.Damage;
 			Destroy (collider.gameObject);
 			break;
 		case "BondBullet":
