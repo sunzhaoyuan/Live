@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
 	public bool IsRunning = false;
 	public bool IsAiming = false;
+	public bool IsFiring = false;
 
 	public float DashRadius = 10f;
 	public float RunSpeed = 1.5f;
@@ -61,6 +62,9 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
+		Debug.Log ("Run:"+IsRunning);
+		Debug.Log ("Aim:"+IsAiming);
+
 		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
 			Fire ();
@@ -105,9 +109,11 @@ public class Player : MonoBehaviour
 		//detect aiming or not
 		if (FacingDirection.magnitude > 0.3) {
 			IsAiming = true;	
-		} else {
+		} 
+		else {
 			IsAiming = false;
-			//transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+		//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+		//	FacingDirection = MovingDirection;
 		}
 		
 		MovingDirection.Normalize ();
@@ -115,10 +121,15 @@ public class Player : MonoBehaviour
 
 	void MoveAndAim ()
 	{
-		if (!IsAiming && IsRunning) {//just running
+		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
+
+		if (!IsAiming && IsRunning && !IsFiring) {//just running
 			transform.position += MovingDirection * RunSpeed;
-			//Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
-			//transform.rotation = Rot;
+			transform.rotation = MoveRot;
+			FacingDirection = MovingDirection;
+		} else if (IsRunning && IsFiring && !IsAiming) {
+			transform.rotation = MoveRot;
+			transform.position += MovingDirection * WalkSpeed;
 		} else {
 			transform.position += MovingDirection * WalkSpeed;
 		}
@@ -132,11 +143,16 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
+<<<<<<< HEAD
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
+=======
+		if (Input.GetKey ("joystick button 7")) { //r2
+			IsFiring = true;
+>>>>>>> e1d0518caa35f0e08e123b84bc12d0017f5c2b9d
 			PrimaryGun.Fire (this);
 		} else {
-			IsAiming = false;
+			IsFiring = false;
 		}
 
 

@@ -286,6 +286,8 @@ Prefab:
     - target: {fileID: 1689873223324094, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_IsActive
       value: 0
+<<<<<<< HEAD
+=======
       objectReference: {fileID: 0}
     - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -305,6 +307,7 @@ Prefab:
         type: 2}
       propertyPath: m_UseGravity
       value: 1
+>>>>>>> 00019daf67b2b97e1a680c888050704ade3688bb
       objectReference: {fileID: 0}
     - target: {fileID: 54654253331103322, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}

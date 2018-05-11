@@ -20,19 +20,19 @@ public class ShotGun : AGun
 	
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-			Quaternion Face = player.transform.rotation;
-			//Vector3 Face = player.transform.forward;
+			Vector3 Face=player.transform.rotation.eulerAngles;
+			Quaternion FaceMid = Quaternion.Euler (Face);
+			Quaternion FaceLeft = Quaternion.Euler (Face.x, Face.y + 30, Face.z);
+			Quaternion FaceRight = Quaternion.Euler (Face.x, Face.y - 30, Face.z);
 
 
-
-			ABullet bullet = Instantiate (Bullet, player.transform.position, Face);
-			Face = Quaternion.Euler (0, 30, 0);
-			ABullet bullet1 = Instantiate (Bullet, player.transform.position, Face);
-			Face = Quaternion.Euler (0, -30, 0);
-			ABullet bullet2 = Instantiate (Bullet, player.transform.position,Face);
+			ABullet bullet = Instantiate (Bullet, player.transform.position, FaceMid);
+			ABullet bullet1 = Instantiate (Bullet, player.transform.position, FaceLeft);
+			ABullet bullet2 = Instantiate (Bullet, player.transform.position,FaceRight);
 
 
 			Ammo--;
 		}
 	}
+
 }
