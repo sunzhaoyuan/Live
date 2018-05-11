@@ -32,9 +32,16 @@ public class AEnemy : MonoBehaviour
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
+
     public bool CanDealDamage = false;
-	protected Animation anim;
+
 	public ABuff Buff;
+
+	/// IsAnimator needs to be called before Animation and Animator 
+	/// are initialized (before Start()) !!!!!
+	public bool IsAnimator;
+	public Animation Animation;
+	public Animator Animator;
 
 	[Header ("DON'T Change Player")]
 	public Player player;
@@ -42,6 +49,16 @@ public class AEnemy : MonoBehaviour
 	public Vector3 Position {
 		get { return transform.position; }
 		set { transform.position = value; }
+	}
+
+
+	/// <summary>
+	/// player is initialized by GameObject.Find method
+	/// because of the issue of prefab (details in RefreshBoss.cs)
+	/// </summary>
+	protected virtual void Awake ()
+	{
+		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}
 
 
@@ -128,12 +145,27 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	public virtual void Attack ()
 	{
+<<<<<<< HEAD
 		//anim.Play (CurrentSkill.AnimName);
+=======
+
+		if (IsAnimator) {
+
+		} else {
+			Animation.Play (CurrentSkill.AnimName);
+		}
+
+
+>>>>>>> ef099b3b86bcaf48dae4b90750302526afd4901a
 	}
 
 	void Start ()
 	{
-		anim = GetComponent<Animation> ();
+		if (IsAnimator) {
+
+		} else {
+			Animation = GetComponent<Animation> ();
+		}	
 		CurrentSkill = new EmptySkill ();
 	}
 
@@ -153,7 +185,11 @@ public class AEnemy : MonoBehaviour
 			EnemyMove (Speed);
             CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
-			anim.Play ("Walk");
+			if (IsAnimator) {
+
+			} else {
+				Animation.Play ("Walk");
+			}
 			break;
 
 		case State.ATTACK:
@@ -170,12 +206,27 @@ public class AEnemy : MonoBehaviour
 	}
 
 	/// <summary>
-	/// stop any current animation and play die animation
+	/// Every Subclasses need to inherient Die(). 
+	/// Small Boss: Destroy(gameObject)
+	/// Big Boss: Rotate. (See Aniki.cs)
 	/// </summary>
 	public virtual void Die ()
 	{
+<<<<<<< HEAD
         Destroy(this.gameObject);
     }
+=======
+		if (!IsDead) {
+			if (IsAnimator) {
+
+			} else {
+				Animation.Play ("Die");
+			}
+			IsDead = true;
+			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+		}
+	}
+>>>>>>> ef099b3b86bcaf48dae4b90750302526afd4901a
 
 	/// <summary>
 	/// 

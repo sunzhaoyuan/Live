@@ -113,17 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &250572384 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
-    type: 2}
-  m_PrefabInternal: {fileID: 805354970}
-  m_Script: {fileID: 11500000, guid: 9a8b419f0386b4c968b0a0a10a1f3df4, type: 3}
---- !u!4 &250572389 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3,
-    type: 2}
-  m_PrefabInternal: {fileID: 805354970}
 --- !u!1001 &341856745
 Prefab:
   m_ObjectHideFlags: 0
@@ -176,7 +165,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 250572384}
+      objectReference: {fileID: 0}
     - target: {fileID: 100086, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -246,48 +235,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &805354970
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.945
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1123736312
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,6 +436,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 60.134003, y: 344.277, z: 140.229}
+--- !u!1001 &1718674097
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14.061779
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.6737255
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.9999556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.009422958
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644500999177778, guid: 65cf8e11172294309a05747b2828c55b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114389006423787824, guid: 65cf8e11172294309a05747b2828c55b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1718674098 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1783174036620052, guid: 65cf8e11172294309a05747b2828c55b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718674097}
+--- !u!114 &1718674099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718674098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2915593e7fcc644cd94c52bce9f2792f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Oni
+  CurrentHP: 100
+  MaxHP: 100
+  NextAttackTime: 0
+  AttackEndTime: 0
+  CurrentSkill: {fileID: 0}
+  Speed: 5
+  closeRange: 8
+  midRange: -1
+  farRange: -1
+  WeakDuration: 0
+  WeakStartTime: 0
+  CurrentState: 0
+  IsWeak: 0
+  IsDead: 0
+  deadAnimDuration: 1
+  CanDealDamage: 0
+  IsAnimator: 0
+  Animation: {fileID: 0}
+  Animator: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1742483169
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70438e5ebb0f04c26bfbf3f1abdfebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 250572389}
+  target: {fileID: 0}
   smoothness: 10
   x: 0
   y: 35
