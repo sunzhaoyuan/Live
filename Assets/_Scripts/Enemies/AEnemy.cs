@@ -33,7 +33,7 @@ public class AEnemy : MonoBehaviour
 	public bool IsDead = false;
 	public float deadAnimDuration;
 
-    public bool CanDealDamage = false;
+	public bool CanDealDamage = false;
 
 	public ABuff Buff;
 
@@ -93,7 +93,7 @@ public class AEnemy : MonoBehaviour
 	/// <param name="distance">Distance.</param>
 	protected void EnemyMove (float speed)
 	{
-        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * Speed;
+		gameObject.GetComponent<Rigidbody> ().velocity = transform.forward * Speed;
 	}
 
 	/// <summary>
@@ -145,18 +145,12 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	public virtual void Attack ()
 	{
-<<<<<<< HEAD
-		//anim.Play (CurrentSkill.AnimName);
-=======
 
 		if (IsAnimator) {
 
 		} else {
-			Animation.Play (CurrentSkill.AnimName);
+			//Animation.Play (CurrentSkill.AnimName);
 		}
-
-
->>>>>>> ef099b3b86bcaf48dae4b90750302526afd4901a
 	}
 
 	void Start ()
@@ -178,12 +172,13 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
+			CanDealDamage = false;
 			break;
 
 		case State.MOVE:
 			EnemyLookAt (0f);
 			EnemyMove (Speed);
-            CanDealDamage = false;
+			CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
 			if (IsAnimator) {
 
@@ -197,6 +192,7 @@ public class AEnemy : MonoBehaviour
 			break;
 
 		case State.DIED:
+			CanDealDamage = false;
 			Die ();
 			break;
 
@@ -212,21 +208,8 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	public virtual void Die ()
 	{
-<<<<<<< HEAD
-        Destroy(this.gameObject);
-    }
-=======
-		if (!IsDead) {
-			if (IsAnimator) {
-
-			} else {
-				Animation.Play ("Die");
-			}
-			IsDead = true;
-			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
-		}
+		Destroy (this.gameObject);
 	}
->>>>>>> ef099b3b86bcaf48dae4b90750302526afd4901a
 
 	/// <summary>
 	/// 
