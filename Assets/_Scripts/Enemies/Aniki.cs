@@ -28,7 +28,7 @@ public class Aniki : AEnemy
 	}
 
 
-	protected override void Attack ()
+	public override void Attack ()
 	{
         CanDealDamage = true;
 		if (CurrentSkill.Name.Equals ("Stab")) {
@@ -43,7 +43,7 @@ public class Aniki : AEnemy
 		}
 	}
 
-	protected override void DecideState ()
+	public override void DecideState ()
 	{
 		base.DecideState ();
 		// Only for activate collider of Earthquake
@@ -63,10 +63,16 @@ public class Aniki : AEnemy
 		}
 	}
 
-	protected override void Die ()
+	public override void Die ()
 	{
-		base.Die ();
-		if (Time.time == deadAnimDuration) {
+        if (!IsDead)
+        {
+            anim.Play("Die");
+            IsDead = true;
+            deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+        }
+
+        if (Time.time == deadAnimDuration) {
 			transform.Rotate (new Vector3 (0f, 0f, 90f));
 		}
 	}

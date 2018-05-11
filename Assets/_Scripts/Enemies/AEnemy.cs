@@ -74,21 +74,15 @@ public class AEnemy : MonoBehaviour
 	/// Move the Enemy
 	/// </summary>
 	/// <param name="distance">Distance.</param>
-	protected void EnemyMove (float distance)
+	protected void EnemyMove (float speed)
 	{
-		if (Mathf.Abs (Vector3.Distance (Position, player.transform.position)) <= distance)
-			return;
-
-		Vector3 direction = Position - player.transform.position;
-		direction.y = 0;
-		direction.Normalize ();
-		Position -= direction * Speed * Time.deltaTime;
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * Speed;
 	}
 
 	/// <summary>
 	/// Decides the state.
 	/// </summary>
-	protected virtual void DecideState ()
+	public virtual void DecideState ()
 	{
 		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;
@@ -115,11 +109,9 @@ public class AEnemy : MonoBehaviour
 				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
 				CurrentSkill = skills [skillNum];
-				
 				CurrentState = State.ATTACK;
-
 				AttackEndTime = CurrentSkill.Duration + Time.time;
-				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown (); //随便设的
+				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown; //随便设的
 			} else { //Cannot attack
 				CurrentState = State.MOVE;
 			}
@@ -134,9 +126,9 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// only play animation
 	/// </summary>
-	protected virtual void Attack ()
+	public virtual void Attack ()
 	{
-		anim.Play (CurrentSkill.AnimName);
+		//anim.Play (CurrentSkill.AnimName);
 	}
 
 	void Start ()
@@ -154,12 +146,11 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
-//			anim.Play ("Idle");
 			break;
 
 		case State.MOVE:
 			EnemyLookAt (0f);
-			EnemyMove (2f);
+			EnemyMove (Speed);
             CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
 			anim.Play ("Walk");
@@ -181,14 +172,10 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// stop any current animation and play die animation
 	/// </summary>
-	protected virtual void Die ()
+	public virtual void Die ()
 	{
-		if (!IsDead) {
-			anim.Play ("Die");
-			IsDead = true;
-			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
-		}
-	}
+        Destroy(this.gameObject);
+    }
 
 	/// <summary>
 	/// 
@@ -199,10 +186,12 @@ public class AEnemy : MonoBehaviour
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
+
 			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
 			CurrentHP -= bullet.Damage;
 			Destroy (collider.gameObject);
 			break;
+
 		case "BondBullet":
 			player.IsConnecting = true;
 			player.ConnectingEnemy = this;

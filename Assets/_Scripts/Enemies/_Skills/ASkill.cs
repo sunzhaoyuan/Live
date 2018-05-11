@@ -5,25 +5,22 @@ using System.Collections.Generic;
 
 public abstract class ASkill : MonoBehaviour
 {
-
-	public string Name { get; set; }
-
-	public float Damage { get; set; }
-
-	public float Duration { get; set; }
-
-	public string AnimName { get; }
+    public string Name;
+    public float Damage;
+    public float Duration;
+    public float Cooldown;
+    
+	//public string AnimName { get; }
 
 	public void ActivateCollider (bool Activated, Collider collider)
 	{
 		collider.enabled = Activated;
 	}
 
-	public float Cooldown ()
-	{
-		return 0f;
-	}
-
+    public virtual void UseSkill(AEnemy enemy, Player player)
+    {
+        return;
+    }
 	
 
 }

@@ -795,8 +795,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689873223324094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -32.8, y: 0, z: 163.6}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4625500884563110}
@@ -805,7 +805,7 @@ Transform:
   - {fileID: 4530983136839830}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4777763496317684
 Transform:
   m_ObjectHideFlags: 1
@@ -1131,7 +1131,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1257,6 +1257,7 @@ MonoBehaviour:
   IsWeak: 0
   IsDead: 0
   deadAnimDuration: 1
+  CanDealDamage: 0
   player: {fileID: 0}
   EarthquakeAlert: {fileID: 1045609789636462}
 --- !u!114 &114671866311208200
@@ -1308,7 +1309,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 10, z: 0}
 --- !u!137 &137122813177871738
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
