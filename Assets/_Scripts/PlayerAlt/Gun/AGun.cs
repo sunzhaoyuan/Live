@@ -14,6 +14,8 @@ public class AGun : MonoBehaviour
 	public int MagazineCap;
 	public int Ammo;
 
+	//public GameObject gunfire;
+
 	public ABullet Bullet;
 
 

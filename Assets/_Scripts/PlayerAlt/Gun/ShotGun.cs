@@ -29,10 +29,11 @@ public class ShotGun : AGun
 			ABullet bullet = Instantiate (Bullet, player.transform.position, FaceMid);
 			ABullet bullet1 = Instantiate (Bullet, player.transform.position, FaceLeft);
 			ABullet bullet2 = Instantiate (Bullet, player.transform.position,FaceRight);
-
-
+			player.gunfire.SetActive (true);
+			player.bulleteffet.SetActive(true);
 			Ammo--;
 		}
+
 	}
 
 }
