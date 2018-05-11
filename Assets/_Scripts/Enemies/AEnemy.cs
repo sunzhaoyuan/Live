@@ -33,6 +33,8 @@ public class AEnemy : MonoBehaviour
 	public bool IsDead = false;
 	public float deadAnimDuration;
 
+    public bool CanDealDamage = false;
+
 	public ABuff Buff;
 
 	/// IsAnimator needs to be called before Animation and Animator 
@@ -49,7 +51,7 @@ public class AEnemy : MonoBehaviour
 		set { transform.position = value; }
 	}
 
-<<<<<<< HEAD
+
 	/// <summary>
 	/// player is initialized by GameObject.Find method
 	/// because of the issue of prefab (details in RefreshBoss.cs)
@@ -58,8 +60,7 @@ public class AEnemy : MonoBehaviour
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}
-=======
->>>>>>> origin/iss1-enemy
+
 
 	/// <summary>
 	/// This method deal with damage taken from the bullet
@@ -152,11 +153,14 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	protected virtual void Attack ()
 	{
+
 		if (IsAnimator) {
 
 		} else {
 			Animation.Play (CurrentSkill.AnimName);
 		}
+
+
 	}
 
 	void Start ()
@@ -184,7 +188,7 @@ public class AEnemy : MonoBehaviour
 		case State.MOVE:
 			EnemyLookAt (0f);
 			EnemyMove (2f);
-
+            CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
 			if (IsAnimator) {
 
