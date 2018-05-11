@@ -113,20 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!114 &250572384 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
-    type: 2}
-  m_PrefabInternal: {fileID: 805354970}
-  m_Script: {fileID: 11500000, guid: 9a8b419f0386b4c968b0a0a10a1f3df4, type: 3}
---- !u!4 &250572389 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3,
-    type: 2}
-  m_PrefabInternal: {fileID: 805354970}
->>>>>>> origin/iss1-enemy
 --- !u!1001 &341856745
 Prefab:
   m_ObjectHideFlags: 0
@@ -174,16 +160,12 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 657115032}
-=======
       objectReference: {fileID: 0}
     - target: {fileID: 114015454550837354, guid: dbafc569fdd724d66950ee9e537d0196,
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 250572384}
->>>>>>> origin/iss1-enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 100086, guid: dbafc569fdd724d66950ee9e537d0196, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -251,82 +233,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 6
-=======
   m_RootOrder: 5
->>>>>>> origin/iss1-enemy
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &805354970
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.945
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
-        type: 2}
-      propertyPath: Gun1
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
-        type: 2}
-      propertyPath: Guns.Array.data[1]
-      value: 
-      objectReference: {fileID: 114797592469029036, guid: bf736836793084c2b9c613b91c40587e,
-        type: 2}
-    - target: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
-        type: 2}
-      propertyPath: CurrentGun
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: bc19e30ed69f04ee6ba031b037c64a1a, type: 2}
-  m_IsPrefabParent: 0
---- !u!114 &657115032 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114166460649226872, guid: bc19e30ed69f04ee6ba031b037c64a1a,
-    type: 2}
-  m_PrefabInternal: {fileID: 657115031}
-  m_Script: {fileID: 11500000, guid: 9a8b419f0386b4c968b0a0a10a1f3df4, type: 3}
-=======
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631397166697282, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
-  m_IsPrefabParent: 0
->>>>>>> origin/iss1-enemy
 --- !u!1001 &1123736312
 Prefab:
   m_ObjectHideFlags: 0
@@ -456,11 +364,7 @@ RectTransform:
   m_Children:
   - {fileID: 2067974398}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 5
-=======
   m_RootOrder: 4
->>>>>>> origin/iss1-enemy
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -600,6 +504,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2915593e7fcc644cd94c52bce9f2792f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Oni
+  CurrentHP: 100
+  MaxHP: 100
+  NextAttackTime: 0
+  AttackEndTime: 0
+  CurrentSkill: {fileID: 0}
+  Speed: 5
+  closeRange: 8
+  midRange: -1
+  farRange: -1
+  WeakDuration: 0
+  WeakStartTime: 0
+  CurrentState: 0
+  IsWeak: 0
+  IsDead: 0
+  deadAnimDuration: 1
+  CanDealDamage: 0
+  IsAnimator: 0
+  Animation: {fileID: 0}
+  Animator: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1742483169
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70438e5ebb0f04c26bfbf3f1abdfebe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 250572389}
+  target: {fileID: 0}
   smoothness: 10
   x: 0
   y: 35

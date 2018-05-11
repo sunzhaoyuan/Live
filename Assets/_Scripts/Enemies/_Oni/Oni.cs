@@ -17,7 +17,7 @@ public class Oni : AEnemy
 		Buff = new EmptyBuff ();
 //		CurrentSkill = new Stab ();
 //		Buff = null;
-		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
+		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new Stab (), new Stab (), new Stab (), new Earthquake ()
 				}
 			}
 		};

@@ -22,14 +22,9 @@ public class Aniki : AEnemy
 		deadAnimDuration = 1f;
 		IsStab1 = true;
 		Buff = new EmptyBuff ();
-<<<<<<< HEAD:Assets/_Scripts/Enemies/_Aniki/Aniki.cs
-//		CurrentSkill = new Stab ();
-//		Buff = null;
 
-		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new StabAlt (), new StabAlt (), new StabAlt (), new Earthquake ()
-=======
 		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new Stab (), new Stab (), new Stab (), new Earthquake ()
->>>>>>> origin/iss1-enemy:Assets/_Scripts/Enemies/Aniki.cs
+
 				}
 			}
 		};
