@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
+	public GameObject gunfire;
+	public GameObject bulleteffet;
 
 	// UI
 	public Image uitHPbar;
@@ -149,6 +151,9 @@ public class Player : MonoBehaviour
             PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
+			this.gunfire.SetActive (false);
+			this.bulleteffet.SetActive (false);
+
 		}
 
 
