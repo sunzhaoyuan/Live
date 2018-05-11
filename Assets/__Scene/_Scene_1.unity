@@ -286,8 +286,6 @@ Prefab:
     - target: {fileID: 1689873223324094, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_IsActive
       value: 0
-<<<<<<< HEAD
-=======
       objectReference: {fileID: 0}
     - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -307,7 +305,6 @@ Prefab:
         type: 2}
       propertyPath: m_UseGravity
       value: 1
->>>>>>> 00019daf67b2b97e1a680c888050704ade3688bb
       objectReference: {fileID: 0}
     - target: {fileID: 54654253331103322, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
@@ -668,20 +665,17 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: DodgeFlash
       value: 
       objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
         type: 2}
-=======
     - target: {fileID: 54409355874234020, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
->>>>>>> 00019daf67b2b97e1a680c888050704ade3688bb
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
   m_IsPrefabParent: 0

@@ -143,14 +143,10 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-<<<<<<< HEAD
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
-=======
-		if (Input.GetKey ("joystick button 7")) { //r2
-			IsFiring = true;
->>>>>>> e1d0518caa35f0e08e123b84bc12d0017f5c2b9d
-			PrimaryGun.Fire (this);
+            IsFiring = true;
+            PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
 		}
