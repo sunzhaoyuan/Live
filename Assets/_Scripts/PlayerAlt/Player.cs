@@ -44,7 +44,13 @@ public class Player : MonoBehaviour
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
 
-    AudioSource gunAudio;
+    AudioSource Audio;
+    public AudioClip gunshot;
+    public AudioClip reload;
+    public AudioClip death;
+    public AudioClip walk;
+    public AudioClip Run;
+    public AudioClip flash;
 
 
 
@@ -54,7 +60,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        gunAudio = GetComponent<AudioSource>();
+        Audio = GetComponent<AudioSource>();
+       
+
     }
 
     void Start ()
@@ -73,8 +81,8 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
-		Debug.Log ("Run:"+IsRunning);
-		Debug.Log ("Aim:"+IsAiming);
+	//	Debug.Log ("Run:"+IsRunning);
+	//	Debug.Log ("Aim:"+IsAiming);
 
 		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
@@ -133,16 +141,22 @@ public class Player : MonoBehaviour
 	void MoveAndAim ()
 	{
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
-
-		if (!IsAiming && IsRunning && !IsFiring) {//just running
+        
+        if (!IsAiming && IsRunning && !IsFiring) {//just running
+            Audio.clip = Run;
+            Audio.Play();
 			transform.position += MovingDirection * RunSpeed;
 			transform.rotation = MoveRot;
 			FacingDirection = MovingDirection;
 		} else if (IsRunning && IsFiring && !IsAiming) {
-			transform.rotation = MoveRot;
+            Audio.clip = walk;
+            Audio.Play();
+            transform.rotation = MoveRot;
 			transform.position += MovingDirection * WalkSpeed;
 		} else {
-			transform.position += MovingDirection * WalkSpeed;
+            Audio.clip = walk;
+            Audio.Play();
+            transform.position += MovingDirection * WalkSpeed;
 		}
 
 		//aiming
@@ -157,7 +171,8 @@ public class Player : MonoBehaviour
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
             IsFiring = true;
-            gunAudio.Play();
+            Audio.clip = gunshot;
+            Audio.Play();
             PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
@@ -199,15 +214,16 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
+        
         //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
-		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+        GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
         //StartCoroutine(SimulateProjectile());
         Rigidbody rb = grenade.GetComponent<Rigidbody> ();
         //Vector3 gg = FacingDirection;
         //gg.Normalize ();
         rb.useGravity = true;
         Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
-        rb.AddForce(kk*50f, ForceMode.VelocityChange);
+        rb.AddForce(kk*5f, ForceMode.VelocityChange);
 
     }
 
@@ -254,9 +270,12 @@ public class Player : MonoBehaviour
 	}
 
 	void Die ()
-	{
-		Destroy (this.gameObject);
-	}
+    {
+        Audio.clip = death;
+        Audio.Play();
+        Destroy (this.gameObject);
+      
+    }
 
 	void SwitchGun ()
 	{

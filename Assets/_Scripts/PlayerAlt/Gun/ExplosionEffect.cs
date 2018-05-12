@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionEffect : MonoBehaviour {
+   // AudioSource Audio;
 
-	// Use this for initialization
-	void Start () {
+
+  
+    // Use this for initialization
+    void Start () {
+       
         Destroy(gameObject, 2f);
     }
 	

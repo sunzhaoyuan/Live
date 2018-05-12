@@ -15,5 +15,6 @@ public class ABullet : MonoBehaviour
 	void Update ()
 	{
 		transform.Translate (Vector3.forward * this.Speed * Time.deltaTime);
+
 	}
 }

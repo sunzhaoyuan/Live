@@ -356,15 +356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cde82371beaa4f9e0e98935078091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 10
+  delay: 3
   radius: 1
   force: 300
   explosioneffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
     type: 2}
-  Target: {fileID: 0}
-  firingAngle: 45
-  gravity: 9.8
-  Projectile: {fileID: 0}
 --- !u!136 &136022704966889082
 CapsuleCollider:
   m_ObjectHideFlags: 1

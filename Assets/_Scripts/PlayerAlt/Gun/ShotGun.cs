@@ -17,6 +17,10 @@ public class ShotGun : AGun
 
 	public override void Fire (Player player)
 	{
+		if (Ammo == 0) {
+			player.gunfire.SetActive (false);
+			player.bulleteffet.SetActive (false);
+		}
 	
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
