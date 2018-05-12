@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Strike : ASkill
+public class BackKick : ASkill
 {
-
-	public Strike ()
+	public BackKick ()
 	{
-		Name = "Strike";
-		Damage = 50f;
-		Duration = 1f;
+		Name = "BackPunch";
+		Duration = .43f;
 	}
 
 	public override void UseSkill (AEnemy enemy, Player player)
 	{
-		Debug.Log ("Strike");
-		enemy.EnemyMove (50f);
+ 		
 	}
 }

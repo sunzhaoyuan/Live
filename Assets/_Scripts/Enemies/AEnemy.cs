@@ -42,6 +42,7 @@ public class AEnemy : MonoBehaviour
 	public bool IsAnimator;
 	public Animation Animation;
 	public Animator Animator;
+	public string LastAnimState = "";
 
 	[Header ("DON'T Change Player")]
 	public Player player;
@@ -78,12 +79,11 @@ public class AEnemy : MonoBehaviour
 	/// Enemies always looks at the player, rotating by y by yRotationOffset.
 	/// </summary>
 	/// <param name="yRotationOffset">Y rotation offset.</param>
-	protected void EnemyLookAt (float yRotationOffset)
+	public void EnemyLookAt ()
 	{
 		Vector3 relativePos = player.transform.position - Position;
 		relativePos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation (relativePos);
-		rotation.eulerAngles -= new Vector3 (0, yRotationOffset, 0);
 		transform.rotation = rotation;
 	}
 
@@ -91,9 +91,9 @@ public class AEnemy : MonoBehaviour
 	/// Move the Enemy
 	/// </summary>
 	/// <param name="distance">Distance.</param>
-	protected void EnemyMove (float speed)
+	public void EnemyMove (float speed)
 	{
-		gameObject.GetComponent<Rigidbody> ().velocity = transform.forward * Speed;
+		gameObject.GetComponent<Rigidbody> ().velocity = transform.forward * speed;
 	}
 
 	/// <summary>
@@ -147,7 +147,7 @@ public class AEnemy : MonoBehaviour
 	{
 
 		if (IsAnimator) {
-
+			
 		} else {
 			//Animation.Play (CurrentSkill.AnimName);
 		}
@@ -156,10 +156,12 @@ public class AEnemy : MonoBehaviour
 	void Start ()
 	{
 		if (IsAnimator) {
-
+			Animator = GetComponent<Animator> ();
 		} else {
 			Animation = GetComponent<Animation> ();
 		}	
+//		Debug.Log ("IsAnimator::" + IsAnimator);
+		Debug.Log (player.name);
 		CurrentSkill = new EmptySkill ();
 	}
 
@@ -176,12 +178,12 @@ public class AEnemy : MonoBehaviour
 			break;
 
 		case State.MOVE:
-			EnemyLookAt (0f);
+			EnemyLookAt ();
 			EnemyMove (Speed);
 			CanDealDamage = false;
 			CurrentSkill = new EmptySkill ();
 			if (IsAnimator) {
-
+				Animator.SetBool ("IsRun", true);
 			} else {
 				Animation.Play ("Walk");
 			}
@@ -199,6 +201,8 @@ public class AEnemy : MonoBehaviour
 		default:
 			break;
 		}
+//		Debug.Log (Animator.GetBool ());
+		
 	}
 
 	/// <summary>
@@ -239,5 +243,20 @@ public class AEnemy : MonoBehaviour
 		default :
 			break;
 		}
+	}
+
+	public void ClearAnimState ()
+	{
+		Animator.SetBool (LastAnimState, false);
+	}
+
+	public void DeactivateAnimState (string AnimState)
+	{
+		Animator.SetBool (AnimState, false);
+	}
+
+	public void ActivateAnimState (string AnimState)
+	{
+		Animator.SetBool (AnimState, true);
 	}
 }

@@ -160,6 +160,9 @@ MonoBehaviour:
   IsDead: 0
   deadAnimDuration: 0
   CanDealDamage: 0
+  IsAnimator: 0
+  Animation: {fileID: 0}
+  Animator: {fileID: 0}
   player: {fileID: 0}
 --- !u!137 &137775794019560820
 SkinnedMeshRenderer:

@@ -18,11 +18,11 @@ public class YoungKid : AEnemy
 		
 	}
 
-    void Awake()
-    {
-        player = GameObject.Find("Player").GetComponent<Player>();
-        Skills = new Dictionary<string, List<ASkill>> {
+	void Awake ()
+	{
+		player = GameObject.Find ("Player").GetComponent<Player> ();
+		Skills = new Dictionary<string, List<ASkill>> {
 			{ "close", new List<ASkill>{ new Stab ()  } } 
 		};
-    }
+	}
 }
