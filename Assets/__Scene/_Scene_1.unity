@@ -311,6 +311,16 @@ Prefab:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 135365813486188024, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 135365813486188024, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
   m_IsPrefabParent: 0
@@ -482,6 +492,10 @@ Prefab:
     - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020863738596156, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.42813
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e46b786588955434f9ae7786d7f07664, type: 2}
@@ -677,7 +691,7 @@ Prefab:
     - target: {fileID: 136567043788057616, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
@@ -700,6 +714,27 @@ Prefab:
       propertyPath: bulleteffet
       value: 
       objectReference: {fileID: 1656980213}
+    - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
+        type: 2}
+      propertyPath: IsFiring
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e6645974234c80940b2e6871bccd6099, type: 3}
+    - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300004, guid: 8434b04884c414ac6b468e10945685e6,
+        type: 2}
+    - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
   m_IsPrefabParent: 0

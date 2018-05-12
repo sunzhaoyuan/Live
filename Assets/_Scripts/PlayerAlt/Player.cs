@@ -34,21 +34,30 @@ public class Player : MonoBehaviour
     public GameObject DodgeFlash;
     float delayTime = 0.2f;
 
-	public Bond BondPrefab;
+    public GameObject gunfire;
+    public GameObject bulleteffet;
+
+    public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
-	public GameObject gunfire;
-	public GameObject bulleteffet;
 
-	// UI
-	public Image uitHPbar;
+    AudioSource gunAudio;
+
+
+
+    // UI
+    public Image uitHPbar;
 	public Text uitBuff;
 
+    private void Awake()
+    {
+        gunAudio = GetComponent<AudioSource>();
+    }
 
-	void Start ()
+    void Start ()
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
 		PrimaryGun = (AGun)Instantiate (RiflePrefab);
@@ -148,12 +157,12 @@ public class Player : MonoBehaviour
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
             IsFiring = true;
+            gunAudio.Play();
             PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
-			this.gunfire.SetActive (false);
-			this.bulleteffet.SetActive (false);
-
+            this.gunfire.SetActive(false);
+            this.bulleteffet.SetActive(false);
 		}
 
 
@@ -192,15 +201,19 @@ public class Player : MonoBehaviour
 	{
         //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
-		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
-		Vector3 gg = FacingDirection;
-		gg.Normalize ();
+        //StartCoroutine(SimulateProjectile());
+        Rigidbody rb = grenade.GetComponent<Rigidbody> ();
+        //Vector3 gg = FacingDirection;
+        //gg.Normalize ();
         rb.useGravity = true;
-		rb.AddForce(transform.forward*50f, ForceMode.Impulse);
-        
-	}
+        Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
+        rb.AddForce(kk*50f, ForceMode.VelocityChange);
 
-	void Dodge ()
+    }
+
+  
+
+    void Dodge ()
 	{
         Instantiate(DodgeFlash, transform.position, transform.rotation);
         gameObject.SetActive(false);

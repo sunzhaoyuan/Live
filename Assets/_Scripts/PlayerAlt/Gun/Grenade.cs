@@ -10,9 +10,14 @@ public class Grenade : MonoBehaviour {
     float countdown;
     bool hasexloded = false;
 
-	void Start () {
+
+   
+   
+    
+    void Start () {
         countdown = delay;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,6 +29,7 @@ public class Grenade : MonoBehaviour {
         }
        
 	}
+    
 
     void Explode()
     {
