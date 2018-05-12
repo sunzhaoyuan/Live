@@ -64,8 +64,8 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
-		Debug.Log ("Run:"+IsRunning);
-		Debug.Log ("Aim:"+IsAiming);
+	//	Debug.Log ("Run:"+IsRunning);
+	//	Debug.Log ("Aim:"+IsAiming);
 
 		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
