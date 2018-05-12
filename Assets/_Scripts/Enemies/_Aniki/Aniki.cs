@@ -39,7 +39,7 @@ public class Aniki : AEnemy
 
 	public override void Attack ()
 	{
-        CanDealDamage = true;
+		CanDealDamage = true;
 		if (CurrentSkill.Name.Equals ("Stab")) {
 			if (IsStab1)
 				Animation.Play ("Stab1");
@@ -63,10 +63,10 @@ public class Aniki : AEnemy
 			Collider c = gameObject.GetComponent<SphereCollider> ();
 			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
 				CurrentSkill.ActivateCollider (true, c);
-                CanDealDamage = true;
+				CanDealDamage = true;
 			} else {
 				CurrentSkill.ActivateCollider (false, c);
-                CanDealDamage = false;
+				CanDealDamage = false;
 			}
 		} else {
 			EarthquakeAlert.SetActive (false);
@@ -75,14 +75,13 @@ public class Aniki : AEnemy
 
 	public override void Die ()
 	{
-        if (!IsDead)
-        {
-            anim.Play("Die");
-            IsDead = true;
-            deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
-        }
+		if (!IsDead) {
+			Animation.Play ("Die");
+			IsDead = true;
+			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+		}
 
-        if (Time.time == deadAnimDuration) {
+		if (Time.time == deadAnimDuration) {
 			transform.Rotate (new Vector3 (0f, 0f, 90f));
 		}
 	}
