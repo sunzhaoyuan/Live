@@ -264,6 +264,67 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1184362013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1184362014}
+  - component: {fileID: 1184362017}
+  - component: {fileID: 1184362016}
+  - component: {fileID: 1184362015}
+  m_Layer: 0
+  m_Name: BackKickArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1184362014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184362013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.493, z: -5.8}
+  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_Children: []
+  m_Father: {fileID: 1718674100}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1184362015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184362013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249ea8f66e85a40f8a5076d58c90b1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1184362016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184362013}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1184362017
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184362013}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1264513757
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +576,11 @@ MonoBehaviour:
   Animator: {fileID: 0}
   LastAnimState: 
   player: {fileID: 0}
+--- !u!4 &1718674100 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4696268639064094, guid: 65cf8e11172294309a05747b2828c55b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1718674097}
 --- !u!54 &1718674104
 Rigidbody:
   m_ObjectHideFlags: 0

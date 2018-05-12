@@ -153,7 +153,7 @@ public class AEnemy : MonoBehaviour
 		}
 	}
 
-	void Start ()
+	protected virtual void Start ()
 	{
 		if (IsAnimator) {
 			Animator = GetComponent<Animator> ();

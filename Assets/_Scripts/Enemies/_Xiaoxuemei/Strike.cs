@@ -10,6 +10,7 @@ public class Strike : ASkill
 		Name = "Strike";
 		Damage = 50f;
 		Duration = 1f;
+		Cooldown = 1f;
 	}
 
 	public override void UseSkill (AEnemy enemy, Player player)
