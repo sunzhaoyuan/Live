@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4008371055806558}
   - component: {fileID: 54033803460607470}
   - component: {fileID: 136906129140182912}
-  - component: {fileID: 114212603016687924}
+  - component: {fileID: 114087771228828098}
   m_Layer: 9
   m_Name: m26
   m_TagString: Untagged
@@ -345,7 +345,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114212603016687924
+--- !u!114 &114087771228828098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cde82371beaa4f9e0e98935078091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
+  delay: 2
   radius: 5
   force: 700
   explosioneffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
@@ -370,7 +370,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.29
-  m_Height: 0.51
-  m_Direction: 2
+  m_Radius: 0.45
+  m_Height: 0.45
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}

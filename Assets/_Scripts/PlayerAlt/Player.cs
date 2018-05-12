@@ -190,12 +190,13 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-
+        //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
 		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
 		Vector3 gg = FacingDirection;
 		gg.Normalize ();
-		// rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
+        rb.useGravity = true;
+		rb.AddForce(transform.forward*50f, ForceMode.Impulse);
         
 	}
 
