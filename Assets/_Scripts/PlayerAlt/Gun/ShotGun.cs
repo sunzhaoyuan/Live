@@ -26,9 +26,9 @@ public class ShotGun : AGun
 			Quaternion FaceRight = Quaternion.Euler (Face.x, Face.y - 30, Face.z);
 
 
-			ABullet bullet = Instantiate (Bullet, player.transform.position, FaceMid);
-			ABullet bullet1 = Instantiate (Bullet, player.transform.position, FaceLeft);
-			ABullet bullet2 = Instantiate (Bullet, player.transform.position,FaceRight);
+			ABullet bullet = Instantiate (Bullet, player.gunfire.transform.position, FaceMid);
+			ABullet bullet1 = Instantiate (Bullet, player.gunfire.transform.position, FaceLeft);
+			ABullet bullet2 = Instantiate (Bullet, player.gunfire.transform.position,FaceRight);
 			player.gunfire.SetActive (true);
 			player.bulleteffet.SetActive(true);
 			Ammo--;
