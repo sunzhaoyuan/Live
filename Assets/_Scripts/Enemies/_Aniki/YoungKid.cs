@@ -15,14 +15,17 @@ public class YoungKid : AEnemy
 		CurrentState = State.IDLE;
 		closeRange = 2f;
 		Buff = new DoubleDamage ();
-		
 	}
 
-	void Awake ()
+	protected override void Awake ()
 	{
-		player = GameObject.Find ("Player").GetComponent<Player> ();
+		base.Awake ();
+		deadAnimDuration = 1.458f;
+		IsAnimator = false;
 		Skills = new Dictionary<string, List<ASkill>> {
 			{ "close", new List<ASkill>{ new Stab ()  } } 
 		};
 	}
+
+
 }

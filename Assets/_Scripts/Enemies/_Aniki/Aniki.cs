@@ -62,7 +62,6 @@ public class Aniki : AEnemy
 	public override void Attack ()
 	{
 		if (!CurrentSkill.Name.Equals ("Yunshi")) {
-			Debug.Log (CurrentSkill.Name + " AAA");
 			gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		}
 		CanDealDamage = true;
@@ -76,7 +75,6 @@ public class Aniki : AEnemy
 			}
 			IsStab1 = !IsStab1;
 		} else if (CurrentSkill.Name.Equals ("Earthquake") || CurrentSkill.Name.Equals ("Yunshi")) {
-			Debug.Log ("BBB");
 			Animation.Play ("Earthquake");
 		}
 	}

@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c9e9b342384d8da40d9751e38fa31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1201756042488198, guid: 635f9de13267746a9a6814a5ae667768,
+  EnemyPrefab: {fileID: 1467459776315448, guid: 635f9de13267746a9a6814a5ae667768,
     type: 2}
   RespownPoints:
   - {fileID: 602792868}
@@ -359,12 +359,6 @@ MonoBehaviour:
   - {fileID: 602792864}
   Vec3: {x: 100, y: 0, z: 100}
   RefreshDelayDeltaTime: 3
---- !u!114 &276854740 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
-    type: 2}
-  m_PrefabInternal: {fileID: 862120819}
-  m_Script: {fileID: 11500000, guid: 9a8b419f0386b4c968b0a0a10a1f3df4, type: 3}
 --- !u!4 &276854745 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4444592281857140, guid: 6b4d117f0cbd14e07b502a37299f9027,
@@ -632,16 +626,6 @@ Prefab:
     - target: {fileID: 4759539214007462, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 276854740}
-    - target: {fileID: 54654253331103322, guid: 6e344e8eca0898b41ae06bef676c5588,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}

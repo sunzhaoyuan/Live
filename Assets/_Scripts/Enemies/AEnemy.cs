@@ -111,7 +111,7 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (1f <= distance && distance <= closeRange) {
+			if (2f <= distance && distance <= closeRange) {
 				canAttack = true;
 				attackRange = "close";
 			} else if (closeRange <= distance && distance <= midRange) {
@@ -154,7 +154,7 @@ public class AEnemy : MonoBehaviour
 		if (IsAnimator) {
 			
 		} else {
-			//Animation.Play (CurrentSkill.AnimName);
+			Animation.Play (CurrentSkill.Name);
 		}
 	}
 
@@ -165,8 +165,6 @@ public class AEnemy : MonoBehaviour
 		} else {
 			Animation = GetComponent<Animation> ();
 		}	
-//		Debug.Log ("IsAnimator::" + IsAnimator);
-		Debug.Log (player.name);
 		CurrentSkill = new EmptySkill ();
 	}
 
@@ -217,7 +215,15 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	public virtual void Die ()
 	{
-		Destroy (this.gameObject);
+		if (!IsDead) {
+			Animation.Play ("Die");
+			IsDead = true;
+			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
+		}
+
+		if (Time.time >= deadAnimDuration) {
+			Destroy (this.gameObject);
+		}
 	}
 
 	/// <summary>
