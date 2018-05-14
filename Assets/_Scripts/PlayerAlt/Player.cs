@@ -71,8 +71,8 @@ public class Player : MonoBehaviour
 		}
 
 		//Update HP UI
-		uitHPbar.fillAmount = CurrentHP / 100f;
-		uitBuff.text = "Buff: " + Buff.Name;
+//		uitHPbar.fillAmount = CurrentHP / 100f;
+//		uitBuff.text = "Buff: " + Buff.Name;
 
 	}
 
@@ -229,6 +229,8 @@ public class Player : MonoBehaviour
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
 			float damage = enemySkill.Damage;
+			if (!enemy.CanDealDamage)
+				damage = 0f;
 			CurrentHP -= damage;
 			if (CurrentHP <= 0)
 				Die ();
@@ -238,6 +240,8 @@ public class Player : MonoBehaviour
 			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill bossSkill = boss.CurrentSkill;
 			float d = bossSkill.Damage;
+			if (!boss.CanDealDamage)
+				damage = 0f;
 			CurrentHP -= d;
 			if (CurrentHP <= 0)
 				Die ();

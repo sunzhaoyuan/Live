@@ -6,6 +6,7 @@ public class BossRefresh : MonoBehaviour
 {
 
 	public GameObject EnemyPrefab;
+	public GameObject[] RespownPoints;
 
 	public Vector3 Vec3;
 	public float RefreshDelayDeltaTime = 3f;
@@ -23,7 +24,9 @@ public class BossRefresh : MonoBehaviour
 		int GONums = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		// if the numbers of small boss is less than 4, create a new one
 		if (Time.time >= NextRefreshTime && GONums < 7) {
-			Instantiate (EnemyPrefab, Vec3, Quaternion.identity);
+			System.Random r = new System.Random ();
+			int i = r.Next (5);
+			Instantiate (EnemyPrefab, RespownPoints [i].transform.position, Quaternion.identity);
 			NextRefreshTime += RefreshDelayDeltaTime;
 		}
 	}
