@@ -146,9 +146,10 @@ public class Player : MonoBehaviour
 	void MoveAndAim ()
 	{
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
-<<<<<<< HEAD
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
+			Audio.clip = Run;
+			Audio.Play();
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
 			//Debug.Log (MovingDirection * 100f);
 			//transform.position += MovingDirection * RunSpeed;
@@ -157,30 +158,13 @@ public class Player : MonoBehaviour
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-
+			Audio.clip = walk;
+			Audio.Play();
 			//transform.position += MovingDirection * WalkSpeed;
 		} else {
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-
-			//transform.position += MovingDirection * WalkSpeed;
-=======
-        
-        if (!IsAiming && IsRunning && !IsFiring) {//just running
-            Audio.clip = Run;
-            Audio.Play();
-			transform.position += MovingDirection * RunSpeed;
-			transform.rotation = MoveRot;
-			FacingDirection = MovingDirection;
-		} else if (IsRunning && IsFiring && !IsAiming) {
-            Audio.clip = walk;
-            Audio.Play();
-            transform.rotation = MoveRot;
-			transform.position += MovingDirection * WalkSpeed;
-		} else {
-            Audio.clip = walk;
-            Audio.Play();
-            transform.position += MovingDirection * WalkSpeed;
->>>>>>> e0272db3feac3cfcb0642c4439d1f32c36e8a819
+			Audio.clip = walk;
+			Audio.Play();
 		}
 
 		//aiming
