@@ -26,11 +26,11 @@ public class ShotGun : AGun
 			TimeNextShot = Time.time + TimeBetweenshots;
 			Vector3 Face=player.transform.rotation.eulerAngles;
 			Quaternion FaceMid = Quaternion.Euler (Face);
-			Quaternion FaceLeft = Quaternion.Euler (Face.x, Face.y + 30, Face.z);
-			Quaternion FaceRight = Quaternion.Euler (Face.x, Face.y - 30, Face.z);
+			Quaternion FaceLeft = Quaternion.Euler (Face.x, Face.y + 30f, Face.z);
+			Quaternion FaceRight = Quaternion.Euler (Face.x, Face.y - 30f, Face.z);
 
 
-			ABullet bullet = Instantiate (Bullet, player.gunfire.transform.position, FaceMid);
+			ABullet bullet = Instantiate (Bullet, player.gunfire.transform.position, player.transform.rotation);
 			ABullet bullet1 = Instantiate (Bullet, player.gunfire.transform.position, FaceLeft);
 			ABullet bullet2 = Instantiate (Bullet, player.gunfire.transform.position,FaceRight);
 			player.gunfire.SetActive (true);

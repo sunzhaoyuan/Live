@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 65954511884298578}
   - component: {fileID: 23681626224462906}
   - component: {fileID: 114728528008099632}
-  m_Layer: 0
+  - component: {fileID: 54546766302923798}
+  m_Layer: 12
   m_Name: BondBullet
   m_TagString: BondBullet
   m_Icon: {fileID: 0}
@@ -84,6 +85,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514944889973122}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54546766302923798
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514944889973122}
+  serializedVersion: 2
+  m_Mass: 0.01
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!65 &65954511884298578
 BoxCollider:
   m_ObjectHideFlags: 1

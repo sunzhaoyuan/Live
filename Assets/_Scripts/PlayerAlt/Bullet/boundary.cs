@@ -14,25 +14,17 @@ public class boundary : MonoBehaviour {
 		
 	}
 
-	void OnTriggerEnter (Collider collider)
+	void OnCollisionEnter (Collision collision)
 	{
-		string tag1 = collider.tag;
-		Debug.Log (tag);
-
+		GameObject go= collision.gameObject;
+		string tag1 = go.tag;
+	
 		switch (tag1) {
 		case "Bullet":
-		//	ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
-		//	CurrentHP -= bullet.Damage;
-			Destroy (collider.gameObject);
+			Destroy (collision.gameObject);
 			break;
 		case "BondBullet":
-		//	player.IsConnecting = true;
-		//	player.ConnectingEnemy = this;
-		//	if (Buff != null) {
-		//		Buff.SetBuff (player);
-		//		player.Buff = Buff;
-		//	}
-			Destroy (collider.gameObject);
+			Destroy (collision.gameObject);
 			break;
 
 		default :

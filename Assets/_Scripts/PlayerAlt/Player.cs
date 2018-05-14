@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
 	public bool IsFiring = false;
 
 	public float DashRadius = 10f;
-	public float RunSpeed = 1.5f;
-	public float WalkSpeed = 0.5f;
+	public float RunSpeed = 40f;
+	public float WalkSpeed = 20f;
 	public Vector3 MovingDirection;
 	public Vector3 FacingDirection;
 	public float MaxHP = 100f;
@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
+		CheckBound ();
 	//	Debug.Log ("Run:"+IsRunning);
 	//	Debug.Log ("Aim:"+IsAiming);
 
@@ -82,6 +83,10 @@ public class Player : MonoBehaviour
 		//Update HP UI
 		uitHPbar.fillAmount = CurrentHP / 100f;
 		uitBuff.text = "Buff: " + Buff.Name;
+
+	}
+	void CheckBound(){
+		
 
 	}
 
@@ -126,14 +131,20 @@ public class Player : MonoBehaviour
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
-			transform.position += MovingDirection * RunSpeed;
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
+			//Debug.Log (MovingDirection * 100f);
+			//transform.position += MovingDirection * RunSpeed;
 			transform.rotation = MoveRot;
 			FacingDirection = MovingDirection;
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
-			transform.position += MovingDirection * WalkSpeed;
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
+
+			//transform.position += MovingDirection * WalkSpeed;
 		} else {
-			transform.position += MovingDirection * WalkSpeed;
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
+
+			//transform.position += MovingDirection * WalkSpeed;
 		}
 
 		//aiming
