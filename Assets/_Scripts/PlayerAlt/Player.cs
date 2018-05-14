@@ -34,21 +34,38 @@ public class Player : MonoBehaviour
     public GameObject DodgeFlash;
     float delayTime = 0.2f;
 
-	public Bond BondPrefab;
+    public GameObject gunfire;
+    public GameObject bulleteffet;
+
+    public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
-	public GameObject gunfire;
-	public GameObject bulleteffet;
 
-	// UI
-	public Image uitHPbar;
+    AudioSource Audio;
+    public AudioClip gunshot;
+    public AudioClip reload;
+    public AudioClip death;
+    public AudioClip walk;
+    public AudioClip Run;
+    public AudioClip flash;
+
+
+
+    // UI
+    public Image uitHPbar;
 	public Text uitBuff;
 
+    private void Awake()
+    {
+        Audio = GetComponent<AudioSource>();
+       
 
-	void Start ()
+    }
+
+    void Start ()
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
 		PrimaryGun = (AGun)Instantiate (RiflePrefab);
@@ -129,6 +146,7 @@ public class Player : MonoBehaviour
 	void MoveAndAim ()
 	{
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
+<<<<<<< HEAD
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
@@ -145,6 +163,24 @@ public class Player : MonoBehaviour
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
 
 			//transform.position += MovingDirection * WalkSpeed;
+=======
+        
+        if (!IsAiming && IsRunning && !IsFiring) {//just running
+            Audio.clip = Run;
+            Audio.Play();
+			transform.position += MovingDirection * RunSpeed;
+			transform.rotation = MoveRot;
+			FacingDirection = MovingDirection;
+		} else if (IsRunning && IsFiring && !IsAiming) {
+            Audio.clip = walk;
+            Audio.Play();
+            transform.rotation = MoveRot;
+			transform.position += MovingDirection * WalkSpeed;
+		} else {
+            Audio.clip = walk;
+            Audio.Play();
+            transform.position += MovingDirection * WalkSpeed;
+>>>>>>> e0272db3feac3cfcb0642c4439d1f32c36e8a819
 		}
 
 		//aiming
@@ -159,12 +195,13 @@ public class Player : MonoBehaviour
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
             IsFiring = true;
+            Audio.clip = gunshot;
+            Audio.Play();
             PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
-			this.gunfire.SetActive (false);
-			this.bulleteffet.SetActive (false);
-
+            this.gunfire.SetActive(false);
+            this.bulleteffet.SetActive(false);
 		}
 
 
@@ -201,17 +238,22 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-        //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
-		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
-		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
-		Vector3 gg = FacingDirection;
-		gg.Normalize ();
-        rb.useGravity = true;
-		rb.AddForce(transform.forward*50f, ForceMode.Impulse);
         
-	}
+        //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
+        GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+        //StartCoroutine(SimulateProjectile());
+        Rigidbody rb = grenade.GetComponent<Rigidbody> ();
+        //Vector3 gg = FacingDirection;
+        //gg.Normalize ();
+        rb.useGravity = true;
+        Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
+        rb.AddForce(kk*5f, ForceMode.VelocityChange);
 
-	void Dodge ()
+    }
+
+  
+
+    void Dodge ()
 	{
         Instantiate(DodgeFlash, transform.position, transform.rotation);
         gameObject.SetActive(false);
@@ -252,9 +294,12 @@ public class Player : MonoBehaviour
 	}
 
 	void Die ()
-	{
-		Destroy (this.gameObject);
-	}
+    {
+        Audio.clip = death;
+        Audio.Play();
+        Destroy (this.gameObject);
+      
+    }
 
 	void SwitchGun ()
 	{
