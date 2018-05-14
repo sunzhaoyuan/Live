@@ -111,7 +111,7 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (0f <= distance && distance <= closeRange) {
+			if (1f <= distance && distance <= closeRange) {
 				canAttack = true;
 				attackRange = "close";
 			} else if (closeRange <= distance && distance <= midRange) {
@@ -126,7 +126,12 @@ public class AEnemy : MonoBehaviour
 				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
 				CurrentSkill = skills [skillNum];
-				CurrentState = State.ATTACK;
+				if (!CurrentSkill.Name.Equals ("EmptySkill"))
+					CurrentState = State.ATTACK;
+				else {
+					AttackEndTime = Time.time + 1f;
+					NextAttackTime = AttackEndTime;
+				}
 				AttackEndTime = CurrentSkill.Duration + Time.time;
 				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown; //随便设的
 			} else { //Cannot attack

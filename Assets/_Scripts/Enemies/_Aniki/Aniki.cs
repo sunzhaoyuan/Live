@@ -9,6 +9,9 @@ public class Aniki : AEnemy
 {
 	private bool IsStab1;
 	public GameObject EarthquakeAlert;
+	public GameObject YunshiAlert;
+	private Collider LeftSword;
+	private Collider RightSword;
 	//earthquake red circle
 
 	public Aniki ()
@@ -23,45 +26,74 @@ public class Aniki : AEnemy
 		IsStab1 = true;
 		Buff = new EmptyBuff ();
 
-		Skills = new Dictionary<string, List<ASkill>> { {"close", new List<ASkill> {new Stab (), new Stab (), new Stab (), new Earthquake ()
-
+		Skills = new Dictionary<string, List<ASkill>> { {
+				"close",
+				new List<ASkill> {
+					new Stab (),
+					new Stab (),
+					new Stab (),
+					new Earthquake ()
 				}
 			}
-		};
+			, {
+				"mid",
+				new List<ASkill> {
+					new Yunshi (),
+					new EmptySkill (),
+					new EmptySkill (),
+					new EmptySkill (),
+					new EmptySkill ()
+				}
+			}
+		}; 
 	}
 
 	protected override void Awake ()
 	{
 		base.Awake ();
 		IsAnimator = false;
+		RightSword = GameObject.Find ("Weapon_Blade_Primary").GetComponent<BoxCollider> ();
+		Debug.Log (RightSword.name);
+		LeftSword = GameObject.Find ("Weapon_Blade_Secondary").GetComponent<BoxCollider> ();
+//		YunshiAlert = GameObject.Find ("YunshiAlert");
 	}
 
 
 	public override void Attack ()
 	{
+		if (!CurrentSkill.Name.Equals ("Yunshi")) {
+			Debug.Log (CurrentSkill.Name + " AAA");
+			gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		}
 		CanDealDamage = true;
 		if (CurrentSkill.Name.Equals ("Stab")) {
-			if (IsStab1)
+			if (IsStab1) {
+				CurrentSkill.ActivateCollider (true, RightSword);
 				Animation.Play ("Stab1");
-			else
+			} else {
+				CurrentSkill.ActivateCollider (true, LeftSword);
 				Animation.Play ("Stab2");
+			}
 			IsStab1 = !IsStab1;
-		} else {
+		} else if (CurrentSkill.Name.Equals ("Earthquake") || CurrentSkill.Name.Equals ("Yunshi")) {
+			Debug.Log ("BBB");
 			Animation.Play ("Earthquake");
-
 		}
 	}
 
 	public override void DecideState ()
 	{
 		base.DecideState ();
-
+		if (!(CurrentState == State.ATTACK || CurrentState == State.IDLE)) {
+			CurrentSkill.ActivateCollider (false, RightSword);
+			CurrentSkill.ActivateCollider (false, LeftSword);
+		}
 		/// Only for activate collider of Earthquake
 		if (CurrentSkill.Name.Equals ("Earthquake")) {
 			EarthquakeAlert.SetActive (true);//activate the alert
 			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
 			Collider c = gameObject.GetComponent<SphereCollider> ();
-			if (Mathf.Abs (Time.time - AttackEndTime) <= 0.04f) {
+			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
 				CurrentSkill.ActivateCollider (true, c);
 				CanDealDamage = true;
 			} else {
@@ -70,6 +102,21 @@ public class Aniki : AEnemy
 			}
 		} else {
 			EarthquakeAlert.SetActive (false);
+		}
+
+		if (CurrentSkill.Name.Equals ("Yunshi")) {
+			YunshiAlert.SetActive (true);//activate the alert
+			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
+			Collider c = YunshiAlert.GetComponent<SphereCollider> ();
+			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
+				CurrentSkill.ActivateCollider (true, c);
+				CanDealDamage = true;
+			} else {
+				CurrentSkill.ActivateCollider (false, c);
+				CanDealDamage = false;
+			}
+		} else {
+			YunshiAlert.SetActive (false);
 		}
 	}
 
