@@ -36,7 +36,7 @@ public class Aniki : AEnemy
 				}
 			}
 			, {
-				"mid",
+				"far",
 				new List<ASkill> {
 					new Yunshi (),
 					new EmptySkill (),
@@ -53,7 +53,6 @@ public class Aniki : AEnemy
 		base.Awake ();
 		IsAnimator = false;
 		RightSword = GameObject.Find ("Weapon_Blade_Primary").GetComponent<BoxCollider> ();
-		Debug.Log (RightSword.name);
 		LeftSword = GameObject.Find ("Weapon_Blade_Secondary").GetComponent<BoxCollider> ();
 //		YunshiAlert = GameObject.Find ("YunshiAlert");
 	}
@@ -64,14 +63,19 @@ public class Aniki : AEnemy
 		if (!CurrentSkill.Name.Equals ("Yunshi")) {
 			gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		}
-		CanDealDamage = true;
+		//CanDealDamage = true;
 		if (CurrentSkill.Name.Equals ("Stab")) {
 			if (IsStab1) {
 				CurrentSkill.ActivateCollider (true, RightSword);
+				CurrentSkill.ActivateCollider (false, LeftSword);
 				Animation.Play ("Stab1");
+				CanDealDamage = true;
+				Debug.Log ("Enter stab" + CanDealDamage);
 			} else {
 				CurrentSkill.ActivateCollider (true, LeftSword);
+				CurrentSkill.ActivateCollider (false, RightSword);
 				Animation.Play ("Stab2");
+				CanDealDamage = true;
 			}
 			IsStab1 = !IsStab1;
 		} else if (CurrentSkill.Name.Equals ("Earthquake") || CurrentSkill.Name.Equals ("Yunshi")) {

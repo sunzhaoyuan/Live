@@ -240,6 +240,8 @@ public class Player : MonoBehaviour
 			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill bossSkill = boss.CurrentSkill;
 			float d = bossSkill.Damage;
+			if (!boss.CanDealDamage)
+				damage = 0f;
 			CurrentHP -= d;
 			if (CurrentHP <= 0)
 				Die ();

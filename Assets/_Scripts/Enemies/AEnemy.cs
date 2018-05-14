@@ -111,13 +111,13 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (2f <= distance && distance <= closeRange) {
+			if (distance <= closeRange && Skills.ContainsKey("close")) {
 				canAttack = true;
 				attackRange = "close";
-			} else if (closeRange <= distance && distance <= midRange) {
+			} else if (closeRange <= distance && distance <= midRange && Skills.ContainsKey("mid")) {
 				canAttack = true;
 				attackRange = "mid";
-			} else if (midRange <= distance && distance <= farRange) {
+			} else if (midRange <= distance && distance <= farRange && Skills.ContainsKey("far")) {
 				canAttack = true;
 				attackRange = "far";
 			}
@@ -177,7 +177,7 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
-			CanDealDamage = false;
+			//CanDealDamage = false;
 			break;
 
 		case State.MOVE:
