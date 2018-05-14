@@ -17,22 +17,27 @@ public class ShotGun : AGun
 
 	public override void Fire (Player player)
 	{
+		if (Ammo == 0) {
+			player.gunfire.SetActive (false);
+			player.bulleteffet.SetActive (false);
+		}
 	
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-			Quaternion Face = player.transform.rotation;
-			//Vector3 Face = player.transform.forward;
+			Vector3 Face=player.transform.rotation.eulerAngles;
+			Quaternion FaceMid = Quaternion.Euler (Face);
+			Quaternion FaceLeft = Quaternion.Euler (Face.x, Face.y + 30f, Face.z);
+			Quaternion FaceRight = Quaternion.Euler (Face.x, Face.y - 30f, Face.z);
 
 
-
-			ABullet bullet = Instantiate (Bullet, player.transform.position, Face);
-			Face = Quaternion.Euler (0, 30, 0);
-			ABullet bullet1 = Instantiate (Bullet, player.transform.position, Face);
-			Face = Quaternion.Euler (0, -30, 0);
-			ABullet bullet2 = Instantiate (Bullet, player.transform.position,Face);
-
-
+			ABullet bullet = Instantiate (Bullet, player.gunfire.transform.position, player.transform.rotation);
+			ABullet bullet1 = Instantiate (Bullet, player.gunfire.transform.position, FaceLeft);
+			ABullet bullet2 = Instantiate (Bullet, player.gunfire.transform.position,FaceRight);
+			player.gunfire.SetActive (true);
+			player.bulleteffet.SetActive(true);
 			Ammo--;
 		}
+
 	}
+
 }

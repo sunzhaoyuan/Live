@@ -9,24 +9,34 @@ public class Grenade : MonoBehaviour {
     public GameObject explosioneffect;
     float countdown;
     bool hasexloded = false;
+  
 
-	void Start () {
+
+
+
+   
+    void Start () {
         countdown = delay;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
         countdown -= Time.deltaTime; 
         if(countdown <= 0f && hasexloded==false)
         {
+            
             Explode();
             hasexloded = true;
         }
        
 	}
+    
 
     void Explode()
     {
+       
+        
         Instantiate(explosioneffect, transform.position, transform.rotation);
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
@@ -38,6 +48,8 @@ public class Grenade : MonoBehaviour {
                 rb.AddExplosionForce(force, transform.position, radius);
             }
         }
+       
+
         Destroy(gameObject);
     }
 }
