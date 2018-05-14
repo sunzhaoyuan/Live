@@ -637,6 +637,11 @@ Prefab:
       propertyPath: farRange
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: Speed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
   m_IsPrefabParent: 0
