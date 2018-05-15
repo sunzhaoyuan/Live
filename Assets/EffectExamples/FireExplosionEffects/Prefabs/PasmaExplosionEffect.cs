@@ -20,7 +20,6 @@ public class PasmaExplosionEffect : MonoBehaviour {
         countdown -= Time.deltaTime;
         if (countdown <= 0f)
         {
-            Audio.Play();
             Destroy(gameObject);
         }
 	}

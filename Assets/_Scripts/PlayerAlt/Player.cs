@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 	public float MaxHP = 100f;
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
+	public float InvincibleTime = 0f;
 
 	public int GunIndex;
 
@@ -31,7 +32,8 @@ public class Player : MonoBehaviour
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
 
-	public GameObject DodgeFlash;
+	public GameObject DodgeFlash1;
+	public GameObject DodgeFlash2;
 	float delayTime = 0.2f;
 
 	public GameObject gunfire;
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
+
+	public GameObject dieblood;
 
 	AudioSource Audio;
 	public AudioClip gunshot;
@@ -128,7 +132,7 @@ public class Player : MonoBehaviour
 			//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
 			//	FacingDirection = MovingDirection;
 		}
-		
+
 		MovingDirection.Normalize ();
 	}
 
@@ -137,8 +141,6 @@ public class Player : MonoBehaviour
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
-			Audio.clip = Run;
-			Audio.Play ();
 			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * RunSpeed;
 			//Debug.Log (MovingDirection * 100f);
 			//transform.position += MovingDirection * RunSpeed;
@@ -147,13 +149,9 @@ public class Player : MonoBehaviour
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
 			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
-			Audio.clip = walk;
-			Audio.Play ();
 			//transform.position += MovingDirection * WalkSpeed;
 		} else {
 			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
-			Audio.clip = walk;
-			Audio.Play ();
 		}
 
 		//aiming
@@ -165,11 +163,13 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7") || Input.GetKey ("space")) { //r2
+		if (!PrimaryGun.Name.Equals ("ShotGun") && Input.GetKey ("joystick button 7") || Input.GetKey ("space")) { //r2
 			IsAiming = true;
 			IsFiring = true;
-			Audio.clip = gunshot;
-			Audio.Play ();
+			PrimaryGun.Fire (this);
+		} else if (PrimaryGun.Name.Equals ("ShotGun") && Input.GetKeyDown ("joystick button 7") || Input.GetKey ("space")) {
+			IsAiming = true;
+			IsFiring = true;
 			PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
@@ -211,7 +211,7 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-        
+
 		//Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
 		//StartCoroutine(SimulateProjectile());
@@ -219,31 +219,29 @@ public class Player : MonoBehaviour
 		//Vector3 gg = FacingDirection;
 		//gg.Normalize ();
 		rb.useGravity = true;
-		Vector3 kk = new Vector3 (transform.forward.x, transform.forward.y - 10f, transform.forward.z);
-		rb.AddForce (kk * 5f, ForceMode.VelocityChange);
+		Vector3 kk = new Vector3 (grenade.transform.forward.x, grenade.transform.forward.y - 10f, grenade.transform.forward.z);
+		rb.AddForce (kk * 20f, ForceMode.Impulse);
 
 	}
 
-  
+
 
 	void Dodge ()
 	{
-		Instantiate (DodgeFlash, transform.position, transform.rotation);
+		Instantiate (DodgeFlash1, transform.position, transform.rotation);
 		gameObject.SetActive (false);
-        
+
 		Vector3 moveDir = MovingDirection;
 		moveDir.Normalize ();
 		transform.position = transform.position + DashRadius * moveDir;
-       
 		Invoke ("DelayDodge", delayTime);
-        
-		Destroy (DodgeFlash);
 
+		
 	}
 
 	void DelayDodge ()
 	{
-		Instantiate (DodgeFlash, transform.position, transform.rotation);
+		Instantiate (DodgeFlash2, transform.position, transform.rotation);
 		gameObject.SetActive (true);
 	}
 
@@ -259,19 +257,17 @@ public class Player : MonoBehaviour
 		bondRenderer.endWidth = .5f;
 		bondRenderer.startColor = Color.red;
 		bondRenderer.endColor = Color.red;
-
-		bondRenderer.SetPositions (new Vector3[] {transform.position, 
-			this.ConnectingEnemy.transform.position
-		});
+		Debug.Log ("drawing line");
+		Vector3 startPoint = new Vector3 (transform.position.x, transform.position.y + 2f, transform.position.z);
+		Vector3 endPoint = new Vector3 (this.ConnectingEnemy.transform.position.x, this.ConnectingEnemy.transform.position.y + 2f, this.ConnectingEnemy.transform.position.z);
+		bondRenderer.SetPositions (new Vector3[] { startPoint, endPoint });
 		GameObject.Destroy (myBond, 0.05f);
 	}
 
 	void Die ()
 	{
-		Audio.clip = death;
-		Audio.Play ();
+		Instantiate (dieblood, transform.position, transform.rotation);
 		Destroy (this.gameObject);
-      
 	}
 
 	void SwitchGun ()
@@ -294,10 +290,8 @@ public class Player : MonoBehaviour
 		case "Enemy":
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
-			float damage = enemySkill.Damage;
-			if (!enemy.CanDealDamage)
-				damage = 0f;
-			CurrentHP -= damage;
+			float enemyDamage = enemySkill.Damage;
+			CurrentHP -= enemyDamage;
 			if (CurrentHP <= 0)
 				Die ();
 			break;
@@ -305,10 +299,12 @@ public class Player : MonoBehaviour
 		case "Boss":
 			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill bossSkill = boss.CurrentSkill;
-			float d = bossSkill.Damage;
-			if (!boss.CanDealDamage)
-				damage = 0f;
-			CurrentHP -= d;
+			float bossDamage = bossSkill.Damage;
+			if (!boss.CanDealDamage || InvincibleTime >= Time.time)
+				bossDamage = 0;
+			else
+				InvincibleTime = Time.time + 0.1f;
+			CurrentHP -= bossDamage;
 			if (CurrentHP <= 0)
 				Die ();
 			break;

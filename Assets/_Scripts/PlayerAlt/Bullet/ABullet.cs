@@ -15,9 +15,6 @@ public class ABullet : MonoBehaviour
 	void Update ()
 	{
 		gameObject.GetComponent<Rigidbody>().velocity = transform.forward * this.Speed;
-		//Debug.Log (Vector3.forward);
-		//transform.Translate (Vector3.forward * this.Speed * Time.deltaTime);
-
 	}
 		
 }
