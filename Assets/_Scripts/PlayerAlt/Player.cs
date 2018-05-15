@@ -152,8 +152,6 @@ public class Player : MonoBehaviour
 			//transform.position += MovingDirection * WalkSpeed;
 		} else {
 			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
-			Audio.clip = walk;
-			Audio.Play ();
 		}
 
 		//aiming
