@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
 {
 	public bool IsRunning = false;
 	public bool IsAiming = false;
+	public bool IsFiring = false;
 
 	public float DashRadius = 10f;
-	public float RunSpeed = 1.5f;
-	public float WalkSpeed = 0.5f;
+	public float RunSpeed = 40f;
+	public float WalkSpeed = 20f;
 	public Vector3 MovingDirection;
 	public Vector3 FacingDirection;
 	public float MaxHP = 100f;
@@ -30,12 +31,28 @@ public class Player : MonoBehaviour
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
 
+	public GameObject DodgeFlash;
+	float delayTime = 0.2f;
+
+	public GameObject gunfire;
+	public GameObject bulleteffet;
+
 	public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
+
+	AudioSource Audio;
+	public AudioClip gunshot;
+	public AudioClip reload;
+	public AudioClip death;
+	public AudioClip walk;
+	public AudioClip Run;
+	public AudioClip flash;
+
+
 
 	// UI
 	public Image uitHPbar;
@@ -59,6 +76,9 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
+		//	Debug.Log ("Run:"+IsRunning);
+		//	Debug.Log ("Aim:"+IsAiming);
+
 		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
 			Fire ();
@@ -105,7 +125,8 @@ public class Player : MonoBehaviour
 			IsAiming = true;	
 		} else {
 			IsAiming = false;
-			//transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//	FacingDirection = MovingDirection;
 		}
 		
 		MovingDirection.Normalize ();
@@ -113,12 +134,26 @@ public class Player : MonoBehaviour
 
 	void MoveAndAim ()
 	{
-		if (!IsAiming && IsRunning) {//just running
-			transform.position += MovingDirection * RunSpeed;
-			//Quaternion Rot = Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
-			//transform.rotation = Rot;
+		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
+
+		if (!IsAiming && IsRunning && !IsFiring) {//just running
+			Audio.clip = Run;
+			Audio.Play ();
+			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * RunSpeed;
+			//Debug.Log (MovingDirection * 100f);
+			//transform.position += MovingDirection * RunSpeed;
+			transform.rotation = MoveRot;
+			FacingDirection = MovingDirection;
+		} else if (IsRunning && IsFiring && !IsAiming) {
+			transform.rotation = MoveRot;
+			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
+			Audio.clip = walk;
+			Audio.Play ();
+			//transform.position += MovingDirection * WalkSpeed;
 		} else {
-			transform.position += MovingDirection * WalkSpeed;
+			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
+			Audio.clip = walk;
+			Audio.Play ();
 		}
 
 		//aiming
@@ -130,11 +165,16 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7")) { //r2
+		if (Input.GetKey ("joystick button 7") || Input.GetKey ("space")) { //r2
 			IsAiming = true;
+			IsFiring = true;
+			Audio.clip = gunshot;
+			Audio.Play ();
 			PrimaryGun.Fire (this);
 		} else {
-			IsAiming = false;
+			IsFiring = false;
+			this.gunfire.SetActive (false);
+			this.bulleteffet.SetActive (false);
 		}
 
 
@@ -152,13 +192,13 @@ public class Player : MonoBehaviour
 
 	void UseSkill ()
 	{
-		if (Input.GetKeyDown ("joystick button 4")) {
+		if (Input.GetKeyDown ("joystick button 4") || Input.GetKeyDown (KeyCode.B)) {
 			TimeNextSkill += 3f;
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
 			TimeNextSkill += 1f;
 			PrimaryGun.Reload ();
-		} else if (Input.GetKeyDown ("joystick button 1")) {
+		} else if (Input.GetKeyDown ("joystick button 1") || Input.GetKeyDown (KeyCode.A)) {
 			if (FlashNumber >= 0) {
 				Dodge ();
 				FlashNumber--;
@@ -171,21 +211,40 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-
-		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
-		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
-		Vector3 gg = FacingDirection;
-		gg.Normalize ();
-		// rb.AddForce(FacingDirection *throwForce, ForceMode.VelocityChange);
         
+		//Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
+		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+		//StartCoroutine(SimulateProjectile());
+		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
+		//Vector3 gg = FacingDirection;
+		//gg.Normalize ();
+		rb.useGravity = true;
+		Vector3 kk = new Vector3 (transform.forward.x, transform.forward.y - 10f, transform.forward.z);
+		rb.AddForce (kk * 5f, ForceMode.VelocityChange);
+
 	}
+
+  
 
 	void Dodge ()
 	{
+		Instantiate (DodgeFlash, transform.position, transform.rotation);
+		gameObject.SetActive (false);
+        
 		Vector3 moveDir = MovingDirection;
 		moveDir.Normalize ();
 		transform.position = transform.position + DashRadius * moveDir;
-		
+       
+		Invoke ("DelayDodge", delayTime);
+        
+		Destroy (DodgeFlash);
+
+	}
+
+	void DelayDodge ()
+	{
+		Instantiate (DodgeFlash, transform.position, transform.rotation);
+		gameObject.SetActive (true);
 	}
 
 	void DrawBond ()
@@ -209,7 +268,10 @@ public class Player : MonoBehaviour
 
 	void Die ()
 	{
+		Audio.clip = death;
+		Audio.Play ();
 		Destroy (this.gameObject);
+      
 	}
 
 	void SwitchGun ()
