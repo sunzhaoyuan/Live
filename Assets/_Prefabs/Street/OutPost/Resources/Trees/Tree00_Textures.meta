@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_Prefabs/Street/OutPost/Resources/Trees/Tree00_Textures.meta
 guid: 3e2d9b7cda7c78a439945a098cdc5b0e
 folderAsset: yes
 timeCreated: 1526345628
+=======
+guid: 92af03ceb63224ee7bb589b2dee6e9be
+folderAsset: yes
+timeCreated: 1524598916
+>>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499:Assets/OutPost/Resources.meta
 licenseType: Pro
 DefaultImporter:
   externalObjects: {}
