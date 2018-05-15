@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 114646847923624564}
   m_Layer: 0
   m_Name: StoneRhino
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1352,8 +1352,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629264477037092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.39, y: -1.42, z: 20.39}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 9.39, y: -1.92, z: 20.39}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4382185907129394}
   - {fileID: 4474088042492066}
@@ -1636,8 +1636,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!111 &111019833390030720
 Animation:
   m_ObjectHideFlags: 1
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   NextAttackTime: 0
   AttackEndTime: 0
   CurrentSkill: {fileID: 0}
-  Speed: 4
+  Speed: 8
   closeRange: 2
   midRange: -1
   farRange: -1
