@@ -32,17 +32,8 @@ public class AEnemy : MonoBehaviour
 	public bool IsWeak = false;
 	public bool IsDead = false;
 	public float deadAnimDuration;
-
-	public bool CanDealDamage = false;
-
+	protected Animation anim;
 	public ABuff Buff;
-
-	/// IsAnimator needs to be called before Animation and Animator 
-	/// are initialized (before Start()) !!!!!
-	public bool IsAnimator;
-	public Animation Animation;
-	public Animator Animator;
-	public string LastAnimState = "";
 
 	[Header ("DON'T Change Player")]
 	public Player player;
@@ -50,16 +41,6 @@ public class AEnemy : MonoBehaviour
 	public Vector3 Position {
 		get { return transform.position; }
 		set { transform.position = value; }
-	}
-
-
-	/// <summary>
-	/// player is initialized by GameObject.Find method
-	/// because of the issue of prefab (details in RefreshBoss.cs)
-	/// </summary>
-	protected virtual void Awake ()
-	{
-		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}
 
 
@@ -79,11 +60,12 @@ public class AEnemy : MonoBehaviour
 	/// Enemies always looks at the player, rotating by y by yRotationOffset.
 	/// </summary>
 	/// <param name="yRotationOffset">Y rotation offset.</param>
-	public void EnemyLookAt ()
+	protected void EnemyLookAt (float yRotationOffset)
 	{
 		Vector3 relativePos = player.transform.position - Position;
 		relativePos.y = 0;
 		Quaternion rotation = Quaternion.LookRotation (relativePos);
+		rotation.eulerAngles -= new Vector3 (0, yRotationOffset, 0);
 		transform.rotation = rotation;
 	}
 
@@ -91,15 +73,21 @@ public class AEnemy : MonoBehaviour
 	/// Move the Enemy
 	/// </summary>
 	/// <param name="distance">Distance.</param>
-	public void EnemyMove (float speed)
+	protected void EnemyMove (float distance)
 	{
-		gameObject.GetComponent<Rigidbody> ().velocity = transform.forward * speed;
+		if (Mathf.Abs (Vector3.Distance (Position, player.transform.position)) <= distance)
+			return;
+
+		Vector3 direction = Position - player.transform.position;
+		direction.y = 0;
+		direction.Normalize ();
+		Position -= direction * Speed * Time.deltaTime;
 	}
 
 	/// <summary>
 	/// Decides the state.
 	/// </summary>
-	public virtual void DecideState ()
+	protected virtual void DecideState ()
 	{
 		if (CurrentHP <= 0f) {
 			CurrentState = State.DIED;
@@ -111,13 +99,13 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (distance <= closeRange && Skills.ContainsKey("close")) {
+			if (0f <= distance && distance <= closeRange) {
 				canAttack = true;
 				attackRange = "close";
-			} else if (closeRange <= distance && distance <= midRange && Skills.ContainsKey("mid")) {
+			} else if (closeRange <= distance && distance <= midRange) {
 				canAttack = true;
 				attackRange = "mid";
-			} else if (midRange <= distance && distance <= farRange && Skills.ContainsKey("far")) {
+			} else if (midRange <= distance && distance <= farRange) {
 				canAttack = true;
 				attackRange = "far";
 			}
@@ -126,14 +114,11 @@ public class AEnemy : MonoBehaviour
 				List<ASkill> skills = Skills [attackRange];
 				int skillNum = ran.Next (skills.Count);
 				CurrentSkill = skills [skillNum];
-				if (!CurrentSkill.Name.Equals ("EmptySkill"))
-					CurrentState = State.ATTACK;
-				else {
-					AttackEndTime = Time.time + 1f;
-					NextAttackTime = AttackEndTime;
-				}
+				
+				CurrentState = State.ATTACK;
+
 				AttackEndTime = CurrentSkill.Duration + Time.time;
-				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown; //随便设的
+				NextAttackTime = AttackEndTime + CurrentSkill.Cooldown (); //随便设的
 			} else { //Cannot attack
 				CurrentState = State.MOVE;
 			}
@@ -148,23 +133,15 @@ public class AEnemy : MonoBehaviour
 	/// <summary>
 	/// only play animation
 	/// </summary>
-	public virtual void Attack ()
+	protected virtual void Attack ()
 	{
-
-		if (IsAnimator) {
-
-		} else {
-			Animation.Play (CurrentSkill.Name);
-		}
+		
+		anim.Play (CurrentSkill.AnimName);
 	}
 
-	protected virtual void Start ()
+	void Start ()
 	{
-		if (IsAnimator) {
-			Animator = GetComponent<Animator> ();
-		} else {
-			Animation = GetComponent<Animation> ();
-		}	
+		anim = GetComponent<Animation> ();
 		CurrentSkill = new EmptySkill ();
 	}
 
@@ -177,19 +154,15 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
-			//CanDealDamage = false;
+//			anim.Play ("Idle");
 			break;
 
 		case State.MOVE:
-			EnemyLookAt ();
-			EnemyMove (Speed);
-			CanDealDamage = false;
+			EnemyLookAt (0f);
+			EnemyMove (2f);
+
 			CurrentSkill = new EmptySkill ();
-			if (IsAnimator) {
-				Animator.SetBool ("IsRun", true);
-			} else {
-				Animation.Play ("Walk");
-			}
+			anim.Play ("Walk");
 			break;
 
 		case State.ATTACK:
@@ -197,32 +170,23 @@ public class AEnemy : MonoBehaviour
 			break;
 
 		case State.DIED:
-			CanDealDamage = false;
 			Die ();
 			break;
 
 		default:
 			break;
 		}
-		//		Debug.Log (Animator.GetBool ());
-
 	}
 
 	/// <summary>
-	/// Every Subclasses need to inherient Die(). 
-	/// Small Boss: Destroy(gameObject)
-	/// Big Boss: Rotate. (See Aniki.cs)
+	/// stop any current animation and play die animation
 	/// </summary>
-	public virtual void Die ()
+	protected virtual void Die ()
 	{
 		if (!IsDead) {
-			Animation.Play ("Die");
+			anim.Play ("Die");
 			IsDead = true;
 			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
-		}
-
-		if (Time.time >= deadAnimDuration) {
-			Destroy (this.gameObject);
 		}
 	}
 
@@ -235,12 +199,10 @@ public class AEnemy : MonoBehaviour
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
-
 			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
 			CurrentHP -= bullet.Damage;
 			Destroy (collider.gameObject);
 			break;
-
 		case "BondBullet":
 			player.IsConnecting = true;
 			player.ConnectingEnemy = this;
@@ -250,29 +212,14 @@ public class AEnemy : MonoBehaviour
 			}
 			Destroy (collider.gameObject);
 			break;
+        case "ExplosionEffect":
+                ExplosionEffect grenade = collider.gameObject.GetComponent <ExplosionEffect>();
+                CurrentHP -= grenade.Damage;
+                break;
 
-			case "ExplosionEffect":
-			ExplosionEffect grenade = collider.gameObject.GetComponent <ExplosionEffect>();
-			CurrentHP -= grenade.Damage;
-			break;
 
 		default :
 			break;
 		}
-	}
-
-	public void ClearAnimState ()
-	{
-		Animator.SetBool (LastAnimState, false);
-	}
-
-	public void DeactivateAnimState (string AnimState)
-	{
-		Animator.SetBool (AnimState, false);
-	}
-
-	public void ActivateAnimState (string AnimState)
-	{
-		Animator.SetBool (AnimState, true);
 	}
 }

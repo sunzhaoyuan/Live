@@ -11,6 +11,8 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000011128802252}
   m_IsPrefabParent: 1
+<<<<<<< HEAD:Assets/EffectExamples/FireExplosionEffects/Prefabs/PlasmaExplosionEffect.prefab
+=======
 --- !u!1 &1000010059211136
 GameObject:
   m_ObjectHideFlags: 0
@@ -17547,3 +17549,4 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+>>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499:Assets/_Prefabs/Player/PlasmaExplosionEffect.prefab
