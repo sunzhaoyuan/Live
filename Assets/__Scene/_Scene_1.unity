@@ -630,6 +630,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0.25, y: 1, z: 0}
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19.451416
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.328125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -16.175781
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589793162091878, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020863738596156, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.42813
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e46b786588955434f9ae7786d7f07664, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &689052602
 Prefab:
   m_ObjectHideFlags: 0
@@ -905,7 +947,7 @@ Prefab:
     - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: CurrentHP
-      value: 10
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
@@ -959,7 +1001,7 @@ Prefab:
     - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: MaxHP
-      value: 10
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 136567043788057616, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
@@ -986,6 +1028,9 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+      propertyPath: IsFiring
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: m_audioClip
@@ -995,8 +1040,7 @@ Prefab:
         type: 2}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300004, guid: 8434b04884c414ac6b468e10945685e6,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
         type: 2}
       propertyPath: spreadCustomCurve.m_RotationOrder
@@ -1042,29 +1086,6 @@ Prefab:
       propertyPath: Run
       value: 
       objectReference: {fileID: 8300000, guid: a98bc042145491b428410f37ecb75103, type: 3}
-    - target: {fileID: 82581188050417994, guid: 517e5833c71094b65aeca11f01132af3,
-        type: 2}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
-        type: 2}
-      propertyPath: DodgeFlash1
-      value: 
-      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
-        type: 2}
-    - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
-        type: 2}
-      propertyPath: DodgeFlash2
-      value: 
-      objectReference: {fileID: 1000012560919920, guid: 85a8865d1bf4a63478038fae23776de8,
-        type: 2}
-    - target: {fileID: 114214545651294092, guid: 517e5833c71094b65aeca11f01132af3,
-        type: 2}
-      propertyPath: dieblood
-      value: 
-      objectReference: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 517e5833c71094b65aeca11f01132af3, type: 2}
   m_IsPrefabParent: 0

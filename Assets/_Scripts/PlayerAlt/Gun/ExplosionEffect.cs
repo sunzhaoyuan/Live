@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionEffect : MonoBehaviour {
-    // AudioSource Audio;
+   // AudioSource Audio;
 
-    public float Damage;
 
+  
     // Use this for initialization
     void Start () {
        
