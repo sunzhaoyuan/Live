@@ -1163,8 +1163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: YoungKid
-  CurrentHP: 100
-  MaxHP: 100
+  CurrentHP: 20
+  MaxHP: 20
   NextAttackTime: 0
   AttackEndTime: 0
   CurrentSkill: {fileID: 0}

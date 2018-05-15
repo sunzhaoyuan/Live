@@ -637,6 +637,21 @@ Prefab:
       propertyPath: CurrentHP
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 82349332931431392, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: RunSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
@@ -813,7 +828,7 @@ Prefab:
     - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
       propertyPath: Speed
-      value: 20
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 135473797882973156, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
@@ -841,6 +856,14 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464762810698642, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464762810698642, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 135473797882973156, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}

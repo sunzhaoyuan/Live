@@ -23,7 +23,7 @@ public class BossRefresh : MonoBehaviour
 	{
 		int GONums = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		// if the numbers of small boss is less than 4, create a new one
-		if (Time.time >= NextRefreshTime && GONums < 7) {
+		if (Time.time >= NextRefreshTime && GONums < 21) {
 			System.Random r = new System.Random ();
 			int i = r.Next (5);
 			Instantiate (EnemyPrefab, RespownPoints [i].transform.position, Quaternion.identity);

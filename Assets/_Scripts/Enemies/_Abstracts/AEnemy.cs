@@ -235,7 +235,10 @@ public class AEnemy : MonoBehaviour
 		case "Bullet":
 
 			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
-			CurrentHP -= bullet.Damage;
+            float bulletDamage = bullet.Damage;
+            if (player.Buff.Name.Equals("DoubleDamage"))
+                bulletDamage *= 2;
+			CurrentHP -= bulletDamage;
 			Destroy (collider.gameObject);
 			break;
 
@@ -250,7 +253,10 @@ public class AEnemy : MonoBehaviour
 			break;
         case "ExplosionEffect":
             ExplosionEffect grenade = collider.gameObject.GetComponent<ExplosionEffect>();
-            CurrentHP -= grenade.Damage;
+            float grenadeDamage = grenade.Damage;
+            if (player.Buff.Name.Equals("DoubleDamage"))
+                grenadeDamage *= 2;
+                CurrentHP -= grenadeDamage;
             break;
 
             default :

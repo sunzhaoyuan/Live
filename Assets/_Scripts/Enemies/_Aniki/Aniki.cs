@@ -123,6 +123,7 @@ public class Aniki : AEnemy
 
 	public override void Die ()
 	{
+        EnemyMove(0f);
 		if (!IsDead) {
 			Animation.Play ("Die");
 			IsDead = true;

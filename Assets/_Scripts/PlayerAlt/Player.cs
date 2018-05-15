@@ -174,15 +174,24 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
-			IsAiming = true;
-			IsFiring = true;
-			PrimaryGun.Fire (this);
-		} else {
-			IsFiring = false;
-			this.gunfire.SetActive(false);
-			this.bulleteffet.SetActive(false);
-		}
+        if (!PrimaryGun.Name.Equals("ShotGun") && Input.GetKey("joystick button 7") || Input.GetKey("space"))
+        { //r2
+            IsAiming = true;
+            IsFiring = true;
+            PrimaryGun.Fire(this);
+        }
+        else if (PrimaryGun.Name.Equals("ShotGun") && Input.GetKeyDown("joystick button 7") || Input.GetKey("space"))
+        {
+            IsAiming = true;
+            IsFiring = true;
+            PrimaryGun.Fire(this);
+        }
+        else
+        {
+            IsFiring = false;
+            this.gunfire.SetActive(false);
+            this.bulleteffet.SetActive(false);
+        }
 
 
 		//shoot bond
