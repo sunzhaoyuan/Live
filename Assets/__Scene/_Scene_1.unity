@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 220226658}
   - component: {fileID: 220226662}
   - component: {fileID: 220226663}
+  - component: {fileID: 220226664}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -359,6 +360,86 @@ MonoBehaviour:
   - {fileID: 505825918}
   Vec3: {x: 100, y: 0, z: 100}
   RefreshDelayDeltaTime: 3
+--- !u!82 &220226664
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 220226657}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 43f6a647323438642870fd0bfcc330be, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &276854745 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4444592281857140, guid: 6b4d117f0cbd14e07b502a37299f9027,
@@ -528,6 +609,24 @@ Prefab:
       propertyPath: DodgeFlash
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: dieblood
+      value: 
+      objectReference: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+        type: 2}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: DodgeFlash1
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+        type: 2}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: DodgeFlash2
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 7b72986a1f0cf014bb4d88d86fe87991,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
@@ -723,6 +822,10 @@ Prefab:
     - target: {fileID: 1805284456304918, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
       propertyPath: m_TagString
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689873223324094, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 135473797882973156, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}

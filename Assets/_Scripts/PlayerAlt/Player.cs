@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
 
-	public GameObject DodgeFlash;
+    public GameObject DodgeFlash1;
+	public GameObject DodgeFlash2;
 	float delayTime = 0.2f;
 
 	public GameObject gunfire;
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
+
+    public GameObject dieblood;
 
 	AudioSource Audio;
 	public AudioClip gunshot;
@@ -149,8 +152,6 @@ public class Player : MonoBehaviour
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
-			Audio.clip = Run;
-			Audio.Play();
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
 			//Debug.Log (MovingDirection * 100f);
 			//transform.position += MovingDirection * RunSpeed;
@@ -159,13 +160,9 @@ public class Player : MonoBehaviour
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-			Audio.clip = walk;
-			Audio.Play();
 			//transform.position += MovingDirection * WalkSpeed;
 		} else {
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-			Audio.clip = walk;
-			Audio.Play();
 		}
 
 		//aiming
@@ -180,8 +177,6 @@ public class Player : MonoBehaviour
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
 			IsFiring = true;
-			Audio.clip = gunshot;
-			Audio.Play();
 			PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
@@ -231,8 +226,8 @@ public class Player : MonoBehaviour
 		//Vector3 gg = FacingDirection;
 		//gg.Normalize ();
 		rb.useGravity = true;
-		Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
-		rb.AddForce(kk*5f, ForceMode.Impulse);
+		Vector3 kk = new Vector3(grenade.transform.forward.x, grenade.transform.forward.y - 10f, grenade.transform.forward.z);
+		rb.AddForce(kk*20f, ForceMode.Impulse);
 
 	}
 
@@ -240,21 +235,20 @@ public class Player : MonoBehaviour
 
 	void Dodge ()
 	{
-		Instantiate(DodgeFlash, transform.position, transform.rotation);
+		Instantiate(DodgeFlash1, transform.position, transform.rotation);
 		gameObject.SetActive(false);
 
 		Vector3 moveDir = MovingDirection;
 		moveDir.Normalize ();
 		transform.position = transform.position + DashRadius * moveDir;
-
 		Invoke("DelayDodge",delayTime);
 
-		Destroy(DodgeFlash);
+		
 	}
 
 	void DelayDodge()
 	{
-		Instantiate(DodgeFlash, transform.position, transform.rotation);
+		Instantiate(DodgeFlash2, transform.position, transform.rotation);
 		gameObject.SetActive(true);
 	}
 
@@ -279,10 +273,8 @@ public class Player : MonoBehaviour
 
 	void Die ()
 	{
-		Audio.clip = death;
-		Audio.Play();
+        Instantiate(dieblood, transform.position, transform.rotation);
 		Destroy (this.gameObject);
-
 	}
 
 	void SwitchGun ()
