@@ -204,8 +204,6 @@ public class AEnemy : MonoBehaviour
 		default:
 			break;
 		}
-//		Debug.Log (Animator.GetBool ());
-		
 	}
 
 	/// <summary>

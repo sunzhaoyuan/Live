@@ -264,10 +264,10 @@ public class Player : MonoBehaviour
 		bondRenderer.endWidth = .5f;
 		bondRenderer.startColor = Color.red;
 		bondRenderer.endColor = Color.red;
-
-		bondRenderer.SetPositions (new Vector3[] {transform.position, 
-			this.ConnectingEnemy.transform.position
-		});
+        Debug.Log("drawing line");
+        Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+        Vector3 endPoint = new Vector3(this.ConnectingEnemy.transform.position.x, this.ConnectingEnemy.transform.position.y + 2f, this.ConnectingEnemy.transform.position.z);
+        bondRenderer.SetPositions (new Vector3[] {startPoint, endPoint});
 		GameObject.Destroy (myBond, 0.05f);
 	}
 
