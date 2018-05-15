@@ -48,7 +48,7 @@ public class Aniki : AEnemy
 		}; 
 	}
 
-	protected override void Awake ()
+	void Awake ()
 	{
 		base.Awake ();
 		IsAnimator = false;

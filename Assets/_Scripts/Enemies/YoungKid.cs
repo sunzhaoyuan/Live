@@ -25,13 +25,4 @@ public class YoungKid : AEnemy
 			{ "close", new List<ASkill>{ new Stab ()  } } 
 		};
     }
-
-    protected override void Die ()
-	{
-//		base.Die ();
-		IsDead = true;
-		if (Time.time >= deadAnimDuration) {
-			Destroy (this.gameObject);
-		}
-	}
 }
