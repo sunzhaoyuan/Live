@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BondBullet : ABullet
 {
-     
+
 	public BondBullet ()
 	{
 		Damage = 0f;

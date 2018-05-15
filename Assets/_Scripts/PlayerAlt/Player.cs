@@ -32,51 +32,41 @@ public class Player : MonoBehaviour
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
 
-    public GameObject DodgeFlash1;
-    public GameObject DodgeFlash2;
-    float delayTime = 0.2f;
+	public GameObject DodgeFlash;
+	float delayTime = 0.2f;
 
-    public GameObject gunfire;
-    public GameObject bulleteffet;
+	public GameObject gunfire;
+	public GameObject bulleteffet;
 
-    public Bond BondPrefab;
+	public Bond BondPrefab;
 	public Rifle RiflePrefab;
 	public ShotGun ShotGunPrefab;
 	public AGun Bond;
 	public AGun PrimaryGun;
 	public AGun SecondaryGun;
 
-    public GameObject dieblood;
-
-    AudioSource Audio;
-    //public AudioClip gunshot;
-    public AudioClip reload;
-    public AudioClip death;
-    public AudioClip walk;
-    public AudioClip Run;
-   // public AudioClip flash;
+	AudioSource Audio;
+	public AudioClip gunshot;
+	public AudioClip reload;
+	public AudioClip death;
+	public AudioClip walk;
+	public AudioClip Run;
+	public AudioClip flash;
 
 
 
-    // UI
-    public Image uitHPbar;
+	// UI
+	public Image uitHPbar;
 	public Text uitBuff;
 
-<<<<<<< HEAD
 	private void Awake()
 	{
 		Audio = GetComponent<AudioSource>();
 
-=======
-    private void Awake()
-    {
-        Audio = GetComponent<AudioSource>();
-       
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
-    }
+	}
 
-    void Start ()
+	void Start ()
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
 		PrimaryGun = (AGun)Instantiate (RiflePrefab);
@@ -93,13 +83,8 @@ public class Player : MonoBehaviour
 		SetDirections ();
 		MoveAndAim ();
 		CheckBound ();
-<<<<<<< HEAD
 		//	Debug.Log ("Run:"+IsRunning);
 		//	Debug.Log ("Aim:"+IsAiming);
-=======
-	//	Debug.Log ("Run:"+IsRunning);
-	//	Debug.Log ("Aim:"+IsAiming);
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
 		UpdateGrenade ();
 		if (Time.time >= TimeNextSkill) {
@@ -119,11 +104,7 @@ public class Player : MonoBehaviour
 
 	}
 	void CheckBound(){
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
 	}
 
@@ -156,8 +137,8 @@ public class Player : MonoBehaviour
 		} 
 		else {
 			IsAiming = false;
-		//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
-		//	FacingDirection = MovingDirection;
+			//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
+			//	FacingDirection = MovingDirection;
 		}
 
 		MovingDirection.Normalize ();
@@ -168,13 +149,8 @@ public class Player : MonoBehaviour
 		Quaternion MoveRot = Quaternion.Euler (0f, Mathf.Atan2 (MovingDirection.x, MovingDirection.z) / Mathf.PI * 180, 0f);
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
-<<<<<<< HEAD
 			Audio.clip = Run;
 			Audio.Play();
-=======
-			//Audio.clip = Run;
-			//Audio.Play();
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
 			//Debug.Log (MovingDirection * 100f);
 			//transform.position += MovingDirection * RunSpeed;
@@ -183,7 +159,6 @@ public class Player : MonoBehaviour
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-<<<<<<< HEAD
 			Audio.clip = walk;
 			Audio.Play();
 			//transform.position += MovingDirection * WalkSpeed;
@@ -191,15 +166,6 @@ public class Player : MonoBehaviour
 			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
 			Audio.clip = walk;
 			Audio.Play();
-=======
-			//Audio.clip = walk;
-			//Audio.Play();
-			//transform.position += MovingDirection * WalkSpeed;
-		} else {
-			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
-			//Audio.clip = walk;
-			//Audio.Play();
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 		}
 
 		//aiming
@@ -213,7 +179,6 @@ public class Player : MonoBehaviour
 	{
 		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
-<<<<<<< HEAD
 			IsFiring = true;
 			Audio.clip = gunshot;
 			Audio.Play();
@@ -222,16 +187,6 @@ public class Player : MonoBehaviour
 			IsFiring = false;
 			this.gunfire.SetActive(false);
 			this.bulleteffet.SetActive(false);
-=======
-            IsFiring = true;
-            //Audio.clip = gunshot;
-            //Audio.Play();
-            PrimaryGun.Fire (this);
-		} else {
-			IsFiring = false;
-            this.gunfire.SetActive(false);
-            this.bulleteffet.SetActive(false);
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 		}
 
 
@@ -260,7 +215,7 @@ public class Player : MonoBehaviour
 				Dodge ();
 				FlashNumber--;
 			}
-		} else if (Input.GetKeyDown ("joystick button 2")|| Input.GetKeyDown(KeyCode.C)) {
+		} else if (Input.GetKeyDown ("joystick button 2")) {
 			TimeNextSkill += 1f;
 			SwitchGun ();
 		}
@@ -268,7 +223,6 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-<<<<<<< HEAD
 
 		//Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
@@ -281,26 +235,11 @@ public class Player : MonoBehaviour
 		rb.AddForce(kk*5f, ForceMode.Impulse);
 
 	}
-=======
-        
-        //Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
-        GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
-        //StartCoroutine(SimulateProjectile());
-        Rigidbody rb = grenade.GetComponent<Rigidbody> ();
-        //Vector3 gg = FacingDirection;
-        //gg.Normalize ();
-        rb.useGravity = true;
-        Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
-        rb.AddForce(kk*5f, ForceMode.Impulse);
-
-    }
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
 
 
-    void Dodge ()
+	void Dodge ()
 	{
-<<<<<<< HEAD
 		Instantiate(DodgeFlash, transform.position, transform.rotation);
 		gameObject.SetActive(false);
 
@@ -318,26 +257,6 @@ public class Player : MonoBehaviour
 		Instantiate(DodgeFlash, transform.position, transform.rotation);
 		gameObject.SetActive(true);
 	}
-=======
-        Instantiate(DodgeFlash1, transform.position, transform.rotation);
-        gameObject.SetActive(false);
-        
-		Vector3 moveDir = MovingDirection;
-		moveDir.Normalize ();
-		transform.position = transform.position + DashRadius * moveDir;
-        Destroy(DodgeFlash1);
-        Invoke("DelayDodge",delayTime);
-        
-        
-
-    }
-
-    void DelayDodge()
-    {
-        Instantiate(DodgeFlash2, transform.position, transform.rotation);
-        gameObject.SetActive(true);
-    }
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
 	void DrawBond ()
 	{
@@ -359,21 +278,12 @@ public class Player : MonoBehaviour
 	}
 
 	void Die ()
-<<<<<<< HEAD
 	{
 		Audio.clip = death;
 		Audio.Play();
 		Destroy (this.gameObject);
 
 	}
-=======
-    {
-        //gameObject.SetActive(false);
-        Instantiate(dieblood, transform.position, transform.rotation);
-        Destroy (this.gameObject);
-      
-    }
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 
 	void SwitchGun ()
 	{
@@ -392,13 +302,8 @@ public class Player : MonoBehaviour
 		case "Enemy":
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
-<<<<<<< HEAD
 			float enemyDamage = enemySkill.Damage;
 			CurrentHP -= enemyDamage;
-=======
-			float damage = enemySkill.Damage;
-			CurrentHP -= damage;
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 			if (CurrentHP <= 0)
 				Die ();
 			break;
@@ -406,17 +311,12 @@ public class Player : MonoBehaviour
 		case "Boss":
 			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill bossSkill = boss.CurrentSkill;
-<<<<<<< HEAD
 			float bossDamage = bossSkill.Damage;
 			if (!boss.CanDealDamage || InvincibleTime >= Time.time)
 				bossDamage = 0;
 			else
 				InvincibleTime = Time.time + 0.1f;
 			CurrentHP -= bossDamage;
-=======
-			float d = bossSkill.Damage;
-			CurrentHP -= d;
->>>>>>> 87796c37f28cc1d92653a7b271b468eee3232499
 			if (CurrentHP <= 0)
 				Die ();
 			break;
