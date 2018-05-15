@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 	public float MaxHP = 100f;
 	public float CurrentHP;
 	public ABuff Buff = new EmptyBuff ();
+	public float InvincibleTime = 0f;
 
 	public int GunIndex;
 
@@ -58,10 +59,10 @@ public class Player : MonoBehaviour
 	public Image uitHPbar;
 	public Text uitBuff;
 
-	private void Awake ()
+	private void Awake()
 	{
-		Audio = GetComponent<AudioSource> ();
-       
+		Audio = GetComponent<AudioSource>();
+
 
 	}
 
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
 
 		SetDirections ();
 		MoveAndAim ();
+		CheckBound ();
 		//	Debug.Log ("Run:"+IsRunning);
 		//	Debug.Log ("Aim:"+IsAiming);
 
@@ -97,8 +99,12 @@ public class Player : MonoBehaviour
 		}
 
 		//Update HP UI
-//		uitHPbar.fillAmount = CurrentHP / 100f;
-//		uitBuff.text = "Buff: " + Buff.Name;
+		uitHPbar.fillAmount = CurrentHP / 100f;
+		uitBuff.text = "Buff: " + Buff.Name;
+
+	}
+	void CheckBound(){
+
 
 	}
 
@@ -128,12 +134,13 @@ public class Player : MonoBehaviour
 		//detect aiming or not
 		if (FacingDirection.magnitude > 0.3) {
 			IsAiming = true;	
-		} else {
+		} 
+		else {
 			IsAiming = false;
 			//	transform.rotation=Quaternion.Euler (0f, Mathf.Atan2 (-MovingDirection.z, MovingDirection.x) / Mathf.PI * 180, 0f);
 			//	FacingDirection = MovingDirection;
 		}
-		
+
 		MovingDirection.Normalize ();
 	}
 
@@ -143,22 +150,22 @@ public class Player : MonoBehaviour
 
 		if (!IsAiming && IsRunning && !IsFiring) {//just running
 			Audio.clip = Run;
-			Audio.Play ();
-			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * RunSpeed;
+			Audio.Play();
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*RunSpeed;
 			//Debug.Log (MovingDirection * 100f);
 			//transform.position += MovingDirection * RunSpeed;
 			transform.rotation = MoveRot;
 			FacingDirection = MovingDirection;
 		} else if (IsRunning && IsFiring && !IsAiming) {
 			transform.rotation = MoveRot;
-			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
 			Audio.clip = walk;
-			Audio.Play ();
+			Audio.Play();
 			//transform.position += MovingDirection * WalkSpeed;
 		} else {
-			gameObject.GetComponent<Rigidbody> ().velocity = MovingDirection * WalkSpeed;
+			gameObject.GetComponent<Rigidbody>().velocity=MovingDirection*WalkSpeed;
 			Audio.clip = walk;
-			Audio.Play ();
+			Audio.Play();
 		}
 
 		//aiming
@@ -170,16 +177,16 @@ public class Player : MonoBehaviour
 
 	void Fire ()
 	{
-		if (Input.GetKey ("joystick button 7") || Input.GetKey ("space")) { //r2
+		if (Input.GetKey ("joystick button 7")|| Input.GetKey("space")) { //r2
 			IsAiming = true;
 			IsFiring = true;
 			Audio.clip = gunshot;
-			Audio.Play ();
+			Audio.Play();
 			PrimaryGun.Fire (this);
 		} else {
 			IsFiring = false;
-			this.gunfire.SetActive (false);
-			this.bulleteffet.SetActive (false);
+			this.gunfire.SetActive(false);
+			this.bulleteffet.SetActive(false);
 		}
 
 
@@ -197,13 +204,13 @@ public class Player : MonoBehaviour
 
 	void UseSkill ()
 	{
-		if (Input.GetKeyDown ("joystick button 4") || Input.GetKeyDown (KeyCode.B)) {
+		if (Input.GetKeyDown ("joystick button 4")||Input.GetKeyDown(KeyCode.B )) {
 			TimeNextSkill += 3f;
 			ThrowGrenade ();
 		} else if (Input.GetKeyDown ("joystick button 5")) {
 			TimeNextSkill += 1f;
 			PrimaryGun.Reload ();
-		} else if (Input.GetKeyDown ("joystick button 1") || Input.GetKeyDown (KeyCode.A)) {
+		} else if (Input.GetKeyDown ("joystick button 1")|| Input.GetKeyDown(KeyCode.A)) {
 			if (FlashNumber >= 0) {
 				Dodge ();
 				FlashNumber--;
@@ -216,7 +223,7 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-        
+
 		//Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
 		//StartCoroutine(SimulateProjectile());
@@ -224,32 +231,31 @@ public class Player : MonoBehaviour
 		//Vector3 gg = FacingDirection;
 		//gg.Normalize ();
 		rb.useGravity = true;
-		Vector3 kk = new Vector3 (transform.forward.x, transform.forward.y - 10f, transform.forward.z);
-		rb.AddForce (kk * 5f, ForceMode.VelocityChange);
+		Vector3 kk = new Vector3(transform.forward.x, transform.forward.y - 10f, transform.forward.z);
+		rb.AddForce(kk*5f, ForceMode.Impulse);
 
 	}
 
-  
+
 
 	void Dodge ()
 	{
-		Instantiate (DodgeFlash, transform.position, transform.rotation);
-		gameObject.SetActive (false);
-        
+		Instantiate(DodgeFlash, transform.position, transform.rotation);
+		gameObject.SetActive(false);
+
 		Vector3 moveDir = MovingDirection;
 		moveDir.Normalize ();
 		transform.position = transform.position + DashRadius * moveDir;
-       
-		Invoke ("DelayDodge", delayTime);
-        
-		Destroy (DodgeFlash);
 
+		Invoke("DelayDodge",delayTime);
+
+		Destroy(DodgeFlash);
 	}
 
-	void DelayDodge ()
+	void DelayDodge()
 	{
-		Instantiate (DodgeFlash, transform.position, transform.rotation);
-		gameObject.SetActive (true);
+		Instantiate(DodgeFlash, transform.position, transform.rotation);
+		gameObject.SetActive(true);
 	}
 
 	void DrawBond ()
@@ -274,9 +280,9 @@ public class Player : MonoBehaviour
 	void Die ()
 	{
 		Audio.clip = death;
-		Audio.Play ();
+		Audio.Play();
 		Destroy (this.gameObject);
-      
+
 	}
 
 	void SwitchGun ()
@@ -296,10 +302,8 @@ public class Player : MonoBehaviour
 		case "Enemy":
 			AEnemy enemy = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill enemySkill = enemy.CurrentSkill;
-			float damage = enemySkill.Damage;
-			if (!enemy.CanDealDamage)
-				damage = 0f;
-			CurrentHP -= damage;
+			float enemyDamage = enemySkill.Damage;
+			CurrentHP -= enemyDamage;
 			if (CurrentHP <= 0)
 				Die ();
 			break;
@@ -307,10 +311,12 @@ public class Player : MonoBehaviour
 		case "Boss":
 			AEnemy boss = collider.gameObject.GetComponentInParent<AEnemy> ();
 			ASkill bossSkill = boss.CurrentSkill;
-			float d = bossSkill.Damage;
-			if (!boss.CanDealDamage)
-				damage = 0f;
-			CurrentHP -= d;
+			float bossDamage = bossSkill.Damage;
+			if (!boss.CanDealDamage || InvincibleTime >= Time.time)
+				bossDamage = 0;
+			else
+				InvincibleTime = Time.time + 0.1f;
+			CurrentHP -= bossDamage;
 			if (CurrentHP <= 0)
 				Die ();
 			break;

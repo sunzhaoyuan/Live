@@ -70,7 +70,6 @@ public class Aniki : AEnemy
 				CurrentSkill.ActivateCollider (false, LeftSword);
 				Animation.Play ("Stab1");
 				CanDealDamage = true;
-				Debug.Log ("Enter stab" + CanDealDamage);
 			} else {
 				CurrentSkill.ActivateCollider (true, LeftSword);
 				CurrentSkill.ActivateCollider (false, RightSword);
