@@ -40,7 +40,8 @@ public class Player : MonoBehaviour
 	// UI
 	public Image uitHPbar;
 	public Text uitBuff;
-
+	public weapon1Change gun1ImageScript;
+	public weapon2Change gun2ImageScript;
 
 	void Start ()
 	{
@@ -71,8 +72,8 @@ public class Player : MonoBehaviour
 		}
 
 		//Update HP UI
-//		uitHPbar.fillAmount = CurrentHP / 100f;
-//		uitBuff.text = "Buff: " + Buff.Name;
+		uitHPbar.fillAmount = CurrentHP / MaxHP;
+		uitBuff.text = "Buff: " + Buff.Name;
 
 	}
 
@@ -216,6 +217,9 @@ public class Player : MonoBehaviour
 		AGun TempGun = PrimaryGun;
 		PrimaryGun = SecondaryGun;
 		SecondaryGun = TempGun;
+
+		gun1ImageScript.change = true;
+		gun2ImageScript.change = true;
 	}
 
 	void OnTriggerEnter (Collider collider)
