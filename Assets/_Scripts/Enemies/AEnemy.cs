@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum State
 {
@@ -36,6 +37,8 @@ public class AEnemy : MonoBehaviour
 	public bool CanDealDamage = false;
 
 	public ABuff Buff;
+
+	//for updating bossHP in hud
 
 	/// IsAnimator needs to be called before Animation and Animator 
 	/// are initialized (before Start()) !!!!!
@@ -111,13 +114,13 @@ public class AEnemy : MonoBehaviour
 			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			bool canAttack = false;
 			string attackRange = null;
-			if (distance <= closeRange && Skills.ContainsKey("close")) {
+			if (distance <= closeRange && Skills.ContainsKey ("close")) {
 				canAttack = true;
 				attackRange = "close";
-			} else if (closeRange <= distance && distance <= midRange && Skills.ContainsKey("mid")) {
+			} else if (closeRange <= distance && distance <= midRange && Skills.ContainsKey ("mid")) {
 				canAttack = true;
 				attackRange = "mid";
-			} else if (midRange <= distance && distance <= farRange && Skills.ContainsKey("far")) {
+			} else if (midRange <= distance && distance <= farRange && Skills.ContainsKey ("far")) {
 				canAttack = true;
 				attackRange = "far";
 			}
@@ -168,8 +171,9 @@ public class AEnemy : MonoBehaviour
 		CurrentSkill = new EmptySkill ();
 	}
 
-	void Update ()
+	protected virtual void Update ()
 	{
+		
 		if (player != null)
 			DecideState ();
 		else
@@ -204,6 +208,8 @@ public class AEnemy : MonoBehaviour
 		default:
 			break;
 		}
+
+
 //		Debug.Log (Animator.GetBool ());
 		
 	}

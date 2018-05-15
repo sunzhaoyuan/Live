@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Aniki - The first boss.
@@ -13,6 +14,8 @@ public class Aniki : AEnemy
 	private Collider LeftSword;
 	private Collider RightSword;
 	//earthquake red circle
+	public Image bossHP;
+
 
 	public Aniki ()
 	{
@@ -57,6 +60,13 @@ public class Aniki : AEnemy
 //		YunshiAlert = GameObject.Find ("YunshiAlert");
 	}
 
+	protected override void Update ()
+	{
+		base.Update ();
+		bossHP.fillAmount = CurrentHP / MaxHP;
+		//update bossHP in HUD
+
+	}
 
 	public override void Attack ()
 	{

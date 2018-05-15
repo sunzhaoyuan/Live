@@ -10,6 +10,7 @@ public class weapon2Change : MonoBehaviour {
 	public int state = 2;
 	public Sprite Weapon1Material;
 	public Sprite Weapon2Material;
+	public bool change = false;
 
 
 	// Use this for initialization
@@ -19,10 +20,10 @@ public class weapon2Change : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("space")) {
-			print ("change weapon");
+		if (change) {	
+			print ("change weapon2");
 			this.changeWeapon();
-
+			this.change = false;
 		}
 
 	}
