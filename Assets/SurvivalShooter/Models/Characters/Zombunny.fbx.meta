@@ -86,7 +86,6 @@ ModelImporter:
     7400006: Walk
     7400008: Idle
     7400010: Die
-    7400012: Stab
     9500000: //RootNode
     11100000: //RootNode
     13700000: Zombunny
@@ -127,6 +126,325 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations:
+    - serializedVersion: 16
+      name: Walk2
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ctrl_Grp
+        weight: 1
+      - path: Ctrl_Grp/Root
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot/RightFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/HeadEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar/LeftEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar/RightEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist/LeftWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK/LeftWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK/LeftWristIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist/RightWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK/RightWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK/RightWristIK
+        weight: 1
+      - path: Zombunny
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle2
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ctrl_Grp
+        weight: 1
+      - path: Ctrl_Grp/Root
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot/RightFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/HeadEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar/LeftEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar/RightEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist/LeftWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK/LeftWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK/LeftWristIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist/RightWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK/RightWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK/RightWristIK
+        weight: 1
+      - path: Zombunny
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Die2
+      takeName: Take 001
+      firstFrame: 285
+      lastFrame: 320
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.33386382
+        functionName: StartSinking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ctrl_Grp
+        weight: 1
+      - path: Ctrl_Grp/Root
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot/LeftFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot/RightFootEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/HeadEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar/LeftEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar/RightEarEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist/LeftWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK/LeftWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK/LeftWristIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist/RightWristEnd
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK/RightWristFK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK
+        weight: 1
+      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK/RightWristIK
+        weight: 1
+      - path: Zombunny
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Walk
       takeName: Take 001
@@ -340,110 +658,6 @@ ModelImporter:
       takeName: Take 001
       firstFrame: 285
       lastFrame: 320
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Ctrl_Grp
-        weight: 1
-      - path: Ctrl_Grp/Root
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/LeftLeg
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/LeftLeg/LeftFoot/LeftFootEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/RightLeg
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/RightLeg/RightFoot/RightFootEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head/HeadEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head/LeftEar/LeftEarEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/Head/RightEar/RightEarEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArm/LeftLowerArm/LeftWrist/LeftWristEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmFK/LeftLowerArmFK/LeftWristFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/LeftUpperArmIK/LeftLowerArmIK/LeftWristIK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArm/RightLowerArm/RightWrist/RightWristEnd
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmFK/RightLowerArmFK/RightWristFK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK
-        weight: 1
-      - path: Ctrl_Grp/Root/Hips/Spine/RightUpperArmIK/RightLowerArmIK/RightWristIK
-        weight: 1
-      - path: Zombunny
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Stab
-      takeName: Take 001
-      firstFrame: 180
-      lastFrame: 210
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
