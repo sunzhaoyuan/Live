@@ -212,6 +212,11 @@ public class AEnemy : MonoBehaviour
 			}
 			Destroy (collider.gameObject);
 			break;
+        case "ExplosionEffect":
+                ExplosionEffect grenade = collider.gameObject.GetComponent <ExplosionEffect>();
+                CurrentHP -= grenade.Damage;
+                break;
+
 
 		default :
 			break;

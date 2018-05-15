@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - BondBullet
   - Boss
+  - ExplosionEffect
   layers:
   - Default
   - TransparentFX
