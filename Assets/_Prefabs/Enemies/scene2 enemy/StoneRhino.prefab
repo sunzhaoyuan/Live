@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 65004389315537436}
   - component: {fileID: 111019833390030720}
   - component: {fileID: 114646847923624564}
+  - component: {fileID: 65392452664416648}
   m_Layer: 0
   m_Name: StoneRhino
   m_TagString: Enemy
@@ -1636,8 +1637,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 2.3, y: 2.3, z: 2.3}
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!65 &65392452664416648
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629264477037092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!111 &111019833390030720
 Animation:
   m_ObjectHideFlags: 1
@@ -1675,7 +1688,7 @@ MonoBehaviour:
   AttackEndTime: 0
   CurrentSkill: {fileID: 0}
   Speed: 8
-  closeRange: 2
+  closeRange: 10
   midRange: -1
   farRange: -1
   WeakDuration: 0
