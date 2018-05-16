@@ -12,10 +12,12 @@ public class PauseMenu : MonoBehaviour
 	//[Header("Set in Inspector")]
 	public GameObject pauseMenuUI;
 	public GameObject creditUI;
-	public GameObject nextLevelMenuUI;
+    public GameObject controlUI;
+    public GameObject nextLevelMenuUI;
 	public GameObject resumeButton;
 	public GameObject backButton;
-	public GameObject restartButton;
+    public GameObject backFromControlButton;
+    public GameObject restartButton;
 	public GameObject nextButton;
 	public EventSystem m_EventSystem;
 	public GameObject youLoseText;
@@ -31,7 +33,8 @@ public class PauseMenu : MonoBehaviour
 		m_EventSystem = EventSystem.current;
 		Resume ();
 		creditUI.SetActive (false);
-		nextLevelMenuUI.SetActive (false);
+        controlUI.SetActive(false);
+        nextLevelMenuUI.SetActive (false);
 	}
 
 	void Update ()
@@ -85,7 +88,8 @@ public class PauseMenu : MonoBehaviour
 
 	public void GotoOptions ()
 	{
-		Application.LoadLevel ("OptionScreen");
+        Debug.Log("Not in use");
+        //Application.LoadLevel ("OptionScreen");
 	}
 
 	public void GotoOldScene ()
@@ -102,7 +106,15 @@ public class PauseMenu : MonoBehaviour
 		m_EventSystem.SetSelectedGameObject (backButton);
 	}
 
-	public void Back ()
+    public void GotoControl()
+    {
+        pauseMenuUI.SetActive(false);
+        controlUI.SetActive(true);
+        nextLevelMenuUI.SetActive(false);
+        m_EventSystem.SetSelectedGameObject(backFromControlButton);
+    }
+
+    public void Back ()
 	{
 		pauseMenuUI.SetActive (true);
 		creditUI.SetActive (false);
@@ -110,7 +122,15 @@ public class PauseMenu : MonoBehaviour
 		m_EventSystem.SetSelectedGameObject (resumeButton);
 	}
 
-	public void YouDie ()
+    public void BackFromControl()
+    {
+        pauseMenuUI.SetActive(true);
+        controlUI.SetActive(false);
+        nextLevelMenuUI.SetActive(false);
+        m_EventSystem.SetSelectedGameObject(resumeButton);
+    }
+
+    public void YouDie ()
 	{
 		nextLevelMenuUI.SetActive (true);
 		Time.timeScale = 0f;

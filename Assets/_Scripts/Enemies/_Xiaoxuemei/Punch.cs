@@ -8,7 +8,8 @@ public class Punch : ASkill
 	public Punch ()
 	{
 		Name = "Punch";
-		Duration = .2f;
+		Duration = .5f;
+        Damage = 10f;
 //		AnimName = "IsAttack01";
 	}
 

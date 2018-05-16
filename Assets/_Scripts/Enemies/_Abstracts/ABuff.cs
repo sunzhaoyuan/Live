@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ABuff
+public class ABuff
 {
 
 	public string Name;
 
-	public abstract void SetBuff (Player player);
+    public void SetBuff(Player player)
+    {
+        player.Buff = this;
+    }
 
-	public abstract void RemoveBuff (Player player);
+    public void RemoveBuff(Player player)
+    {
+        player.Buff = new EmptyBuff();
+    }
 
-	//	protected abstract void GetBuff (playerControl player);
+    //	protected abstract void GetBuff (playerControl player);
 }

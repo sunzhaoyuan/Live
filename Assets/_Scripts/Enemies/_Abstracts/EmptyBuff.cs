@@ -9,14 +9,4 @@ public class EmptyBuff : ABuff
 	{
 		Name = "EmptyBuff";
 	}
-
-	public override void SetBuff (Player player)
-	{
-	}
-
-	public override void RemoveBuff (Player player)
-	{
-	}
-
-	//	protected abstract void GetBuff (playerControl player);
 }

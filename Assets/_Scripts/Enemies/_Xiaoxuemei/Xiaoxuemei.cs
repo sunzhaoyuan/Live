@@ -1,14 +1,20 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Xiaoxuemei : AEnemy
 {
-	//	// same as Player::gunfire
-	//	public GameObject GunFire;
+    //	// same as Player::gunfire
+    //	public GameObject GunFire;
+    public Collider RightArm;
+    public Collider LeftArm;
+    public GameObject RightArmgo;
+    public GameObject LeftArmgo;
+    public SphereCollider YishanColl;
+    public Image bossHP;
 
-	public Xiaoxuemei ()
+    public Xiaoxuemei ()
 	{
 		Name = "Xiaoxuemei";
 		MaxHP = 1000f;
@@ -22,35 +28,49 @@ public class Xiaoxuemei : AEnemy
 	{
 		base.Awake ();
 		IsAnimator = true;
-	}
+        RightArm = RightArmgo.GetComponent<BoxCollider>();
+        LeftArm = LeftArmgo.GetComponent<BoxCollider>();
+        YishanColl = gameObject.GetComponent<SphereCollider>();
+    }
 
 	public override void DecideState ()
 	{
+        //Debug.Log(Mathf.Abs(Vector3.Distance(Position, player.transform.position)));
 		if (CurrentHP <= 0) {
 			CurrentState = State.DIED;
 			return;
 		}
+        if (Time.time >= WeakEndTime)
+            IsWeak = false;
+        if (IsWeak)
+        {
+            CurrentState = State.IDLE;
+            DeactivateAnimState("IsRun");
+            DeactivateAnimState("IsAttack01");
+            return;
+        }
 		if (Time.time >= NextAttackTime) {
-			float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
-
+            CurrentSkill.ActivateCollider(false, RightArm);
+            CurrentSkill.ActivateCollider(false, LeftArm);
+            float distance = Mathf.Abs (Vector3.Distance (Position, player.transform.position));
 			System.Random ran = new System.Random ();
 			int AttackPercent = ran.Next (100);
 			int PunchPer = 0, StrikePer = 0, MovePer = 0;
 			if (distance <= closeRange) {
-				StrikePer = 0;
 				PunchPer = 90;
 			} else if (distance <= midRange) {
 				MovePer = 50;
-				StrikePer = 23;
-				PunchPer = 22;
+				StrikePer = 25;
+				PunchPer = 24;
 			} else if (distance <= farRange) {
 				MovePer = 50;
-				StrikePer = 35;
-				PunchPer = 15;
+				StrikePer = 37;
+				PunchPer = 17;
 			} else
 				MovePer = 100;
-
+            CanDealDamage = true;
 			if (AttackPercent <= MovePer) {
+                CanDealDamage = false;
 				CurrentState = State.MOVE;
 				NextAttackTime = Time.time + 2f;
 				return;
@@ -61,12 +81,14 @@ public class Xiaoxuemei : AEnemy
 			} else if (AttackPercent <= MovePer + StrikePer + PunchPer) {
 				ClearAnimState ();
 				CurrentSkill = new Punch ();
-				Animator.SetBool ("IsAttack01", true);
+                CurrentSkill.ActivateCollider(true, RightArm);
+                CurrentSkill.ActivateCollider(true, LeftArm);
+                Animator.SetBool ("IsAttack01", true);
 				LastAnimState = "IsAttack01";
 			} else {
-				Debug.Log ("Xiaoxuemei:: " + "BladeFlash");
+				//Debug.Log ("Xiaoxuemei:: " + "BladeFlash");
 				ClearAnimState ();
-				CurrentSkill = new Bladeflash (5f, 4f, 1f);
+				CurrentSkill = new Bladeflash (1f, 2f, .2f, this);
 
 			}
 			CurrentState = State.ATTACK;
@@ -81,7 +103,13 @@ public class Xiaoxuemei : AEnemy
 		}
 	}
 
-	public override void Attack ()
+    protected override void Update()
+    {
+        base.Update();
+        bossHP.fillAmount = CurrentHP / MaxHP;
+    }
+
+    public override void Attack ()
 	{
 		CurrentSkill.UseSkill (this, player);
 	}

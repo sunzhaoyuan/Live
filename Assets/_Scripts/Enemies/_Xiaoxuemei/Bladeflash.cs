@@ -16,19 +16,22 @@ public class Bladeflash : ASkill
 
 	private XueMeiState CurrentState;
 
-	private float FacingEndTime;
-	private float ChargingEndTime;
-	private float FlashEndTime;
+	public float FacingEndTime;
+	public float ChargingEndTime;
+	public float FlashEndTime;
 	private float FacingDur;
 	private float ChargeDur;
 	private float FlashDur;
+    private bool HasFlashed;
+    private Xiaoxuemei Xuemei;
 
 
-	public Bladeflash (float facingDur, float chargeDur, float flashDur)
+	public Bladeflash (float facingDur, float chargeDur, float flashDur, Xiaoxuemei income)
 	{
 		Name = "Bladeflash";
-		Duration = 10f;
-
+        Duration = facingDur + chargeDur + flashDur + .2f ;
+        Damage = 10f;
+        Xuemei = income;
 		CurrentState = XueMeiState.FACING;
 		FacingDur = facingDur;
 		ChargeDur = chargeDur;
@@ -46,7 +49,7 @@ public class Bladeflash : ASkill
 			CurrentState = XueMeiState.FACING;
 		} else if (Time.time <= ChargingEndTime) { // switch to flash
 			CurrentState = XueMeiState.CHARGING;
-			Debug.Log ("CharingEndTime:" + FlashEndTime);
+            //Debug.Log(ChargingEndTime - Time.time);
 		} else if (Time.time <= FlashEndTime) { // skill end, switch to empty
 			CurrentState = XueMeiState.FLASHING;
 		} else {
@@ -55,22 +58,35 @@ public class Bladeflash : ASkill
 
 		switch (CurrentState) {
 		case XueMeiState.FACING:
-			enemy.DeactivateAnimState ("IsRun");
-			enemy.EnemyMove (0f);
-			enemy.EnemyLookAt ();
+			Xuemei.DeactivateAnimState ("IsRun");
+			Xuemei.EnemyMove (0f);
+			Xuemei.EnemyLookAt ();
 			break;
 		case XueMeiState.CHARGING:
-			enemy.DeactivateAnimState ("IsRun");
-			enemy.EnemyMove (0f);
+			Xuemei.DeactivateAnimState ("IsRun");
+			Xuemei.EnemyMove (0f);
 			break;
 		case XueMeiState.FLASHING:
-			enemy.ActivateAnimState ("IsRun");
-			enemy.EnemyMove (30f);
+            if (0.15f <= FlashEndTime - Time.time && FlashEndTime - Time.time <= 0.2)
+                Xuemei.YishanColl.radius = 2f;
+            else
+                Xuemei.YishanColl.radius = .29f;
+            if (!HasFlashed)
+            {
+                Xuemei.transform.position = player.transform.position - 10f * player.transform.forward;
+                Xuemei.ActivateAnimState ("IsAttack01");
+                Xuemei.EnemyLookAt();
+                HasFlashed = true;
+            }
+            Xuemei.EnemyMove (0f);
 			break;
 		default:
+            Xuemei.DeactivateAnimState ("IsAttack01");
+            Xuemei.IsWeak = true;
+            Xuemei.WeakEndTime = Time.time + 5f;
 			break;
 		}
-		Debug.Log ("BladeFlash::CurrentState " + CurrentState);
+		//Debug.Log ("BladeFlash::CurrentState " + CurrentState);
 	}
 
 }

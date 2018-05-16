@@ -27,8 +27,7 @@ public class AEnemy : MonoBehaviour
 	public float closeRange = -1;
 	public float midRange = -1;
 	public float farRange = -1;
-	public float WeakDuration;
-	public float WeakStartTime;
+	public float WeakEndTime;
 	public State CurrentState;
 	public bool IsWeak = false;
 	public bool IsDead = false;
@@ -180,7 +179,7 @@ public class AEnemy : MonoBehaviour
 		switch (CurrentState) {
 
 		case State.IDLE:
-			//CanDealDamage = false;
+            EnemyLookAt();
 			break;
 
 		case State.MOVE:
@@ -241,7 +240,9 @@ public class AEnemy : MonoBehaviour
             ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
             float bulletDamage = bullet.Damage;
             if (player.Buff.Name.Equals("DoubleDamage"))
-                bulletDamage *= 2;
+                bulletDamage *= 2f;
+            if (IsWeak)
+                bulletDamage *= 10f;
 			CurrentHP -= bulletDamage;
             if (CurrentHP <= 0f)
                 CurrentHP = 0f;
@@ -262,9 +263,7 @@ public class AEnemy : MonoBehaviour
                 break;
             ExplosionEffect grenade = collider.gameObject.GetComponent<ExplosionEffect>();
             float grenadeDamage = grenade.Damage;
-            if (player.Buff.Name.Equals("DoubleDamage"))
-                grenadeDamage *= 2;
-                CurrentHP -= grenadeDamage;
+            CurrentHP -= grenadeDamage;
             if (CurrentHP <= 0f)
                 CurrentHP = 0f;
             break;

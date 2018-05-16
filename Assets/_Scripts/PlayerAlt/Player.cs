@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
-	private float NextGranadeTime = 0f;
+	public float NextGranadeTime = 0f;
 
 	public GameObject DodgeFlash1;
 	public GameObject DodgeFlash2;
@@ -229,7 +229,8 @@ public class Player : MonoBehaviour
 		if (NextGranadeTime >= Time.time)
 			return;
 		NextGranadeTime = Time.time + 5f;
-		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
+        Vector3 throwPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		GameObject grenade = Instantiate (grenadePrefab, throwPoint, transform.rotation);
 		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
 		rb.useGravity = true;
 		Vector3 kk = new Vector3 (grenade.transform.forward.x, grenade.transform.forward.y - 10f, grenade.transform.forward.z);
@@ -296,7 +297,8 @@ public class Player : MonoBehaviour
 	{
 		string tag = collider.tag;
 
-
+        if (collider.isTrigger)
+            return;
 
 		switch (tag) {
 		case "Enemy":
@@ -315,8 +317,11 @@ public class Player : MonoBehaviour
 			if (!boss.CanDealDamage || InvincibleTime >= Time.time)
 				bossDamage = 0;
 			else
-				InvincibleTime = Time.time + 0.1f;
+				InvincibleTime = Time.time + bossSkill.Duration;
+            if (Buff.Name.Equals("StoneSkin") && bossDamage - CurrentHP <= 0f && CurrentHP != 1)
+                bossDamage = CurrentHP - 1;
 			CurrentHP -= bossDamage;
+            
 			if (CurrentHP < 0f)
 				CurrentHP = 0f;
 			break;

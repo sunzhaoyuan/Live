@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8398d27f65f59a34992cdb4366513e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 200
+  Damage: 50
   CountDown: 0
 --- !u!198 &198000010667505060
 ParticleSystem:
