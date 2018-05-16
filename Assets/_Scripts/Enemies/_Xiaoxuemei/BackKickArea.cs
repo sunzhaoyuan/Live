@@ -9,6 +9,8 @@ public class BackKickArea : MonoBehaviour
 	private float RotateDur;
 	private float RotateEndTime;
 
+	public KickBlade KickBlade;
+
 	void Start ()
 	{
 		Xxm = gameObject.GetComponentInParent<Xiaoxuemei> ();
@@ -27,6 +29,7 @@ public class BackKickArea : MonoBehaviour
 			Xxm.ActivateAnimState ("IsAttack02");
 			Xxm.LastAnimState = "IsAttack02";
 			// TODO shoot kickblade;
+			KickBlade.FireBlade (Xxm);
 		}
 	}
 	

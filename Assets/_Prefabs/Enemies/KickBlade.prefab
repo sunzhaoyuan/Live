@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1571671943378172}
+  m_RootGameObject: {fileID: 1728457266292590}
   m_IsPrefabParent: 1
---- !u!1 &1571671943378172
+--- !u!1 &1728457266292590
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4112299999085470}
-  - component: {fileID: 65246208025394660}
+  - component: {fileID: 4387894321482466}
+  - component: {fileID: 114026731475487306}
   m_Layer: 0
   m_Name: KickBlade
   m_TagString: Untagged
@@ -27,28 +27,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4112299999085470
+--- !u!4 &4387894321482466
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1571671943378172}
+  m_GameObject: {fileID: 1728457266292590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.149511, y: 7.8129234, z: 39.49305}
+  m_LocalPosition: {x: 12.312954, y: 42.061348, z: 325.57156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65246208025394660
-BoxCollider:
+--- !u!114 &114026731475487306
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1571671943378172}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1728457266292590}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be62117af596422a91d26fd7e8979e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: KickBlade
+  TimeBetweenshots: 0
+  TimeNextShot: 0.5
+  TotalAmmo: 0
+  MagazineCap: 0
+  Ammo: 0
+  Bullet: {fileID: 114221684133424600, guid: 281a79e7e07924321960bf01b9435f8d, type: 2}

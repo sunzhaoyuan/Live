@@ -96,8 +96,8 @@ public class Player : MonoBehaviour
 		}
 
 		//Update HP UI
-		uitHPbar.fillAmount = CurrentHP / MaxHP;
-		uitBuff.text = "Buff: " + Buff.Name;
+//		uitHPbar.fillAmount = CurrentHP / MaxHP;
+//		uitBuff.text = "Buff: " + Buff.Name;
 
 	}
 

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Xiaoxuemei : AEnemy
 {
+	//	// same as Player::gunfire
+	//	public GameObject GunFire;
 
 	public Xiaoxuemei ()
 	{
