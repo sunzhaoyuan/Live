@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Aniki : AEnemy
 {
-	private bool IsStab1;
+	private bool IsFrontHit1;
 	public GameObject EarthquakeAlert;
 	public GameObject YunshiAlert;
 	private Collider LeftSword;
@@ -26,15 +26,15 @@ public class Aniki : AEnemy
 		CurrentState = State.IDLE;
 		closeRange = 8f;
 		deadAnimDuration = 1f;
-		IsStab1 = true;
+		IsFrontHit1 = true;
 		Buff = new EmptyBuff ();
 
 		Skills = new Dictionary<string, List<ASkill>> { {
 				"close",
 				new List<ASkill> {
-					new Stab (),
-					new Stab (),
-					new Stab (),
+					new FrontHit (),
+					new FrontHit (),
+					new FrontHit (),
 					new Earthquake ()
 				}
 			}
@@ -74,19 +74,19 @@ public class Aniki : AEnemy
 			gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		}
 		//CanDealDamage = true;
-		if (CurrentSkill.Name.Equals ("Stab")) {
-			if (IsStab1) {
+		if (CurrentSkill.Name.Equals ("FrontHit")) {
+			if (IsFrontHit1) {
 				CurrentSkill.ActivateCollider (true, RightSword);
 				CurrentSkill.ActivateCollider (false, LeftSword);
-				Animation.Play ("Stab1");
+				Animation.Play ("FrontHit1");
 				CanDealDamage = true;
 			} else {
 				CurrentSkill.ActivateCollider (true, LeftSword);
 				CurrentSkill.ActivateCollider (false, RightSword);
-				Animation.Play ("Stab2");
+				Animation.Play ("FrontHit2");
 				CanDealDamage = true;
 			}
-			IsStab1 = !IsStab1;
+			IsFrontHit1 = !IsFrontHit1;
 		} else if (CurrentSkill.Name.Equals ("Earthquake") || CurrentSkill.Name.Equals ("Yunshi")) {
 			Animation.Play ("Earthquake");
 		}
@@ -106,10 +106,12 @@ public class Aniki : AEnemy
 			Collider c = gameObject.GetComponent<SphereCollider> ();
 			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
 				CurrentSkill.ActivateCollider (true, c);
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
 				CanDealDamage = true;
 			} else {
 				CurrentSkill.ActivateCollider (false, c);
-				CanDealDamage = false;
+                gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                CanDealDamage = false;
 			}
 		} else {
 			EarthquakeAlert.SetActive (false);
@@ -121,10 +123,12 @@ public class Aniki : AEnemy
 			Collider c = YunshiAlert.GetComponent<SphereCollider> ();
 			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
 				CurrentSkill.ActivateCollider (true, c);
-				CanDealDamage = true;
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                CanDealDamage = true;
 			} else {
 				CurrentSkill.ActivateCollider (false, c);
-				CanDealDamage = false;
+                gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                CanDealDamage = false;
 			}
 		} else {
 			YunshiAlert.SetActive (false);

@@ -60,7 +60,7 @@ public class AEnemy : MonoBehaviour
 	/// player is initialized by GameObject.Find method
 	/// because of the issue of prefab (details in RefreshBoss.cs)
 	/// </summary>
-	protected virtual void Awake ()
+    protected virtual void Awake ()
 	{
 		player = GameObject.Find ("Player").GetComponent<Player> ();
 	}

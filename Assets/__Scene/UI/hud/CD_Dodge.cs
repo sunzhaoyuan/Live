@@ -32,11 +32,9 @@ public class CD_Dodge : MonoBehaviour
 		//print (cdTime);
 
 		if (cdTime >= CDInitialTime) {
-			print ("no image");
 			CDReading.enabled = false;
 			//cdColor.a = 0f;
 		} else {
-			print ("yes image");
 			CDReading.enabled = true;
 			cdColor.a = 0.85f;
 			CDReading.fillAmount = cdTime / CDInitialTime;

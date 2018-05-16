@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 		//	Debug.Log ("Run:"+IsRunning);
 		//	Debug.Log ("Aim:"+IsAiming);
 
-		UpdateGrenade ();
+		UpdateFlash ();
 		if (Time.time >= TimeNextSkill) {
 			Fire ();
 			UseSkill ();
@@ -98,13 +98,13 @@ public class Player : MonoBehaviour
 		//Update HP UI
 		uitHPbar.fillAmount = CurrentHP / MaxHP;
 		uitBuff.text = "Buff: " + Buff.Name;
-
+        if (CurrentHP <= 0f) Die();
 	}
 
-	void UpdateGrenade ()
+	void UpdateFlash ()
 	{
 		if (Time.time >= TimeNextFlash) {
-			if (FlashNumber < 3) {
+			if (FlashNumber < 2) {
 				FlashNumber++;
 				TimeNextFlash = Time.time + FlashCD;
 			}
@@ -199,7 +199,7 @@ public class Player : MonoBehaviour
 			TimeNextSkill += 1f;
 			PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1") || Input.GetKeyDown (KeyCode.A)) {
-			if (FlashNumber >= 0) {
+			if (FlashNumber > 0) {
 				Dodge ();
 				FlashNumber--;
 			}
@@ -211,17 +211,11 @@ public class Player : MonoBehaviour
 
 	void ThrowGrenade ()
 	{
-
-		//Vector3 initialposition = new Vector3(transform.position.x, transform.position.y-2f, transform.position.z);
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
-		//StartCoroutine(SimulateProjectile());
 		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
-		//Vector3 gg = FacingDirection;
-		//gg.Normalize ();
 		rb.useGravity = true;
 		Vector3 kk = new Vector3 (grenade.transform.forward.x, grenade.transform.forward.y - 10f, grenade.transform.forward.z);
-		rb.AddForce (kk * 20f, ForceMode.Impulse);
-
+		rb.AddForce (kk * 30f, ForceMode.Impulse);
 	}
 
 
@@ -292,8 +286,6 @@ public class Player : MonoBehaviour
 			ASkill enemySkill = enemy.CurrentSkill;
 			float enemyDamage = enemySkill.Damage;
 			CurrentHP -= enemyDamage;
-			if (CurrentHP <= 0)
-				Die ();
 			break;
 
 		case "Boss":
@@ -305,8 +297,6 @@ public class Player : MonoBehaviour
 			else
 				InvincibleTime = Time.time + 0.1f;
 			CurrentHP -= bossDamage;
-			if (CurrentHP <= 0)
-				Die ();
 			break;
 
 		default:

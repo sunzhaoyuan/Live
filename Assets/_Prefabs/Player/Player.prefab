@@ -182,7 +182,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944888201973944}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.7, y: 1.05, z: 1.9450002}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
@@ -524,12 +524,13 @@ MonoBehaviour:
   IsAiming: 0
   IsFiring: 0
   DashRadius: 10
-  RunSpeed: 40
-  WalkSpeed: 20
+  RunSpeed: 30
+  WalkSpeed: 18
   MovingDirection: {x: 0, y: 0, z: 0}
   FacingDirection: {x: 0, y: 0, z: 0}
-  MaxHP: 2000
-  CurrentHP: 2000
+  MaxHP: 100
+  CurrentHP: 100
+  InvincibleTime: 0
   GunIndex: 0
   IsConnecting: 0
   ConnectingEnemy: {fileID: 0}
@@ -540,7 +541,10 @@ MonoBehaviour:
   throwForce: 5
   grenadePrefab: {fileID: 1810138137054804, guid: 18d8a964ab018e64ca5cfbd71c0d2208,
     type: 2}
-  DodgeFlash: {fileID: 0}
+  DodgeFlash1: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+    type: 2}
+  DodgeFlash2: {fileID: 1000011128802252, guid: 7b72986a1f0cf014bb4d88d86fe87991,
+    type: 2}
   gunfire: {fileID: 1985850479367182}
   bulleteffet: {fileID: 1401424055009642}
   BondPrefab: {fileID: 114648249908920288, guid: 259b3b6dd5f5b461892213e04bd29c8d,
@@ -552,6 +556,7 @@ MonoBehaviour:
   Bond: {fileID: 0}
   PrimaryGun: {fileID: 0}
   SecondaryGun: {fileID: 0}
+  dieblood: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c, type: 2}
   gunshot: {fileID: 0}
   reload: {fileID: 0}
   death: {fileID: 0}
@@ -560,6 +565,8 @@ MonoBehaviour:
   flash: {fileID: 0}
   uitHPbar: {fileID: 0}
   uitBuff: {fileID: 0}
+  gun1ImageScript: {fileID: 0}
+  gun2ImageScript: {fileID: 0}
 --- !u!120 &120232902947810654
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 33370370831394314}
   - component: {fileID: 135473797882973156}
   - component: {fileID: 23981276230043458}
+  - component: {fileID: 135025942442061834}
   m_Layer: 8
   m_Name: YunshiAlert
   m_TagString: Untagged
@@ -761,7 +762,7 @@ Transform:
   m_GameObject: {fileID: 1054800047316818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.84, z: 0}
-  m_LocalScale: {x: 40, y: 0, z: 40}
+  m_LocalScale: {x: 36, y: 0, z: 36}
   m_Children: []
   m_Father: {fileID: 4759539214007462}
   m_RootOrder: 3
@@ -1320,10 +1321,10 @@ MonoBehaviour:
   NextAttackTime: 0
   AttackEndTime: 0
   CurrentSkill: {fileID: 0}
-  Speed: 30
+  Speed: 20
   closeRange: 8
-  midRange: 12
-  farRange: -1
+  midRange: 14.5
+  farRange: 15
   WeakDuration: 0
   WeakStartTime: 0
   CurrentState: 0
@@ -1338,6 +1339,7 @@ MonoBehaviour:
   player: {fileID: 0}
   EarthquakeAlert: {fileID: 1054800047316818}
   YunshiAlert: {fileID: 1805284456304918}
+  bossHP: {fileID: 0}
 --- !u!114 &114671866311208200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1376,6 +1378,18 @@ MonoBehaviour:
   desiredTime: 2
   startColor: {r: 1, g: 1, b: 1, a: 1}
   endColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!135 &135025942442061834
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805284456304918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135365813486188024
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1386,7 +1400,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 18
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135473797882973156
 SphereCollider:

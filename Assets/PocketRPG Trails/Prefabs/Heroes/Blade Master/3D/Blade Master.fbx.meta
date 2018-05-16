@@ -61,9 +61,9 @@ ModelImporter:
     4300004: Blade_Master_01_blade_master
     7400000: Idle
     7400002: Attack1Anticipation
-    7400004: Stab1
+    7400004: FrontHit1
     7400006: Attack2Anticipation
-    7400008: Stab2
+    7400008: FrontHit2
     7400010: Whirlwind
     7400012: WhirlwindAttack
     7400014: Earthquake
@@ -161,9 +161,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Stab1
+      name: FrontHit1
       takeName: 
-      firstFrame: 144
+      firstFrame: 143
       lastFrame: 161
       wrapMode: 8
       orientationOffsetY: 0
@@ -217,10 +217,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Stab2
+      name: FrontHit2
       takeName: 
       firstFrame: 195
-      lastFrame: 214
+      lastFrame: 213
       wrapMode: 8
       orientationOffsetY: 0
       level: 0

@@ -20,10 +20,7 @@ public class weapon1Change : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//print ("w1 update");
-		//print (change);
 		if (change) {
-			//print ("change weapon1");
 			this.changeWeapon();
 			this.change = false;
 
@@ -35,11 +32,9 @@ public class weapon1Change : MonoBehaviour {
 		if (state == 1) {
 			image.sprite = Weapon2Material;
 			this.state = 2;
-			print ("weapon 1 change from 1 to 2");
 		} else {
 			image.sprite = Weapon1Material;
 			this.state = 1;
-			print ("weapon 1 change from 2 to 1");
 		}
 
 	}
