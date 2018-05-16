@@ -535,6 +535,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: DashRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 54932600624918636, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
@@ -678,6 +688,14 @@ Prefab:
     - target: {fileID: 4674902168024322, guid: 243b95a5c9d9a6a42ad169d74c860191, type: 2}
       propertyPath: m_LocalPosition.y
       value: -104
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825765403587222, guid: 243b95a5c9d9a6a42ad169d74c860191, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -317
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890098848599258, guid: 243b95a5c9d9a6a42ad169d74c860191, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -585.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 243b95a5c9d9a6a42ad169d74c860191, type: 2}
@@ -836,12 +854,12 @@ Prefab:
     - target: {fileID: 114751404330921498, guid: 65cf8e11172294309a05747b2828c55b,
         type: 2}
       propertyPath: Speed
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114751404330921498, guid: 65cf8e11172294309a05747b2828c55b,
         type: 2}
       propertyPath: closeRange
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114751404330921498, guid: 65cf8e11172294309a05747b2828c55b,
         type: 2}
@@ -865,6 +883,11 @@ Prefab:
         type: 2}
       propertyPath: m_Mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114751404330921498, guid: 65cf8e11172294309a05747b2828c55b,
+        type: 2}
+      propertyPath: CurrentHP
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65cf8e11172294309a05747b2828c55b, type: 2}
@@ -966,8 +989,8 @@ MonoBehaviour:
   target: {fileID: 261834964}
   smoothness: 10
   x: 0
-  y: 110
-  z: -121
+  y: 86
+  z: -77
 --- !u!114 &1742483175
 MonoBehaviour:
   m_ObjectHideFlags: 0
