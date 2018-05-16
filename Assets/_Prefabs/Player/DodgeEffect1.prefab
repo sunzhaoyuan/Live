@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 199000012270651464}
   - component: {fileID: 114911909916350196}
   m_Layer: 0
-  m_Name: PlasmaExplosionEffect 1
+  m_Name: DodgeEffect1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

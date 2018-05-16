@@ -55,7 +55,6 @@ public class AEnemy : MonoBehaviour
 		set { transform.position = value; }
 	}
 
-
 	/// <summary>
 	/// player is initialized by GameObject.Find method
 	/// because of the issue of prefab (details in RefreshBoss.cs)
@@ -237,12 +236,15 @@ public class AEnemy : MonoBehaviour
 		string tag1 = collider.tag;
 		switch (tag1) {
 		case "Bullet":
-
-			ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
+            if (CurrentHP <= 0)
+                break;
+            ABullet bullet = collider.gameObject.GetComponent<ABullet> ();
             float bulletDamage = bullet.Damage;
             if (player.Buff.Name.Equals("DoubleDamage"))
                 bulletDamage *= 2;
 			CurrentHP -= bulletDamage;
+            if (CurrentHP <= 0f)
+                CurrentHP = 0f;
 			Destroy (collider.gameObject);
 			break;
 
@@ -256,11 +258,15 @@ public class AEnemy : MonoBehaviour
 			Destroy (collider.gameObject);
 			break;
         case "ExplosionEffect":
+            if (CurrentHP <= 0)
+                break;
             ExplosionEffect grenade = collider.gameObject.GetComponent<ExplosionEffect>();
             float grenadeDamage = grenade.Damage;
             if (player.Buff.Name.Equals("DoubleDamage"))
                 grenadeDamage *= 2;
                 CurrentHP -= grenadeDamage;
+            if (CurrentHP <= 0f)
+                CurrentHP = 0f;
             break;
 
             default :

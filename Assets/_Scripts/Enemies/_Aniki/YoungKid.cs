@@ -14,7 +14,7 @@ public class YoungKid : AEnemy
 		Speed = 4f;
 		CurrentState = State.IDLE;
 		closeRange = 2f;
-		Buff = new DoubleDamage ();
+        Buff = new DoubleDamage ();
 	}
 
 	protected override void Awake ()

@@ -271,7 +271,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82125093529104544
 AudioSource:
@@ -364,7 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8398d27f65f59a34992cdb4366513e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  Damage: 200
+  CountDown: 0
 --- !u!198 &198000010667505060
 ParticleSystem:
   m_ObjectHideFlags: 1

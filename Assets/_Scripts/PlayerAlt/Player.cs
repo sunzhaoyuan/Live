@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
 	public bool IsConnecting = false;
 	public AEnemy ConnectingEnemy;
+    public bool HasSparked = false;
 
 	public float TimeNextSkill = 0f;
 	public int FlashNumber = 0;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
 
 	public float throwForce = 300f;
 	public GameObject grenadePrefab;
+    private float NextGranadeTime = 0f;
 
 	public GameObject DodgeFlash1;
 	public GameObject DodgeFlash2;
@@ -47,8 +49,12 @@ public class Player : MonoBehaviour
 	public AGun SecondaryGun;
 
 	public GameObject dieblood;
+    public GameObject bondspark;
+    public GameObject bondspark2;
+    public GameObject reloadeffect;
+    public GameObject switchguneffect;
 
-	AudioSource Audio;
+    AudioSource Audio;
 	public AudioClip gunshot;
 	public AudioClip reload;
 	public AudioClip death;
@@ -183,8 +189,13 @@ public class Player : MonoBehaviour
 			Bond.Fire (this);
 		} else if (Input.GetKey ("joystick button 6")) {
 			DrawBond ();
-		} else {
+            if (!HasSparked) {
+                Instantiate(bondspark2, this.ConnectingEnemy.transform.position, this.ConnectingEnemy.transform.rotation);
+                HasSparked = true;
+            }
+        } else {
 			IsConnecting = false;
+            HasSparked = false;
 			ConnectingEnemy = null;
 			Buff = new EmptyBuff (); 
 		}
@@ -192,25 +203,28 @@ public class Player : MonoBehaviour
 
 	void UseSkill ()
 	{
-		if (Input.GetKeyDown ("joystick button 4") || Input.GetKeyDown (KeyCode.B)) {
+		if (Input.GetKeyDown ("joystick button 5") || Input.GetKeyDown (KeyCode.B)) {
 			TimeNextSkill += 3f;
 			ThrowGrenade ();
-		} else if (Input.GetKeyDown ("joystick button 5")) {
+		} else if (Input.GetKeyDown ("joystick button 0")) {
 			TimeNextSkill += 1f;
-			PrimaryGun.Reload ();
+            Instantiate(reloadeffect, transform.position, transform.rotation);
+            PrimaryGun.Reload ();
 		} else if (Input.GetKeyDown ("joystick button 1") || Input.GetKeyDown (KeyCode.A)) {
 			if (FlashNumber > 0) {
 				Dodge ();
 				FlashNumber--;
 			}
-		} else if (Input.GetKeyDown ("joystick button 2")) {
+		} else if (Input.GetKeyDown ("joystick button 3")) {
 			TimeNextSkill += 1f;
+            Instantiate(switchguneffect, transform.position, transform.rotation);
 			SwitchGun ();
 		}
 	}
 
 	void ThrowGrenade ()
-	{
+	{   if (NextGranadeTime >= Time.time) return;
+        NextGranadeTime = Time.time + 5f;
 		GameObject grenade = Instantiate (grenadePrefab, transform.position, transform.rotation);
 		Rigidbody rb = grenade.GetComponent<Rigidbody> ();
 		rb.useGravity = true;
@@ -251,10 +265,10 @@ public class Player : MonoBehaviour
 		bondRenderer.endWidth = .5f;
 		bondRenderer.startColor = Color.red;
 		bondRenderer.endColor = Color.red;
-		Debug.Log ("drawing line");
 		Vector3 startPoint = new Vector3 (transform.position.x, transform.position.y + 2f, transform.position.z);
 		Vector3 endPoint = new Vector3 (this.ConnectingEnemy.transform.position.x, this.ConnectingEnemy.transform.position.y + 2f, this.ConnectingEnemy.transform.position.z);
 		bondRenderer.SetPositions (new Vector3[] { startPoint, endPoint });
+        Instantiate(bondspark, this.ConnectingEnemy.transform.position, this.ConnectingEnemy.transform.rotation);
 		GameObject.Destroy (myBond, 0.05f);
 	}
 
@@ -286,6 +300,8 @@ public class Player : MonoBehaviour
 			ASkill enemySkill = enemy.CurrentSkill;
 			float enemyDamage = enemySkill.Damage;
 			CurrentHP -= enemyDamage;
+            if (CurrentHP < 0f)
+                CurrentHP = 0f;
 			break;
 
 		case "Boss":
@@ -297,7 +313,9 @@ public class Player : MonoBehaviour
 			else
 				InvincibleTime = Time.time + 0.1f;
 			CurrentHP -= bossDamage;
-			break;
+            if (CurrentHP < 0f)
+                CurrentHP = 0f;
+            break;
 
 		default:
 			break;

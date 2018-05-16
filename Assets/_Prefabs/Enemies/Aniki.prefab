@@ -72,7 +72,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1057021469552944
 GameObject:
   m_ObjectHideFlags: 1
@@ -405,11 +405,11 @@ GameObject:
   - component: {fileID: 135025942442061834}
   m_Layer: 8
   m_Name: YunshiAlert
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1832854542924564
 GameObject:
   m_ObjectHideFlags: 1
@@ -1201,7 +1201,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689873223324094}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1339,6 +1339,7 @@ MonoBehaviour:
   player: {fileID: 0}
   EarthquakeAlert: {fileID: 1054800047316818}
   YunshiAlert: {fileID: 1805284456304918}
+  Storm: {fileID: 1000010715882420, guid: 14d81e2c407975245973a11cdfbeb902, type: 2}
   bossHP: {fileID: 0}
 --- !u!114 &114671866311208200
 MonoBehaviour:
@@ -1401,7 +1402,7 @@ SphereCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 18
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!135 &135473797882973156
 SphereCollider:
   m_ObjectHideFlags: 1

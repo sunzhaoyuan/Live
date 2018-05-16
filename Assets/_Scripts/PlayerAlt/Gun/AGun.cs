@@ -13,6 +13,7 @@ public class AGun : MonoBehaviour
 	public int TotalAmmo;
 	public int MagazineCap;
 	public int Ammo;
+    
 
 	//public GameObject gunfire;
 
@@ -48,6 +49,7 @@ public class AGun : MonoBehaviour
 		if (TotalAmmo + Ammo <= MagazineCap) {
 			TotalAmmo = 0;
 			Ammo += TotalAmmo;
+            
 		} else {
 			TotalAmmo -= MagazineCap - Ammo;
 			Ammo = MagazineCap;

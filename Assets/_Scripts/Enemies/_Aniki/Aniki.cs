@@ -13,6 +13,7 @@ public class Aniki : AEnemy
 	public GameObject YunshiAlert;
 	private Collider LeftSword;
 	private Collider RightSword;
+    public GameObject Storm;
 	//earthquake red circle
 	public Image bossHP;
 
@@ -102,9 +103,13 @@ public class Aniki : AEnemy
 		/// Only for activate collider of Earthquake
 		if (CurrentSkill.Name.Equals ("Earthquake")) {
 			EarthquakeAlert.SetActive (true);//activate the alert
-			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
-			Collider c = gameObject.GetComponent<SphereCollider> ();
-			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
+                                             // Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
+            if (0.52f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.54f)
+            {
+                Instantiate(Storm, transform.position, transform.rotation);
+            }
+                Collider c = gameObject.GetComponent<SphereCollider> ();
+			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.06f) {
 				CurrentSkill.ActivateCollider (true, c);
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
 				CanDealDamage = true;
@@ -121,7 +126,11 @@ public class Aniki : AEnemy
 			YunshiAlert.SetActive (true);//activate the alert
 			// Mathf.Abs (Time.time - AttackEndTime) <= 0.04f 保证collider在离AttackEndTime左右0.04秒的时间范围内被激活
 			Collider c = YunshiAlert.GetComponent<SphereCollider> ();
-			if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.5f) {
+            if (0.52f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.54f)
+            {
+                Instantiate(Storm, transform.position, transform.rotation);
+            }
+            if (0.01f <= AttackEndTime - Time.time && AttackEndTime - Time.time <= 0.06f) {
 				CurrentSkill.ActivateCollider (true, c);
                 gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 CanDealDamage = true;
@@ -144,8 +153,8 @@ public class Aniki : AEnemy
 			deadAnimDuration += Time.time; //update deadAniDuration to deadAnimEndTime
 		}
 
-		if (Time.time == deadAnimDuration) {
-			transform.Rotate (new Vector3 (0f, 0f, 90f));
+		if (Time.time >= deadAnimDuration) {
+            CurrentHP = -1f;
 		}
 	}
 }

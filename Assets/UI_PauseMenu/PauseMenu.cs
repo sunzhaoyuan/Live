@@ -37,14 +37,14 @@ public class PauseMenu : MonoBehaviour
 	void Update ()
 	{
 		if (Time.timeScale != 0f) {
-			if (ap.CurrentHP == 0f) {//change to Enemy.isDead ?
+			if (ap.CurrentHP == -1f) {//change to Enemy.isDead ?
 				Next ();
 			}
 			if (p.CurrentHP == 0f) {//change to Enemy.isDead ?
 				YouDie ();
 			}
 		}
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown("joystick button 9")) {
 			if (Paused) {
 				Resume ();
 			} else {
@@ -70,12 +70,12 @@ public class PauseMenu : MonoBehaviour
 
 	public void PlayGame ()
 	{
-		Application.LoadLevel ("_Scene_0");
+		Application.LoadLevel ("_Scene_1");
 	}
 
 	public void PlayLevel2 ()
 	{
-		Application.LoadLevel ("_Scene_1");
+		Application.LoadLevel ("_Scene_2");
 	}
 
 	public void QuitGame ()
