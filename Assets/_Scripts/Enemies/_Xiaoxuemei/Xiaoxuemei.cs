@@ -14,6 +14,8 @@ public class Xiaoxuemei : AEnemy
     public SphereCollider YishanColl;
     public Image bossHP;
 
+    public Light WeakLight;
+
     public Xiaoxuemei ()
 	{
 		Name = "Xiaoxuemei";
@@ -28,6 +30,7 @@ public class Xiaoxuemei : AEnemy
 	{
 		base.Awake ();
 		IsAnimator = true;
+        WeakLight.enabled = false;
         RightArm = RightArmgo.GetComponent<BoxCollider>();
         LeftArm = LeftArmgo.GetComponent<BoxCollider>();
         YishanColl = gameObject.GetComponent<SphereCollider>();
@@ -44,11 +47,16 @@ public class Xiaoxuemei : AEnemy
             IsWeak = false;
         if (IsWeak)
         {
+            Debug.Log("WEAK");
             CurrentState = State.IDLE;
             DeactivateAnimState("IsRun");
             DeactivateAnimState("IsAttack01");
+
+            WeakLight.enabled = true;
+
             return;
         }
+        WeakLight.enabled = false;
 		if (Time.time >= NextAttackTime) {
             CurrentSkill.ActivateCollider(false, RightArm);
             CurrentSkill.ActivateCollider(false, LeftArm);
@@ -57,15 +65,15 @@ public class Xiaoxuemei : AEnemy
 			int AttackPercent = ran.Next (100);
 			int PunchPer = 0, StrikePer = 0, MovePer = 0;
 			if (distance <= closeRange) {
-				PunchPer = 90;
+				PunchPer = 100;
 			} else if (distance <= midRange) {
 				MovePer = 50;
-				StrikePer = 25;
-				PunchPer = 24;
+				StrikePer = 26;
+				PunchPer = 21;
 			} else if (distance <= farRange) {
 				MovePer = 50;
-				StrikePer = 37;
-				PunchPer = 17;
+				StrikePer = 35;
+				PunchPer = 15;
 			} else
 				MovePer = 100;
             CanDealDamage = true;
@@ -115,7 +123,16 @@ public class Xiaoxuemei : AEnemy
 	}
 
 	public override void Die ()
-	{
-		Animator.SetBool ("IsDead", true);
-	}
+	{   if (!IsDead)
+        {
+            Animator.SetBool("IsDead", true);
+            IsDead = true;
+            deadAnimDuration = Time.time + 1f;
+        }
+
+        if (Time.time >= deadAnimDuration)
+        {
+            CurrentHP = -1f;
+        }
+    }
 }

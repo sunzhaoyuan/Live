@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  TimeBetweenshots: 5
+  TimeBetweenshots: 3
   TimeNextShot: 0.5
   TotalAmmo: 0
   MagazineCap: 0

@@ -30,7 +30,7 @@ public class Bladeflash : ASkill
 	{
 		Name = "Bladeflash";
         Duration = facingDur + chargeDur + flashDur + .2f ;
-        Damage = 10f;
+        Damage = 10000f;
         Xuemei = income;
 		CurrentState = XueMeiState.FACING;
 		FacingDur = facingDur;
@@ -81,9 +81,12 @@ public class Bladeflash : ASkill
             Xuemei.EnemyMove (0f);
 			break;
 		default:
-            Xuemei.DeactivateAnimState ("IsAttack01");
-            Xuemei.IsWeak = true;
-            Xuemei.WeakEndTime = Time.time + 5f;
+            if (player.Buff.Name.Equals("StoneSkin"))
+            {
+                Xuemei.DeactivateAnimState("IsAttack01");
+                Xuemei.IsWeak = true;
+                Xuemei.WeakEndTime = Time.time + 5f;
+            }
 			break;
 		}
 		//Debug.Log ("BladeFlash::CurrentState " + CurrentState);

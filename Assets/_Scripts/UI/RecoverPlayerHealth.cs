@@ -8,6 +8,7 @@ public class RecoverPlayerHealth : MonoBehaviour
 	public bool IsPlayerInTrigger;
 	public float RecoveryRate;
 	private Player player;
+    public Light light;
 
 	// Use this for initialization
 	void Start ()
@@ -21,7 +22,7 @@ public class RecoverPlayerHealth : MonoBehaviour
 		if (IsPlayerInTrigger && player.CurrentHP < player.MaxHP) {
 			Debug.Log ("Recovering");
 			player.CurrentHP += RecoveryRate;
-		}
+        }
 	}
 
 	/// <summary>
@@ -32,13 +33,15 @@ public class RecoverPlayerHealth : MonoBehaviour
 	{
 		if (collider.tag.Equals ("Player")) {
 			IsPlayerInTrigger = true;
-		}
+            light.enabled = true;
+        }
 	}
 
 	void OnTriggerExit (Collider collider)
 	{
 		if (collider.tag.Equals ("Player")) {
 			IsPlayerInTrigger = false;
+            light.enabled = false;
 		}
 	}
 

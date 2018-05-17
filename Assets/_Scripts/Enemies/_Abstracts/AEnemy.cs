@@ -242,7 +242,7 @@ public class AEnemy : MonoBehaviour
             if (player.Buff.Name.Equals("DoubleDamage"))
                 bulletDamage *= 2f;
             if (IsWeak)
-                bulletDamage *= 10f;
+                bulletDamage *= 5f;
 			CurrentHP -= bulletDamage;
             if (CurrentHP <= 0f)
                 CurrentHP = 0f;

@@ -4,7 +4,7 @@
 	public Stab ()
 	{
 		Name = "Stab";
-		Damage = 1.0f;
+		Damage = 2f;
 		Duration = .6f;
 	}
 

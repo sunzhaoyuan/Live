@@ -160,6 +160,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e46b786588955434f9ae7786d7f07664, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &178949553 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114558482593139248, guid: e51f543a0c9dc30478c35c75d00cf69d,
+    type: 2}
+  m_PrefabInternal: {fileID: 954679627}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &220226657
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,6 +962,21 @@ Prefab:
       value: 
       objectReference: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
         type: 2}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: bulletFillImage
+      value: 
+      objectReference: {fileID: 1834455736}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: bulletFillText
+      value: 
+      objectReference: {fileID: 178949553}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: dodgeTime
+      value: 
+      objectReference: {fileID: 1115414654}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
@@ -1071,6 +1092,11 @@ Prefab:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 681f6dd3192fe4b46bbd3eefcfb3f473, type: 3}
+    - target: {fileID: 114965348245767392, guid: e51f543a0c9dc30478c35c75d00cf69d,
+        type: 2}
+      propertyPath: playerAttached
+      value: 
+      objectReference: {fileID: 848969185}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e51f543a0c9dc30478c35c75d00cf69d, type: 2}
   m_IsPrefabParent: 0
@@ -1121,7 +1147,7 @@ Prefab:
     - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
       propertyPath: CurrentHP
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
@@ -1152,6 +1178,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 954679627}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1115414654 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114864548918578080, guid: e51f543a0c9dc30478c35c75d00cf69d,
+    type: 2}
+  m_PrefabInternal: {fileID: 954679627}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1199821641 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114589334220150262, guid: e51f543a0c9dc30478c35c75d00cf69d,
@@ -1174,6 +1206,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 954679627}
   m_Script: {fileID: 11500000, guid: 0f269792ce09c4673a9ec449feb89bde, type: 3}
+--- !u!114 &1834455736 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114088467240401832, guid: e51f543a0c9dc30478c35c75d00cf69d,
+    type: 2}
+  m_PrefabInternal: {fileID: 954679627}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1853545520 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,

@@ -23,7 +23,7 @@ public class StoneElephant : AEnemy
 		deadAnimDuration = 1.458f;
 		IsAnimator = false;
 		Skills = new Dictionary<string, List<ASkill>> {
-			{ "close", new List<ASkill>{ new Stab ()  } } 
+			{ "close", new List<ASkill>{ new RinoStab ()  } } 
 		};
 	}
 

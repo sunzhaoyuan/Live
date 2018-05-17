@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1154404524954594
 GameObject:
   m_ObjectHideFlags: 1
@@ -131,6 +131,22 @@ GameObject:
   - component: {fileID: 4294355711972932}
   m_Layer: 0
   m_Name: Character1_Spine2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1178703863560832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4278733337768868}
+  - component: {fileID: 108789514261779042}
+  m_Layer: 0
+  m_Name: Weak_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,6 +269,23 @@ GameObject:
   - component: {fileID: 4886992328156882}
   m_Layer: 0
   m_Name: J_R_Elbow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1307439952019266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4892944325451444}
+  - component: {fileID: 108472991013217686}
+  - component: {fileID: 114383269305660812}
+  m_Layer: 0
+  m_Name: Bladeflash_Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,6 +1039,19 @@ Transform:
   m_Father: {fileID: 4832290803746994}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4278733337768868
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178703863560832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4696268639064094}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4293010911800926
 Transform:
   m_ObjectHideFlags: 1
@@ -1356,12 +1402,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1783174036620052}
   m_LocalRotation: {x: -0, y: 0.9999556, z: -0, w: 0.009422958}
-  m_LocalPosition: {x: 14.061779, y: 33.6, z: 217.1}
+  m_LocalPosition: {x: 103.4, y: 33.2, z: 322.9}
   m_LocalScale: {x: 16, y: 16, z: 16}
   m_Children:
   - {fileID: 4964837147686182}
   - {fileID: 4474742063370746}
   - {fileID: 4574529005870240}
+  - {fileID: 4892944325451444}
+  - {fileID: 4278733337768868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 178.92001, z: 0}
@@ -1500,6 +1548,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4989396344828048}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4892944325451444
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307439952019266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4696268639064094}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4897035474150380
 Transform:
@@ -1645,6 +1706,78 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &108472991013217686
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307439952019266}
+  m_Enabled: 0
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.9852941, g: 0.35499567, b: 0.35499567, a: 1}
+  m_Intensity: 1
+  m_Range: 30
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!108 &108789514261779042
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178703863560832}
+  m_Enabled: 0
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.10347584, g: 0.042469572, b: 0.23103449, a: 1}
+  m_Intensity: 4
+  m_Range: 40
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114256725729060688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1666,6 +1799,23 @@ MonoBehaviour:
   colliders: []
   debug: 1
   threshold: 0.01
+--- !u!114 &114383269305660812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307439952019266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d5ea8c2331b4d4382bb4da857203a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashPeriod: 0.5
+  IsPlayingCharge: 0
+  IsPlayingFlash: 0
+  ChargeMusic: {fileID: 1031691482569180, guid: 18ab7d0227288d74ca40e8455d2beac0,
+    type: 2}
+  FlashMusic: {fileID: 1562155140104526, guid: 59461374b41b0fa439cb88161a9a4a19, type: 2}
 --- !u!114 &114539467202348670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1819,7 +1969,7 @@ MonoBehaviour:
   NextAttackTime: 0
   AttackEndTime: 0
   CurrentSkill: {fileID: 0}
-  Speed: 25
+  Speed: 35
   closeRange: 18
   midRange: 75
   farRange: 100
@@ -1840,6 +1990,7 @@ MonoBehaviour:
   LeftArmgo: {fileID: 1222972229857474}
   YishanColl: {fileID: 0}
   bossHP: {fileID: 0}
+  WeakLight: {fileID: 108789514261779042}
 --- !u!114 &114836655917408700
 MonoBehaviour:
   m_ObjectHideFlags: 1

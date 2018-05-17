@@ -69,8 +69,11 @@ public class Player : MonoBehaviour
 	public Text uitBuff;
 	public weapon1Change gun1ImageScript;
 	public weapon2Change gun2ImageScript;
+    public Image bulletFillImage;
+    public Text bulletFillText;
+    public Text dodgeTime;
 
-	void Start ()
+    void Start ()
 	{
 		Bond = (AGun)Instantiate (BondPrefab);
 		PrimaryGun = (AGun)Instantiate (RiflePrefab);
@@ -101,11 +104,22 @@ public class Player : MonoBehaviour
 			ConnectingEnemy = null;
 		}
 
+        if (Buff.Name.Equals("StoneSkin"))
+            CurrentHP += .1f;
+
 		//Update HP UI
 		uitHPbar.fillAmount = CurrentHP / MaxHP;
 		uitBuff.text = "Buff: " + Buff.Name;
+        bulletFillImage.fillAmount = (float)PrimaryGun.Ammo / PrimaryGun.MagazineCap;
+        bulletFillText.text = PrimaryGun.Ammo+ "/"+ PrimaryGun.MagazineCap;
+        dodgeTime.text = FlashNumber + " ";
+        if (TimeNextFlash - Time.time < 0)
+        {
+            dodgeTime.text = 3 + " ";
+        }
         
-		if (CurrentHP <= 0f)
+
+        if (CurrentHP <= 0f)
 			Die ();
 	}
 
@@ -318,8 +332,12 @@ public class Player : MonoBehaviour
 				bossDamage = 0;
 			else
 				InvincibleTime = Time.time + bossSkill.Duration;
-            if (Buff.Name.Equals("StoneSkin") && bossDamage - CurrentHP <= 0f && CurrentHP != 1)
-                bossDamage = CurrentHP - 1;
+                if (Buff.Name.Equals("StoneSkin") && bossDamage - CurrentHP <= 0 && CurrentHP != 1)
+                {
+                    bossDamage = CurrentHP - 1;
+                    IsConnecting = false;
+                    ConnectingEnemy.CurrentHP = 0f;
+                }
 			CurrentHP -= bossDamage;
             
 			if (CurrentHP < 0f)
