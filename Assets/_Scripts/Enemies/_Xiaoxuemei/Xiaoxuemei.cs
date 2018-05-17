@@ -23,14 +23,15 @@ public class Xiaoxuemei : AEnemy
 		CurrentHP = 1000f;
 		CurrentState = State.IDLE;
 		Buff = new EmptyBuff ();
-//		IsAnimator = true;
-	}
+        CurrentSkill = new EmptySkill();
+    }
 
-	protected override void Awake ()
+    protected override void Awake ()
 	{
 		base.Awake ();
 		IsAnimator = true;
         WeakLight.enabled = false;
+        CurrentSkill = new EmptySkill();
         RightArm = RightArmgo.GetComponent<BoxCollider>();
         LeftArm = LeftArmgo.GetComponent<BoxCollider>();
         YishanColl = gameObject.GetComponent<SphereCollider>();

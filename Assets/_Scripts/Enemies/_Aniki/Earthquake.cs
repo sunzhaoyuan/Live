@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Earthquake : ASkill
 {
-	public Earthquake ()
+	public Earthquake()
 	{
 		Name = "Earthquake";
 		Damage = 50.0f;

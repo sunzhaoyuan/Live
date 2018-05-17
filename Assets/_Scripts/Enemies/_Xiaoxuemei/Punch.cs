@@ -5,7 +5,7 @@ using UnityEngine;
 public class Punch : ASkill
 {
 
-	public Punch ()
+	public Punch()
 	{
 		Name = "Punch";
 		Duration = .5f;

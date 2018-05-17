@@ -5,11 +5,11 @@ using UnityEngine;
 public class RifleBullet : ABullet
 {
 
-	public RifleBullet ()
+	protected override void Update()
 	{
-		Damage = 20f;
+        base.Update();
+		Damage = 10f;
 		Speed = 80f;
-
 	}
 
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class Bond : AGun
 {
 
-	public Bond ()
+	void Start()
 	{
 		TimeBetweenshots = 5f;
 		Ammo = int.MaxValue;
-		Bullet = new  BondBullet ();
+		//Bullet = new  BondBullet ();
 	}
 
 	public override void Fire (Player player)

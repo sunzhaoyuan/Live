@@ -12,7 +12,7 @@ public class ABullet : MonoBehaviour
 	public float Damage;
 	public ABullet Bullet;
 
-	void Update ()
+	protected virtual void Update ()
 	{
 		gameObject.GetComponent<Rigidbody>().velocity = transform.forward * this.Speed;
 	}

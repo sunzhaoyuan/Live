@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public abstract class ASkill : MonoBehaviour
+public abstract class ASkill
 {
 	public string Name;
 	//	public string AnimName;

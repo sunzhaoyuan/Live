@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RinoStab : ASkill {
 
-    public RinoStab()
+   public RinoStab()
     {
         Name = "Stab";
         Damage = 20f;

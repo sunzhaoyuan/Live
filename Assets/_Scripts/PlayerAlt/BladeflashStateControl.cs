@@ -10,7 +10,7 @@ public class BladeflashStateControl : MonoBehaviour
 
 	public float FlashPeriod;
 
-	private Xiaoxuemei Xiaoxuemei;
+	public Xiaoxuemei Xiaoxuemei;
 	private Player Player;
 	private Light light;
 	private Bladeflash Bladeflash;
@@ -41,8 +41,8 @@ public class BladeflashStateControl : MonoBehaviour
 
 	void Update ()
 	{
-        
-		if (Xiaoxuemei.CurrentSkill.Name.Equals ("Bladeflash")) {
+        //Debug.Log(Xiaoxuemei.CurrentSkill.Name);
+		if (Xiaoxuemei.CurrentSkill != null && Xiaoxuemei.CurrentSkill.Name.Equals ("Bladeflash")) {
 			Bladeflash = (Bladeflash)Xiaoxuemei.CurrentSkill;
 			FacingEndTime = Bladeflash.FacingEndTime;
 			ChargingEndTime = Bladeflash.ChargingEndTime;

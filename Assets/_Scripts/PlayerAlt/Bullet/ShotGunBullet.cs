@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ShotGunBullet : ABullet {
 
-	public ShotGunBullet(){
-		Damage = 50f;
-		Speed = 50f;
+	protected override void Update(){
+		Damage = 20f;
+		Speed = 80f;
 	}
 }

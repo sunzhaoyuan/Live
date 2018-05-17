@@ -5,10 +5,9 @@ using UnityEngine;
 public class ShotGun : AGun
 {
 
-	public ShotGun ()
+	void Start()
 	{
-//		
-		Bullet=new ShotGunBullet();
+		//Bullet=new ShotGunBullet();
 		TimeBetweenshots = .5f;
 		Name = "ShotGun";
 		TotalAmmo = 100;

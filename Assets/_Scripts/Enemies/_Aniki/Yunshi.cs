@@ -5,7 +5,7 @@ using UnityEngine;
 public class Yunshi : ASkill
 {
 
-	public Yunshi ()
+	public Yunshi()
 	{
 		Name = "Yunshi";
 		Damage = 50.0f;

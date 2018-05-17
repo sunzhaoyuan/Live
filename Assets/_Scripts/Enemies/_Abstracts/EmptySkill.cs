@@ -5,7 +5,7 @@ using UnityEngine;
 public class EmptySkill : ASkill
 {
 
-	public EmptySkill ()
+    public EmptySkill()
 	{
 		Name = "EmptySkill";
 	}

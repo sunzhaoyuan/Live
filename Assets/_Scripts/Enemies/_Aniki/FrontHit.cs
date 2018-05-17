@@ -2,7 +2,7 @@
 public class FrontHit : ASkill
 {
 
-	public FrontHit ()
+	public FrontHit()
 	{
 		Name = "FrontHit";
 		Damage = 10.0f;

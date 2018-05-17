@@ -264,15 +264,15 @@ MonoBehaviour:
   target: {fileID: 276854745}
   smoothness: 10
   x: 0
-  y: 60
-  z: -30
+  y: 80
+  z: -40
 --- !u!114 &220226663
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 220226657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 065c9e9b342384d8da40d9751e38fa31, type: 3}
   m_Name: 
@@ -287,6 +287,7 @@ MonoBehaviour:
   - {fileID: 1024728547}
   Vec3: {x: 100, y: 0, z: 100}
   RefreshDelayDeltaTime: 1
+  num_of_spawnPoints: 5
   NumberOfEnemies: 20
 --- !u!82 &220226664
 AudioSource:
@@ -977,6 +978,28 @@ Prefab:
       propertyPath: dodgeTime
       value: 
       objectReference: {fileID: 1115414654}
+    - target: {fileID: 108695265392557660, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444592281857140, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444592281857140, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444592281857140, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549297895198644, guid: 6b4d117f0cbd14e07b502a37299f9027,
+        type: 2}
+      propertyPath: DashRadius
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b4d117f0cbd14e07b502a37299f9027, type: 2}
   m_IsPrefabParent: 0
@@ -1147,7 +1170,7 @@ Prefab:
     - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
       propertyPath: CurrentHP
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114041712469062432, guid: 6e344e8eca0898b41ae06bef676c5588,
         type: 2}
@@ -1163,6 +1186,21 @@ Prefab:
         type: 2}
       propertyPath: farRange
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 65257756925204530, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54654253331103322, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 65257756925204530, guid: 6e344e8eca0898b41ae06bef676c5588,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e344e8eca0898b41ae06bef676c5588, type: 2}

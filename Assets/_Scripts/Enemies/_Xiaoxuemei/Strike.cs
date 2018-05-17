@@ -5,7 +5,7 @@ using UnityEngine;
 public class Strike : ASkill
 {
 
-	public Strike ()
+	public Strike()
 	{
 		Name = "Strike";
 		Damage = 20f;

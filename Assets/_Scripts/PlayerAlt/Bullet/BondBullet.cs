@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BondBullet : ABullet
 {
-
-	public BondBullet ()
-	{
-		Damage = 0f;
-		Speed = 100f;
-	}
+    protected override void Update()
+    {
+        Damage = 0f;
+        Speed = 100f;
+    }
 }
