@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641162, b: 0.5748184, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -877,7 +877,7 @@ Prefab:
     - target: {fileID: 114839877461850390, guid: 243b95a5c9d9a6a42ad169d74c860191,
         type: 2}
       propertyPath: RecoveryRate
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 243b95a5c9d9a6a42ad169d74c860191, type: 2}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Next Level
+  m_text: Start Over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d62a573c923f5cb47b8ff65261033b90, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 102e7c5c5e3b1f3468518cb166967d77, type: 2}
@@ -1409,12 +1409,22 @@ Prefab:
     - target: {fileID: 114919567543243356, guid: 8afa2fcbf90b63343b00d0b87d335ae7,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114919567543243356, guid: 8afa2fcbf90b63343b00d0b87d335ae7,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224617421040956550, guid: 8afa2fcbf90b63343b00d0b87d335ae7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -362
+      objectReference: {fileID: 0}
+    - target: {fileID: 114357636610109848, guid: 8afa2fcbf90b63343b00d0b87d335ae7,
+        type: 2}
+      propertyPath: m_Text
+      value: "try shooting bond \nto enemies\nand hold!!!"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8afa2fcbf90b63343b00d0b87d335ae7, type: 2}
@@ -3852,6 +3862,11 @@ Prefab:
         type: 2}
       propertyPath: Xiaoxuemei
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114751404330921498, guid: 65cf8e11172294309a05747b2828c55b,
+        type: 2}
+      propertyPath: CurrentHP
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65cf8e11172294309a05747b2828c55b, type: 2}

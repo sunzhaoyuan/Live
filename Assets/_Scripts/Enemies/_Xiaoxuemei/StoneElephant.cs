@@ -11,9 +11,7 @@ public class StoneElephant : AEnemy
 	{
 		Name = "StoneElephant";
 		MaxHP = 500f;
-		Speed = 4f;
 		CurrentState = State.IDLE;
-		closeRange = 2f;
 		Buff = new StoneSkin ();
 	}
 

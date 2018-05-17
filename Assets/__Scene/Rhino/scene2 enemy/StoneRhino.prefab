@@ -1673,13 +1673,11 @@ MonoBehaviour:
   MaxHP: 500
   NextAttackTime: 0
   AttackEndTime: 0
-  CurrentSkill: {fileID: 0}
-  Speed: 4
+  Speed: 30
   closeRange: 2
   midRange: -1
   farRange: -1
-  WeakDuration: 0
-  WeakStartTime: 0
+  WeakEndTime: 0
   CurrentState: 0
   IsWeak: 0
   IsDead: 0

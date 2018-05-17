@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShotGunBullet : ABullet {
 
 	protected override void Update(){
+        base.Update();
 		Damage = 20f;
 		Speed = 80f;
 	}

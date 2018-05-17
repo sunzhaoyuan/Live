@@ -156,7 +156,6 @@ public class AEnemy : MonoBehaviour
 	/// </summary>
 	public virtual void Attack ()
 	{
-
 		if (IsAnimator) {
 			
 		} else {
@@ -238,10 +237,8 @@ public class AEnemy : MonoBehaviour
 	void OnTriggerEnter (Collider collider)
 	{
 		string tag1 = collider.tag;
-        Debug.Log("kkkk");
 		switch (tag1) {
 		case "Bullet":
-            Debug.Log("lll");
             if (CurrentHP <= 0)
                 break;
             ABullet bullet = collider.gameObject.GetComponent<ABullet> ();

@@ -20,7 +20,6 @@ public class RecoverPlayerHealth : MonoBehaviour
 	void Update ()
 	{	
 		if (IsPlayerInTrigger && player.CurrentHP < player.MaxHP) {
-			Debug.Log ("Recovering");
 			player.CurrentHP += RecoveryRate;
         }
 	}

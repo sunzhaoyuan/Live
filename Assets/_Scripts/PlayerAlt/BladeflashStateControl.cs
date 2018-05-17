@@ -41,7 +41,6 @@ public class BladeflashStateControl : MonoBehaviour
 
 	void Update ()
 	{
-        //Debug.Log(Xiaoxuemei.CurrentSkill.Name);
 		if (Xiaoxuemei.CurrentSkill != null && Xiaoxuemei.CurrentSkill.Name.Equals ("Bladeflash")) {
 			Bladeflash = (Bladeflash)Xiaoxuemei.CurrentSkill;
 			FacingEndTime = Bladeflash.FacingEndTime;
@@ -61,12 +60,10 @@ public class BladeflashStateControl : MonoBehaviour
         }
         IsPlayingCharge = false;
         if (FlashEndTime != 0f && Time.time <= FlashEndTime && !IsPlayingFlash) {
-            Debug.Log("Else If");
             Instantiate(FlashMusic);
             IsPlayingFlash = true;
             return;
         }
-        Debug.Log("Outside");
         light.enabled = false;
     }
 

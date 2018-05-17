@@ -17,8 +17,7 @@ public class Bond : AGun
 		
 		if (Ammo > 0 && Time.time >= TimeNextShot) {
 			TimeNextShot = Time.time + TimeBetweenshots;
-		
-			ABullet bullet = Instantiate (Bullet, player.transform.position, player.transform.rotation);
+			ABullet bullet = Instantiate (Bullet, player.gunfire.transform.position, player.transform.rotation);
 			Ammo--;
 
 		}

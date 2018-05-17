@@ -48,7 +48,6 @@ public class Xiaoxuemei : AEnemy
             IsWeak = false;
         if (IsWeak)
         {
-            Debug.Log("WEAK");
             CurrentState = State.IDLE;
             DeactivateAnimState("IsRun");
             DeactivateAnimState("IsAttack01");
@@ -66,15 +65,15 @@ public class Xiaoxuemei : AEnemy
 			int AttackPercent = ran.Next (100);
 			int PunchPer = 0, StrikePer = 0, MovePer = 0;
 			if (distance <= closeRange) {
-				PunchPer = 100;
+				PunchPer = 97;
 			} else if (distance <= midRange) {
 				MovePer = 50;
 				StrikePer = 26;
 				PunchPer = 21;
 			} else if (distance <= farRange) {
 				MovePer = 50;
-				StrikePer = 35;
-				PunchPer = 15;
+				StrikePer = 33;
+				PunchPer = 12;
 			} else
 				MovePer = 100;
             CanDealDamage = true;

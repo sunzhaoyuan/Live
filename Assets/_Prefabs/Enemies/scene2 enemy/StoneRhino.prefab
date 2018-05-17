@@ -1637,8 +1637,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 2.3, z: 2.3}
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Size: {x: 2.3, y: 2.3, z: 2.6}
+  m_Center: {x: 0, y: 0.85, z: 0.5}
 --- !u!65 &65392452664416648
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1649,8 +1649,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 2.5}
+  m_Center: {x: 0, y: 1, z: 0.5}
 --- !u!111 &111019833390030720
 Animation:
   m_ObjectHideFlags: 1
@@ -1686,9 +1686,8 @@ MonoBehaviour:
   MaxHP: 500
   NextAttackTime: 0
   AttackEndTime: 0
-  CurrentSkill: {fileID: 0}
-  Speed: 8
-  closeRange: 10
+  Speed: 15
+  closeRange: 20
   midRange: -1
   farRange: -1
   WeakEndTime: 0

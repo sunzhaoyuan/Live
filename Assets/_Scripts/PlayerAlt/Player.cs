@@ -104,8 +104,8 @@ public class Player : MonoBehaviour
 			ConnectingEnemy = null;
 		}
 
-        if (Buff.Name.Equals("StoneSkin"))
-            CurrentHP += .1f;
+        if (Buff.Name.Equals("StoneSkin") && CurrentHP < 100)
+            CurrentHP += .05f;
 
 		//Update HP UI
 		uitHPbar.fillAmount = CurrentHP / MaxHP;
@@ -198,8 +198,7 @@ public class Player : MonoBehaviour
 			this.gunfire.SetActive (false);
 			this.bulleteffet.SetActive (false);
 		}
-
-
+       
 		//shoot bond
 		if (Input.GetKey ("joystick button 6") && !IsConnecting) {
 			Bond.Fire (this);
@@ -332,7 +331,7 @@ public class Player : MonoBehaviour
 				bossDamage = 0;
 			else
 				InvincibleTime = Time.time + bossSkill.Duration;
-                if (Buff.Name.Equals("StoneSkin") && bossDamage - CurrentHP <= 0 && CurrentHP != 1)
+                if (Buff.Name.Equals("StoneSkin") && CurrentHP - bossDamage <= 0 && CurrentHP != 1)
                 {
                     bossDamage = CurrentHP - 1;
                     IsConnecting = false;
