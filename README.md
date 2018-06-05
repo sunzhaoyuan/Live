@@ -1,17 +1,22 @@
 # Live
-Live - The Game
 
 ## Table of Contents
 * [Overview](https://github.com/sunzhaoyuan/Live#overview)
 * [Development Team](https://github.com/sunzhaoyuan/Live#development-team)
-* [Milestones](https://github.com/sunzhaoyuan/Live#milestones)
 * [Design Documents](https://github.com/sunzhaoyuan/Live#design-documents)
 
 ## Overview
-blank
+Live is a science fantasy top-down shooter game. In the game, the player need to utilize the "Bond" system to get powerful buffs from minions and beat the bosses. In the [ver1.0](https://github.com/sunzhaoyuan/Live/releases/tag/v1.0) release, there are two distinct stages, street and tori, and two different bosses. </br></br>
+Trailer: ["Live ~The End~"](https://youtu.be/IrDU-jit7NI)</br>
+<a href="https://youtu.be/IrDU-jit7NI
+" target="_blank"><img src="https://i.ytimg.com/vi/IrDU-jit7NI/2.jpg?time=1528242542321" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ---
 ## Development Team
+* Producer
+    - Zhaoyuan Sun
+
 * UI & UX Group
     - Zezhi Xia
     - Qiuyun Li
@@ -20,33 +25,22 @@ blank
 * Player Group
     - Curtis Wang
     - Song Luo
+    - Zezhi Xia
 
-* Enemies Group
+* Enemy Group
     - Zhaoyuan Sun
     - Weimu Song
     - Yuqi Zhou
 
 * Support Group
     - Zhaoyuan Sun
+    - Yuqi Zhou
+    - Curtis Wang
 
-* Level & Map Design Group
-
----
-## Milestones
-#### Milestone 1 (Due April 20th)
-- [x] Github
-- [ ] Title Screen (UI)
-- [ ] Boss (Boss)
-    - [ ] Basic Attacks
-    - [ ] Basic Moves
-- [ ] Player (Player)
-    - [ ] Config Controller
-    - [ ] Basic Moves
-- [ ] Supports (Supports)
-    - [x] Load Scene with Progress Bar
-    - [ ] Rotating Logo
-    - [ ] Collisions
-
+* Model Group
+    - Weimu Song
+    - Zezhi Xia
+    - Song Luo
 
 ---
 ## Design Documents
