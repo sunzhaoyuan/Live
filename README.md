@@ -7,9 +7,9 @@
 
 ## Overview
 Live is a science fantasy top-down shooter game. In the game, the player need to utilize the "Bond" system to get powerful buffs from minions and beat the bosses. In the [ver1.0](https://github.com/sunzhaoyuan/Live/releases/tag/v1.0) release, there are two distinct stages, street and tori, and two different bosses. </br></br>
-Trailer: ["Live ~The End~"](https://youtu.be/IrDU-jit7NI)</br>
+Trailer: ["Live \~The End\~"](https://youtu.be/IrDU-jit7NI)</br>
 <a href="https://youtu.be/IrDU-jit7NI
-" target="_blank"><img src="https://i.ytimg.com/vi/IrDU-jit7NI/2.jpg?time=1528242542321" 
+" target="_blank"><img src="https://github.com/sunzhaoyuan/Live/blob/master/vlcsnap-2018-06-05-19h53m51s003.png" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ---
