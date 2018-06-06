@@ -10,7 +10,7 @@ Live is a science fantasy top-down shooter game. In the game, the player need to
 Game Trailer: ["Live \~The End\~"](https://youtu.be/IrDU-jit7NI) (YouTube)</br>
 <a href="https://youtu.be/IrDU-jit7NI
 " target="_blank"><img src="https://github.com/sunzhaoyuan/Live/blob/master/vlcsnap-2018-06-05-19h53m51s003.png" 
-alt="IMAGE ALT TEXT HERE" width="1920" height="1080" border="10" /></a>
+alt="Youtube Trailer" width="480" height="270" border="10" /></a>
 
 ---
 ## Development Team
